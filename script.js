@@ -51,10 +51,10 @@ async function showHome(buttonElement) {
     if (loadingLabel) loadingLabel.remove();
     
     if (!data) return;
-
     // Названия в ленте в точности как на кнопках
     const categoryTitles = {
         'soups': '🍲 Супы',
+        'noodles': '🍜 Лапша',
         'potatoes': '🥔 Картошка',
         'pizzas': '🍕 Пицца',
         'burgers': '🍔 Бургеры',
@@ -65,7 +65,7 @@ async function showHome(buttonElement) {
     };
 
     // 3. Перебираем все категории по очереди и добавляем их рецепты в ленту
-    const categoriesOrder = ['soups', 'potatoes', 'pizzas', 'burgers', 'desserts', 'drinks', 'salats', 'sushi'];
+    const categoriesOrder = ['soups', 'noodles', 'potatoes', 'pizzas', 'burgers', 'desserts', 'drinks', 'salats', 'sushi'];
     
     categoriesOrder.forEach(catKey => {
         if (data[catKey] && data[catKey].length > 0) {
@@ -110,6 +110,7 @@ async function getRandomRecipe() {
     // Словарь для красивого перевода тегов категорий в случайном блюде
     const categoryTitles = {
         'soups': '🍲 Супы',
+        'noodles': '🍜 Лапша',
         'potatoes': '🥔 Картошка',
         'pizzas': '🍕 Пицца',
         'burgers': '🍔 Бургеры',
@@ -175,7 +176,6 @@ async function showCategory(category, buttonElement) {
     const headerHeight = headerBlock.offsetHeight;
     container.style.marginTop = (headerHeight + 20) + "px";
 }
-
 function levDistance(s1, s2) {
     s1 = s1.toLowerCase(); s2 = s2.toLowerCase();
     let costs = new Array();
@@ -237,6 +237,7 @@ async function handleSearch(query) {
 
     const categoryTitles = {
         'soups': '🍲 Супы',
+        'noodles': '🍜 Лапша',
         'potatoes': '🥔 Картошка',
         'pizzas': '🍕 Пицца',
         'burgers': '🍔 Бургеры',
@@ -245,7 +246,6 @@ async function handleSearch(query) {
         'salats': '🥗 Салаты',
         'sushi': '🍣 Суши'
     };
-
     for (let category in data) {
         data[category].forEach(recipe => {
             let matchAllWords = queryWords.every(qWord => 
@@ -281,7 +281,6 @@ function clearSearchField() {
     if (clearBtn) clearBtn.style.display = "none";
     
     const activeBtn = document.querySelector('.nav-btn.active');
-    
     if (activeBtn) {
         activeBtn.click();
     } else {
@@ -289,6 +288,7 @@ function clearSearchField() {
         if (firstBtn) firstBtn.click();
     }
 }
+
 // Функция переключения тем с сохранением выбора пользователя
 function toggleTheme() {
     const body = document.body;
