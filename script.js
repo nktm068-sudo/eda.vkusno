@@ -51,21 +51,23 @@ async function showHome(buttonElement) {
     if (loadingLabel) loadingLabel.remove();
     
     if (!data) return;
-    // Названия в ленте в точности как на кнопках
-    const categoryTitles = {
-        'soups': '🍲 Супы',
-        'noodles': '🍜 Лапша',
-        'potatoes': '🥔 Картошка',
-        'pizzas': '🍕 Пицца',
-        'burgers': '🍔 Бургеры',
-        'desserts': '🍦 Десерты',
-        'drinks': '🍹 Напитки',
-        'salats': '🥗 Салаты',
-        'sushi': '🍣 Суши'
-    };
+   const categoryTitles = {
+    'soups': '🍲 Супы',
+    'potatoes': '🥔 Картошка',
+    'pizzas': '🍕 Пицца',
+    'burgers': '🍔 Бургеры',
+    'desserts': '🍦 Десерты',
+    'drinks': '🍹 Напитки',
+    'salats': '🥗 Салаты',
+    'sushi': '🍣 Суши',
+    'noodles': '🍜 Лапша 🔥 NEW!' // <-- Теперь тут красуется яркая пометка!
+};
 
-    // 3. Перебираем все категории по очереди и добавляем их рецепты в ленту
-    const categoriesOrder = ['soups', 'noodles', 'potatoes', 'pizzas', 'burgers', 'desserts', 'drinks', 'salats', 'sushi'];
+
+// Было: ['soups', 'noodles', 'potatoes', ...]
+// Стало: 'noodles' ушла в самый конец списка!
+const categoriesOrder = ['soups', 'potatoes', 'pizzas', 'burgers', 'desserts', 'drinks', 'salats', 'sushi', 'noodles'];
+
     
     categoriesOrder.forEach(catKey => {
         if (data[catKey] && data[catKey].length > 0) {
@@ -107,18 +109,18 @@ async function getRandomRecipe() {
     const randomIndex = Math.floor(Math.random() * allRecipes.length);
     const randomRecipe = allRecipes[randomIndex];
 
-    // Словарь для красивого перевода тегов категорий в случайном блюде
     const categoryTitles = {
-        'soups': '🍲 Супы',
-        'noodles': '🍜 Лапша',
-        'potatoes': '🥔 Картошка',
-        'pizzas': '🍕 Пицца',
-        'burgers': '🍔 Бургеры',
-        'desserts': '🍦 Десерты',
-        'drinks': '🍹 Напитки',
-        'salats': '🥗 Салаты',
-        'sushi': '🍣 Суши'
-    };
+    'soups': '🍲 Супы',
+    'potatoes': '🥔 Картошка',
+    'pizzas': '🍕 Пицца',
+    'burgers': '🍔 Бургеры',
+    'desserts': '🍦 Десерты',
+    'drinks': '🍹 Напитки',
+    'salats': '🥗 Салаты',
+    'sushi': '🍣 Суши',
+    'noodles': '🍜 Лапша 🔥 NEW!' // <-- Теперь тут красуется яркая пометка!
+};
+
     const prettyCategory = categoryTitles[randomRecipe.categoryName] || randomRecipe.categoryName;
 
     // Находим блок приветствия (это самая первая карточка в контейнере)
