@@ -136,13 +136,25 @@ body.dark-mode .nav-btn:hover {
 }
 
 #recipes-container {
-    width: 90%;
-    max-width: 900px;
+    width: 95%;
+    max-width: 1200px;
     display: flex;
-    flex-direction: column;
-    gap: 30px;
+    flex-direction: row; /* Выстраиваем карточки в одну линию (вместо column) */
+    gap: 20px;
     margin-top: 280px; 
     margin-bottom: 60px;
+    
+    /* Включаем горизонтальную прокрутку */
+    overflow-x: auto; 
+    overflow-y: hidden; /* Прячем вертикальный скролл, если он появится */
+    
+    /* Делаем свайп на телефонах очень плавным и приятным */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Добавляем внутренние отступы, чтобы карточки приподнимались по hover и не обрезались */
+    padding: 15px 5px; 
+    box-sizing: border-box;
 }
 
 .recipe-card {
@@ -153,7 +165,29 @@ body.dark-mode .nav-btn:hover {
     border-left: 8px solid var(--color-primary);
     animation: fadeIn 0.4s ease-out;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    
+    /* ВАЖНО: Задаем фиксированную ширину карточки, чтобы они не сжимались */
+    flex: 0 0 350px; 
+    max-width: 85vw; /* На совсем маленьких экранах карточка не будет шире экрана */
+    
+    /* Чтобы текст внутри карточки не ломал её размеры */
+    display: flex;
+    flex-direction: column;
 }
+
+/* Красивый тонкий скроллбар для компьютеров, чтобы он не выглядел громоздко */
+#recipes-container::-webkit-scrollbar {
+    height: 6px;
+}
+#recipes-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+#recipes-container::-webkit-scrollbar-thumb {
+    background: var(--color-text-muted);
+    border-radius: 10px;
+    opacity: 0.3;
+}
+
 
 .recipe-card:hover {
     transform: translateY(-4px);
@@ -214,7 +248,20 @@ body.dark-mode .ingredients {
     #search-input { font-size: 14px; padding: 8px 15px 8px 42px !important; }
     #navigation { margin-top: 6px; gap: 6px; }
     .nav-btn { padding: 6px 12px; font-size: 13px; }
-    #recipes-container { gap: 15px; width: 95%; margin-top: 240px; }
-    .recipe-card h2 { font-size: 22px; }
-    .recipe-card { padding: 18px; border-left-width: 5px; }
-}
+    
+    #recipes-container {
+        gap: 15px;
+        width: 100%; 
+        padding: 15px 15px; 
+        margin-top: 240px;
+    }
+    
+    .recipe-card {
+        padding: 18px;
+        border-left-width: 5px;
+        flex: 0 0 280px; 
+    } /* Эту скобку мы оставляем, она закрывает .recipe-card */
+
+    .recipe-card h2 { font-size: 22px; } /* Теперь заголовок внутри @media */
+} /* А эта скобка на строчке 262 закрывает сам @media (max-width: 768px) */
+
