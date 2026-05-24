@@ -92,7 +92,7 @@ body.dark-mode #search-input:focus {
     box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
 }
 
-/* ПАНЕЛЬ НАВИГАЦИИ С ГОРЫЗОНТАЛЬНЫМ СВАЙПОМ */
+/* ПАНЕЛЬ НАВИГАЦИИ С ИСПРАВЛЕННЫМИ ОТСТУПАМИ */
 #navigation {
     margin-top: 10px;
     margin-bottom: 5px;
@@ -100,16 +100,16 @@ body.dark-mode #search-input:focus {
     gap: 10px;
     width: 100%;
     max-width: 1000px;
-    padding: 5px 15px;
+    padding: 5px 25px;          /* Воздух по бокам, чтобы кнопки не обрезались в край */
     box-sizing: border-box;
     
-    flex-wrap: nowrap;          /* Запрещаем перенос кнопок на вторую строку */
-    overflow-x: auto;           /* Включаем прокрутку вбок */
+    flex-wrap: nowrap;          /* Запрещаем перенос кнопок */
+    overflow-x: auto;           /* Включаем прокрутку */
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
 
-/* Прячем полосу прокрутки меню на компьютерах */
+/* Прячем полосу прокрутки меню на компьютерах (листаем Shift + колесо) */
 #navigation::-webkit-scrollbar {
     display: none;
 }
@@ -125,7 +125,7 @@ body.dark-mode #search-input:focus {
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    flex-shrink: 0;             /* Запрещаем кнопкам сжиматься по ширине */
+    flex-shrink: 0;             /* Запрещаем кнопкам сжиматься */
 }
 
 body.dark-mode .nav-btn {
@@ -154,7 +154,7 @@ body.dark-mode .nav-btn:hover {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    margin-top: 210px;          /* Уменьшили отступ, так как шапка стала тоньше */
+    margin-top: 210px;          
     margin-bottom: 60px;
 }
 
@@ -233,6 +233,7 @@ body.dark-mode .ingredients {
         flex-wrap: nowrap; 
         overflow-x: auto; 
         width: 100%;
+        padding: 5px 15px;      /* На смартфонах отступы чуть меньше */
     }
     
     .nav-btn { padding: 6px 12px; font-size: 13px; }
