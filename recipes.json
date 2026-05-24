@@ -1,2065 +1,653 @@
 {
-  "id": "TheAmazingDigitalCircus2",
-  "time": "2026-04-23T12:42:21+07:00",
-  "releaseTime": "2024-08-08T12:24:45+07:00",
-  "type": "modified",
-  "mainClass": "cpw.mods.bootstraplauncher.BootstrapLauncher",
-  "minimumLauncherVersion": 21,
-  "arguments": {
-    "jvm": [
-      {
-        "values": [
-          "-XstartOnFirstThread"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "os": {
-              "name": "osx"
-            }
-          }
-        ]
-      },
-      {
-        "values": [
-          "-XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "os": {
-              "name": "windows"
-            }
-          }
-        ]
-      },
-      {
-        "values": [
-          "-Xss1M"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "os": {}
-          }
-        ]
-      },
-      {
-        "values": [
-          "-Djava.library.path=${natives_directory}"
-        ]
-      },
-      {
-        "values": [
-          "-Djna.tmpdir=${natives_directory}"
-        ]
-      },
-      {
-        "values": [
-          "-Dorg.lwjgl.system.SharedLibraryExtractPath=${natives_directory}"
-        ]
-      },
-      {
-        "values": [
-          "-Dio.netty.native.workdir=${natives_directory}"
-        ]
-      },
-      {
-        "values": [
-          "-Dminecraft.launcher.brand=${launcher_name}"
-        ]
-      },
-      {
-        "values": [
-          "-Dminecraft.launcher.version=${launcher_version}"
-        ]
-      },
-      {
-        "values": [
-          "-cp"
-        ]
-      },
-      {
-        "values": [
-          "${classpath}"
-        ]
-      },
-      {
-        "values": [
-          "-Djava.net.preferIPv6Addresses=system"
-        ]
-      },
-      {
-        "values": [
-          "-DignoreList=client-extra,${version_name}.jar"
-        ]
-      },
-      {
-        "values": [
-          "-DlibraryDirectory=${library_directory}"
-        ]
-      },
-      {
-        "values": [
-          "-p"
-        ]
-      },
-      {
-        "values": [
-          "${library_directory}/cpw/mods/bootstraplauncher/2.0.2/bootstraplauncher-2.0.2.jar${classpath_separator}${library_directory}/cpw/mods/securejarhandler/3.0.8/securejarhandler-3.0.8.jar${classpath_separator}${library_directory}/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar${classpath_separator}${library_directory}/org/ow2/asm/asm-util/9.8/asm-util-9.8.jar${classpath_separator}${library_directory}/org/ow2/asm/asm-analysis/9.8/asm-analysis-9.8.jar${classpath_separator}${library_directory}/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar${classpath_separator}${library_directory}/org/ow2/asm/asm/9.8/asm-9.8.jar${classpath_separator}${library_directory}/net/neoforged/JarJarFileSystems/0.4.1/JarJarFileSystems-0.4.1.jar"
-        ]
-      },
-      {
-        "values": [
-          "--add-modules"
-        ]
-      },
-      {
-        "values": [
-          "ALL-MODULE-PATH"
-        ]
-      },
-      {
-        "values": [
-          "--add-opens"
-        ]
-      },
-      {
-        "values": [
-          "java.base/java.util.jar=cpw.mods.securejarhandler"
-        ]
-      },
-      {
-        "values": [
-          "--add-opens"
-        ]
-      },
-      {
-        "values": [
-          "java.base/java.lang.invoke=cpw.mods.securejarhandler"
-        ]
-      },
-      {
-        "values": [
-          "--add-exports"
-        ]
-      },
-      {
-        "values": [
-          "java.base/sun.security.util=cpw.mods.securejarhandler"
-        ]
-      },
-      {
-        "values": [
-          "--add-exports"
-        ]
-      },
-      {
-        "values": [
-          "jdk.naming.dns/com.sun.jndi.dns=java.naming"
-        ]
-      }
-    ],
-    "game": [
-      {
-        "values": [
-          "--username"
-        ]
-      },
-      {
-        "values": [
-          "${auth_player_name}"
-        ]
-      },
-      {
-        "values": [
-          "--version"
-        ]
-      },
-      {
-        "values": [
-          "${version_name}"
-        ]
-      },
-      {
-        "values": [
-          "--gameDir"
-        ]
-      },
-      {
-        "values": [
-          "${game_directory}"
-        ]
-      },
-      {
-        "values": [
-          "--assetsDir"
-        ]
-      },
-      {
-        "values": [
-          "${assets_root}"
-        ]
-      },
-      {
-        "values": [
-          "--assetIndex"
-        ]
-      },
-      {
-        "values": [
-          "${assets_index_name}"
-        ]
-      },
-      {
-        "values": [
-          "--uuid"
-        ]
-      },
-      {
-        "values": [
-          "${auth_uuid}"
-        ]
-      },
-      {
-        "values": [
-          "--accessToken"
-        ]
-      },
-      {
-        "values": [
-          "${auth_access_token}"
-        ]
-      },
-      {
-        "values": [
-          "--clientId"
-        ]
-      },
-      {
-        "values": [
-          "${clientid}"
-        ]
-      },
-      {
-        "values": [
-          "--xuid"
-        ]
-      },
-      {
-        "values": [
-          "${auth_xuid}"
-        ]
-      },
-      {
-        "values": [
-          "--userType"
-        ]
-      },
-      {
-        "values": [
-          "${user_type}"
-        ]
-      },
-      {
-        "values": [
-          "--versionType"
-        ]
-      },
-      {
-        "values": [
-          "${version_type}"
-        ]
-      },
-      {
-        "values": [
-          "--demo"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "features": {
-              "is_demo_user": true
-            }
-          }
-        ]
-      },
-      {
-        "values": [
-          "--width",
-          "${resolution_width}",
-          "--height",
-          "${resolution_height}"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "features": {
-              "has_custom_resolution": true
-            }
-          }
-        ]
-      },
-      {
-        "values": [
-          "--quickPlayPath",
-          "${quickPlayPath}"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "features": {
-              "has_quick_plays_support": true
-            }
-          }
-        ]
-      },
-      {
-        "values": [
-          "--quickPlaySingleplayer",
-          "${quickPlaySingleplayer}"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "features": {
-              "is_quick_play_singleplayer": true
-            }
-          }
-        ]
-      },
-      {
-        "values": [
-          "--quickPlayMultiplayer",
-          "${quickPlayMultiplayer}"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "features": {
-              "is_quick_play_multiplayer": true
-            }
-          }
-        ]
-      },
-      {
-        "values": [
-          "--quickPlayRealms",
-          "${quickPlayRealms}"
-        ],
-        "rules": [
-          {
-            "action": "allow",
-            "features": {
-              "is_quick_play_realms": true
-            }
-          }
-        ]
-      },
-      {
-        "values": [
-          "--fml.neoForgeVersion"
-        ]
-      },
-      {
-        "values": [
-          "21.1.228"
-        ]
-      },
-      {
-        "values": [
-          "--fml.fmlVersion"
-        ]
-      },
-      {
-        "values": [
-          "4.0.42"
-        ]
-      },
-      {
-        "values": [
-          "--fml.mcVersion"
-        ]
-      },
-      {
-        "values": [
-          "1.21.1"
-        ]
-      },
-      {
-        "values": [
-          "--fml.neoFormVersion"
-        ]
-      },
-      {
-        "values": [
-          "20240808.144430"
-        ]
-      },
-      {
-        "values": [
-          "--launchTarget"
-        ]
-      },
-      {
-        "values": [
-          "forgeclient"
-        ]
-      }
-    ],
-    "default_user_jvm": []
-  },
-  "assets": "17",
-  "libraries": [
+  "soups": [
     {
-      "name": "net.neoforged.fancymodloader:earlydisplay:4.0.42",
-      "artifact": {
-        "sha1": "46555dbfff14e9e052f1f693aed14d542a74e111",
-        "size": 261718,
-        "path": "libraries/net/neoforged/fancymodloader/earlydisplay/4.0.42/earlydisplay-4.0.42.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/fancymodloader/earlydisplay/4.0.42/earlydisplay-4.0.42.jar"
-      }
+      "name": "Сырный крем-суп с золотистыми гренками",
+      "ingredients": "Плавленый сыр (в брусочках) — 2 шт, картофель — 3 шт, морковь — 1 шт, лук — 1 шт, гренки, зелень, соль, черный перец.",
+      "steps": "1. Нарежьте картофель кубиками и поставьте вариться в кастрюле.\n2. Мелко нашинкуйте лук, морковь натрите на средней терке. Обжарьте их на сковороде до золотистого оттенка.\n3. Когда картофель станет мягким, переложите зажарку в кастрюлю. Плавленый сыр натрите на терке и засыпьте в бульон.\n4. Постоянно помешивайте суп на медленном огне до полного растворения сыра.\n5. Снимите с плиты и аккуратно пробейте погружным блендером до состояния нежного пюре. Подавайте с сухариками и свежей зеленью."
     },
     {
-      "name": "net.neoforged.fancymodloader:loader:4.0.42",
-      "artifact": {
-        "sha1": "76e15f98bf676fb44b36c5e776f52a55581ec43a",
-        "size": 504899,
-        "path": "libraries/net/neoforged/fancymodloader/loader/4.0.42/loader-4.0.42.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/fancymodloader/loader/4.0.42/loader-4.0.42.jar"
-      }
+      "name": "Пряный томатный суп-пюре с ароматным базиликом",
+      "ingredients": "Томаты в собственном соку — 1 банка (400 г), свежий чеснок — 2-3 зубчика, сливки 10-20% — 100 мл, оливковое масло — 2 ст.л., сушеный базилик — 1 ч.л., соль, щепотка сахара.",
+      "steps": "1. Обжаривайте мелко порубленный чеснок в оливковом масле примерно 1 минуту.\n2. Вылейте томаты вместе с соком в сотейник. Разминайте их лопаткой.\n3. Добавьте базилик, соль и щепотку сахара. Накройте крышкой и тушите 10-12 минут.\n4. Уберите сотейник с огня. Тонкой струйкой влейте сливки, непрерывно помешивая.\n5. Измельчите массу блендером до однородной консистенции. Верните на плиту на 1 минуту прогреться, но не кипятите."
     },
     {
-      "name": "net.neoforged.accesstransformers:at-modlauncher:10.0.1",
-      "artifact": {
-        "sha1": "5aba50202aceead086bc09fbc2751c9f05cb4890",
-        "size": 2347,
-        "path": "libraries/net/neoforged/accesstransformers/at-modlauncher/10.0.1/at-modlauncher-10.0.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/accesstransformers/at-modlauncher/10.0.1/at-modlauncher-10.0.1.jar"
-      }
+      "name": "Домашняя быстая лапша с курицей",
+      "ingredients": "Куриное филе — 300 г, тонкая вермишель или лапша — 100 г, картофель — 2 шт, морковь — 1 шт, лук — 1 шт, свежий укроп, соль, лавровый лист.",
+      "steps": "1. Куриное филе нарежьте кусочками, залейте водой и поставьте вариться. Снимайте пену при закипании.\n2. Через 15 минут добавьте в бульон нарезанный кубиками картофель.\n3. Лук и морковь мелко нарежьте, обжарьте на капле масла до мягкости и переложите в суп.\n4. Когда картофель сварится, всыпьте вермишель, добавьте лавровый лист и соль.\n5. Варите еще 3-5 минут до готовности лапши. Перед выключением засыпьте рубленый укроп."
     },
     {
-      "name": "net.neoforged:accesstransformers:10.0.1",
-      "artifact": {
-        "sha1": "fd83b5725f76eae9115e9355fa1c456a6a441400",
-        "size": 67234,
-        "path": "libraries/net/neoforged/accesstransformers/10.0.1/accesstransformers-10.0.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/accesstransformers/10.0.1/accesstransformers-10.0.1.jar"
-      }
+      "name": "Крем-суп из шампиньонов со сливками",
+      "ingredients": "Шампиньоны свежие — 300 г, картофель — 2 шт, лук репчатый — 1 шт, сливки 20% — 150 мл, сливочное масло — 20 г, соль, мускатный орех.",
+      "steps": "1. Нарежьте лук и грибы пластинками. Обжарьте их на сливочном масле в сотейнике до испарения влаги.\n2. Картофель очистите, нарежьте кубиками, залейте небольшим количеством воды (чтобы только покрывала) и сварите отдельно.\n3. Переложите обжаренные грибы с луком к готовому картофелю вместе с отваром.\n4. Пробейте всё блендером в однородное пюре.\n5. Влейте сливки, добавьте соль и щепотку мускатного ореха. Прогрейте суп на среднем огне еще 2 минуты, не доводя до кипения."
     },
     {
-      "name": "net.neoforged:bus:8.0.5",
-      "artifact": {
-        "sha1": "5b2d33285ab5d1554e9798ad98c40d6ea3868bd5",
-        "size": 30340,
-        "path": "libraries/net/neoforged/bus/8.0.5/bus-8.0.5.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/bus/8.0.5/bus-8.0.5.jar"
-      }
+      "name": "Классический борщ от ИИ",
+      "ingredients": "Мясо или курица — 400 г, свекла — 1 шт, капуста — 200 г, картофель — 3 шт, морковь — 1 шт, лук — 1 шт, томатная паста — 2 ст.л., лимонный сок — 1 ст.л., чеснок — 2 зубчика, зелень, соль.",
+      "steps": "1. Сварите мясной бульон в кастрюле. Добавьте нарезанный кубиками картофель.\n2. Нашинкуйте капусту и отправьте к картофелю через 10 минут.\n3. Свеклу, морковь и лук измельчите. Обжарьте лук с морковью, затем добавьте свеклу, томатную пасту и лимонный сок. Тушите на сковороде 10 минут.\n4. Переложите зажарку в кастрюлю, посолите по вкусу и варите еще 5-7 минут.\n5. Выключите огонь, добавьте раздавленный чеснок и мелко нарезанную зелень. Дайте борщу настояться под крышкой."
     },
     {
-      "name": "net.neoforged:coremods:7.0.3",
-      "artifact": {
-        "sha1": "09147e6f638b4272b3bd5fc8f92ad37802512c6c",
-        "size": 22659,
-        "path": "libraries/net/neoforged/coremods/7.0.3/coremods-7.0.3.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/coremods/7.0.3/coremods-7.0.3.jar"
-      }
+      "name": "Быстрый гороховый суп с копченостями",
+      "ingredients": "Копченые колбаски или ребрышки — 250 г, консервированный горошек — 1 банка, картофель — 3 шт, морковь — 1 шт, лук — 1 шт, зелень, соль, перец.",
+      "steps": "1. Поставьте вариться нарезанный кубиками картофель в кастрюле с водой.\n2. Нарежьте копчености кусочками. Лук и морковь мелко покрошите и обжарьте на сковороде вместе с копченостями до красивой корочки.\n3. Когда картофель станет мягким, добавьте в кастрюлю зажарку с копченостями.\n4. Выложите из банки консервированный горошек вместе с соком.\n5. Посолите, поперчите, поварите всё вместе 5 минут и украсьте свежей зеленью."
     },
     {
-      "name": "cpw.mods:modlauncher:11.0.5",
-      "artifact": {
-        "sha1": "b8f0d49294f733fdb6173931b263553e943dc950",
-        "size": 116486,
-        "path": "libraries/cpw/mods/modlauncher/11.0.5/modlauncher-11.0.5.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/cpw/mods/modlauncher/11.0.5/modlauncher-11.0.5.jar"
-      }
+      "name": "Скандинавский ушной суп с лососем и сливками",
+      "ingredients": "Красная рыба — 300 г, картофель — 3 шт, морковь — 1 шт, лук — 1 шт, сливки 10-20% — 200 мл, сливочное масло — 15 г, укроп, соль.",
+      "steps": "1. В сотейнике на сливочном масле обжарьте мелко нарезанный лук и натертую морковь.\n2. Залейте овощи водой, добавьте нарезанный крупными кубиками картофель и варите 10-12 минут.\n3. Рыбу очистите от кожи и костей, нарежьте средними кусочками и отправьте в суп.\n4. Посолите и сразу влейте сливки, аккуратно помешивая.\n5. Варите на медленном огне еще 5 минут. Подавайте с укропом."
     },
     {
-      "name": "net.neoforged:mergetool:2.0.0:api",
-      "artifact": {
-        "sha1": "52fe1949be64e3303aabaaa21e315f551db9c9f4",
-        "size": 2550,
-        "path": "libraries/net/neoforged/mergetool/2.0.0/mergetool-2.0.0-api.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/mergetool/2.0.0/mergetool-2.0.0-api.jar"
-      }
+      "name": "Витаминный суп со щавелем и яйцом",
+      "ingredients": "Куриный бульон или вода — 2 л, свежий щавель — 1 большой пучок, картофель — 3 шт, морковь — 1 шт, лук — 1 шт, вареные яйца — 2-3 шт, сметана для подачи, соль.",
+      "steps": "1. В кипящий бульон или воду положите нарезанный картофель.\n2. Сделайте легкую зажарку из лука и моркови на сковороде, затем переложите её в кастрюлю.\n3. Щавель тщательно промойте и нарежьте полосками. Вареные яйца порубите кубиками.\n4. Когда картофель полностью сварится, добавьте в кастрюлю щавель и яйца. Посолите.\n5. Поварите суп ровно 2 минуты, чтобы щавель потемнел, и выключайте. Подавайте со сметаной."
     },
     {
-      "name": "com.electronwill.night-config:toml:3.8.3",
-      "artifact": {
-        "sha1": "90b2fd6efcb4a7d5b9810cf78f9d824994d717f2",
-        "size": 39516,
-        "path": "libraries/com/electronwill/night-config/toml/3.8.3/toml-3.8.3.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/electronwill/night-config/toml/3.8.3/toml-3.8.3.jar"
-      }
+      "name": "Итальянский овощной суп Минестроне",
+      "ingredients": "Кабачок — 0.5 шт, консервированная красная фасоль — 0.5 банки, картофель — 2 шт, болгарский перец — 1 шт, помидор — 1 шт, лук — 1 шт, чеснок — 1 зубчик, оливковое масло, итальянские травы, соль.",
+      "steps": "1. Нарежьте все овощи одинаковыми мелкими кубиками.\n2. В кастрюле с толстым дном на оливковом масле обжарьте лук и чеснок. Добавьте туда перец и кабачок, обжаривайте 3 минуты.\n3. Залейте овощи горячей водой, положите картофель и помидор. Варите 15 минут.\n4. Добавьте фасоль из банки и сушеные итальянские травы, посолите.\n5. Поварите еще 5 минут. Этот суп получается очень ярким и густым."
     },
     {
-      "name": "com.electronwill.night-config:core:3.8.3",
-      "artifact": {
-        "sha1": "b442a95f09e349927f5a945ecb594455870fcf4f",
-        "size": 382911,
-        "path": "libraries/com/electronwill/night-config/core/3.8.3/core-3.8.3.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/electronwill/night-config/core/3.8.3/core-3.8.3.jar"
-      }
+      "name": "Нежный крем-суп из брокколи",
+      "ingredients": "Брокколи — 400 г, картофель — 2 шт, лук репчатый — 1 шт, сливки 10% — 100 мл, плавленый сыр — 1 ст.л., соль, сушеный чеснок.",
+      "steps": "1. Очистите картофель и лук, нарежьте и поставьте вариться в небольшом количестве воды.\n2. Через 10 минут добавьте в кастрюлю соцветия брокколи. Варите всё вместе еще 7-10 минут до мягкости овощей.\n3. Слейте часть овощного отвара в стакан, а овощи переложите в блендер.\n4. Измельчите овощи в пюре, добавив сливки, ложку плавленого сыра, соль и сушеный чеснок.\n5. Если суп получился слишком густым, разбавьте его отваром из стакана. Прогрейте на плите 1 минуту перед подачей."
     },
     {
-      "name": "net.neoforged:JarJarSelector:0.4.1",
-      "artifact": {
-        "sha1": "fb3cc7a58af22ad2880adb98af6d518128c47dae",
-        "size": 17168,
-        "path": "libraries/net/neoforged/JarJarSelector/0.4.1/JarJarSelector-0.4.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/JarJarSelector/0.4.1/JarJarSelector-0.4.1.jar"
-      }
+      "name": "Гречневый суп с мясными фрикадельками",
+      "ingredients": "Мясной фарш — 250 г, greчневая крупа — 4 ст.л., картофель — 2 шт, морковь — 1 шт, лук — 1 шт, яйцо — 1 шт, зелень, соль.",
+      "steps": "1. В фарш добавьте немного измельченного лука, яйцо, соль. Скатайте маленькие мясные шарики — фрикадельки.\n2. В кипящую воду опустите фрикадельки и варите 10 минут, снимая пену.\n3. Промойте гречку и добавьте её в кастрюлю вместе с нарезанным картофелем.\n4. Морковь натрите, лук порежьте, обжарьте их до мягкости и отправьте в суп.\n5. Посолите и варите до готовности гречки и картофеля. В конце всыпьте зелень."
     },
     {
-      "name": "net.neoforged:JarJarMetadata:0.4.1",
-      "artifact": {
-        "sha1": "f8da03683dc81694556dc3e177c5e3bb77ae6fcb",
-        "size": 15648,
-        "path": "libraries/net/neoforged/JarJarMetadata/0.4.1/JarJarMetadata-0.4.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/JarJarMetadata/0.4.1/JarJarMetadata-0.4.1.jar"
-      }
+      "name": "Освежающая летняя окрошка на квасе",
+      "ingredients": "Вареная колбаса — 200 г, свежие огурцы — 2 шт, отварной картофель — 2 шт, вареные яйца — 3 шт, редис — 4-5 шт, много зеленого лука и укропа, квас — 1 л, сметана, соль.",
+      "steps": "1. Отварите картофель и яйца, затем остудите их и очистите.\n2. Нарежьте колбасу, картофель, яйца, огурцы и редис мелкими кубиками.\n3. Зеленый лук и укроп мелко порубите и слегка разомните с щепоткой соли прямо в миске.\n4. Перемешайте все нарезанные ингредиенты в большой кастрюле.\n5. Разложите основу по тарелкам, залейте холодным квасом, добавьте соль и сметану."
     },
     {
-      "name": "org.apache.maven:maven-artifact:3.8.5",
-      "artifact": {
-        "sha1": "4433f50c07debefaed0553bd0068f4f48d449313",
-        "size": 58077,
-        "path": "libraries/org/apache/maven/maven-artifact/3.8.5/maven-artifact-3.8.5.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/apache/maven/maven-artifact/3.8.5/maven-artifact-3.8.5.jar"
-      }
+      "name": "Чечевичный турецкий суп с лимоном",
+      "ingredients": "Красная чечевица — 1 стакан, лук репчатый — 1 шт, морковь — 1 шт, томатная паста — 1 ст.л., оливковое масло — 2 ст.л., сушеная мята — 0.5 ч.л., соль, дольки лимона.",
+      "steps": "1. Хорошо промойте красную чечевицу в холодной воде.\n2. В кастрюле прямо на дне обжарьте на оливковом масле мелко нашинкованный лук и морковь.\n3. Добавьте томатную пасту, перемешайте, затем всыпьте чечевицу и залейте 1.2 литрами горячей воды.\n4. Варите на среднем огне примерно 20 минут, пока чечевица полностью не разварится.\n5. Всыпьте соль и сушеную мяту, взбейте суп блендером. При подаче выжмите в тарелку сок лимона."
     },
     {
-      "name": "net.jodah:typetools:0.6.3",
-      "artifact": {
-        "sha1": "a01aaa6ddaea9ec07ec4f209487b7a46a526283a",
-        "size": 18281,
-        "path": "libraries/net/jodah/typetools/0.6.3/typetools-0.6.3.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/jodah/typetools/0.6.3/typetools-0.6.3.jar"
-      }
-    },
-    {
-      "name": "net.minecrell:terminalconsoleappender:1.3.0",
-      "artifact": {
-        "sha1": "b562e9bb61235c9520e26282cdee71f8f802d1fc",
-        "size": 16949,
-        "path": "libraries/net/minecrell/terminalconsoleappender/1.3.0/terminalconsoleappender-1.3.0.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/minecrell/terminalconsoleappender/1.3.0/terminalconsoleappender-1.3.0.jar"
-      }
-    },
-    {
-      "name": "net.fabricmc:sponge-mixin:0.15.2+mixin.0.8.7",
-      "artifact": {
-        "sha1": "2af2f021d8e02a0220dc27a7a72b4666d66d44ca",
-        "size": 1494751,
-        "path": "libraries/net/fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/sponge-mixin-0.15.2+mixin.0.8.7.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/sponge-mixin-0.15.2+mixin.0.8.7.jar"
-      }
-    },
-    {
-      "name": "org.openjdk.nashorn:nashorn-core:15.4",
-      "artifact": {
-        "sha1": "f67f5ffaa5f5130cf6fb9b133da00c7df3b532a5",
-        "size": 2167292,
-        "path": "libraries/org/openjdk/nashorn/nashorn-core/15.4/nashorn-core-15.4.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/openjdk/nashorn/nashorn-core/15.4/nashorn-core-15.4.jar"
-      }
-    },
-    {
-      "name": "org.apache.commons:commons-lang3:3.14.0",
-      "artifact": {
-        "sha1": "1ed471194b02f2c6cb734a0cd6f6f107c673afae",
-        "size": 657952,
-        "path": "libraries/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar"
-      }
-    },
-    {
-      "name": "cpw.mods:bootstraplauncher:2.0.2",
-      "artifact": {
-        "sha1": "1a2d076cbc33b0520cbacd591224427b2a20047d",
-        "size": 11116,
-        "path": "libraries/cpw/mods/bootstraplauncher/2.0.2/bootstraplauncher-2.0.2.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/cpw/mods/bootstraplauncher/2.0.2/bootstraplauncher-2.0.2.jar"
-      }
-    },
-    {
-      "name": "cpw.mods:securejarhandler:3.0.8",
-      "artifact": {
-        "sha1": "c0ef95cecd8699a0449053ac7d9c160748d902cd",
-        "size": 103765,
-        "path": "libraries/cpw/mods/securejarhandler/3.0.8/securejarhandler-3.0.8.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/cpw/mods/securejarhandler/3.0.8/securejarhandler-3.0.8.jar"
-      }
-    },
-    {
-      "name": "org.ow2.asm:asm-commons:9.8",
-      "artifact": {
-        "sha1": "36e4d212970388e5bd2c5180292012502df461bb",
-        "size": 73498,
-        "path": "libraries/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/ow2/asm/asm-commons/9.8/asm-commons-9.8.jar"
-      }
-    },
-    {
-      "name": "org.ow2.asm:asm-util:9.8",
-      "artifact": {
-        "sha1": "395f1c1f035258511f27bc9b2583d76e4b143f59",
-        "size": 94559,
-        "path": "libraries/org/ow2/asm/asm-util/9.8/asm-util-9.8.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/ow2/asm/asm-util/9.8/asm-util-9.8.jar"
-      }
-    },
-    {
-      "name": "org.ow2.asm:asm-analysis:9.8",
-      "artifact": {
-        "sha1": "b9747a320844b6cb1eacd90d8ecfd260a16c01d3",
-        "size": 35151,
-        "path": "libraries/org/ow2/asm/asm-analysis/9.8/asm-analysis-9.8.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/ow2/asm/asm-analysis/9.8/asm-analysis-9.8.jar"
-      }
-    },
-    {
-      "name": "org.ow2.asm:asm-tree:9.8",
-      "artifact": {
-        "sha1": "018419ca5b77a2f81097c741e7872e6ab8d2f40d",
-        "size": 51934,
-        "path": "libraries/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/ow2/asm/asm-tree/9.8/asm-tree-9.8.jar"
-      }
-    },
-    {
-      "name": "org.ow2.asm:asm:9.8",
-      "artifact": {
-        "sha1": "dc19ecb3f7889b7860697215cae99c0f9b6f6b4b",
-        "size": 126113,
-        "path": "libraries/org/ow2/asm/asm/9.8/asm-9.8.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/ow2/asm/asm/9.8/asm-9.8.jar"
-      }
-    },
-    {
-      "name": "net.neoforged:JarJarFileSystems:0.4.1",
-      "artifact": {
-        "sha1": "78f59f89defcd032ed788b151ca6a0d40ace796a",
-        "size": 31807,
-        "path": "libraries/net/neoforged/JarJarFileSystems/0.4.1/JarJarFileSystems-0.4.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/neoforged/JarJarFileSystems/0.4.1/JarJarFileSystems-0.4.1.jar"
-      }
-    },
-    {
-      "name": "net.sf.jopt-simple:jopt-simple:5.0.4",
-      "artifact": {
-        "sha1": "4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c",
-        "size": 78146,
-        "path": "libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar"
-      }
-    },
-    {
-      "name": "org.slf4j:slf4j-api:2.0.9",
-      "artifact": {
-        "sha1": "7cf2726fdcfbc8610f9a71fb3ed639871f315340",
-        "size": 64579,
-        "path": "libraries/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar"
-      }
-    },
-    {
-      "name": "org.antlr:antlr4-runtime:4.13.1",
-      "artifact": {
-        "sha1": "17125bae1d965624e265ef49552f6465a2bfa307",
-        "size": 326305,
-        "path": "libraries/org/antlr/antlr4-runtime/4.13.1/antlr4-runtime-4.13.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/antlr/antlr4-runtime/4.13.1/antlr4-runtime-4.13.1.jar"
-      }
-    },
-    {
-      "name": "com.mojang:logging:1.2.7",
-      "artifact": {
-        "sha1": "24cb95ffb0e3433fd6e844c04e68009e504ca1c0",
-        "size": 15343,
-        "path": "libraries/com/mojang/logging/1.2.7/logging-1.2.7.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/mojang/logging/1.2.7/logging-1.2.7.jar"
-      }
-    },
-    {
-      "name": "org.apache.logging.log4j:log4j-slf4j2-impl:2.22.1",
-      "artifact": {
-        "sha1": "d7e6693c2606cb7e7335047d7bb96dec52db5665",
-        "size": 27364,
-        "path": "libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.22.1/log4j-slf4j2-impl-2.22.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.22.1/log4j-slf4j2-impl-2.22.1.jar"
-      }
-    },
-    {
-      "name": "org.apache.logging.log4j:log4j-core:2.22.1",
-      "artifact": {
-        "sha1": "7183a25510a02ad00cc6a95d3b3d2a7d3c5a8dc4",
-        "size": 1900022,
-        "path": "libraries/org/apache/logging/log4j/log4j-core/2.22.1/log4j-core-2.22.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/apache/logging/log4j/log4j-core/2.22.1/log4j-core-2.22.1.jar"
-      }
-    },
-    {
-      "name": "org.apache.logging.log4j:log4j-api:2.22.1",
-      "artifact": {
-        "sha1": "bea6fede6328fabafd7e68363161a7ea6605abd1",
-        "size": 335001,
-        "path": "libraries/org/apache/logging/log4j/log4j-api/2.22.1/log4j-api-2.22.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/apache/logging/log4j/log4j-api/2.22.1/log4j-api-2.22.1.jar"
-      }
-    },
-    {
-      "name": "org.jline:jline-reader:3.20.0",
-      "artifact": {
-        "sha1": "8f15415b022a25b473e8e16c28ae913186ffb9c4",
-        "size": 171052,
-        "path": "libraries/org/jline/jline-reader/3.20.0/jline-reader-3.20.0.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/jline/jline-reader/3.20.0/jline-reader-3.20.0.jar"
-      }
-    },
-    {
-      "name": "org.jline:jline-terminal:3.20.0",
-      "artifact": {
-        "sha1": "d0ddcc708ddf527a3454c941b7b9225cc83a15ff",
-        "size": 228481,
-        "path": "libraries/org/jline/jline-terminal/3.20.0/jline-terminal-3.20.0.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/jline/jline-terminal/3.20.0/jline-terminal-3.20.0.jar"
-      }
-    },
-    {
-      "name": "commons-io:commons-io:2.15.1",
-      "artifact": {
-        "sha1": "f11560da189ab563a5c8e351941415430e9304ea",
-        "size": 501218,
-        "path": "libraries/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar"
-      }
-    },
-    {
-      "name": "net.minecraftforge:srgutils:0.4.15",
-      "artifact": {
-        "sha1": "ca408b131759478f164e010fae0d73997e125fb5",
-        "size": 69393,
-        "path": "libraries/net/minecraftforge/srgutils/0.4.15/srgutils-0.4.15.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/net/minecraftforge/srgutils/0.4.15/srgutils-0.4.15.jar"
-      }
-    },
-    {
-      "name": "com.google.guava:guava:32.1.2-jre",
-      "artifact": {
-        "sha1": "5e64ec7e056456bef3a4bc4c6fdaef71e8ab6318",
-        "size": 3041591,
-        "path": "libraries/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar"
-      }
-    },
-    {
-      "name": "com.google.guava:failureaccess:1.0.1",
-      "artifact": {
-        "sha1": "1dcf1de382a0bf95a3d8b0849546c88bac1292c9",
-        "size": 4617,
-        "path": "libraries/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar"
-      }
-    },
-    {
-      "name": "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-      "artifact": {
-        "sha1": "b421526c5f297295adef1c886e5246c39d4ac629",
-        "size": 2199,
-        "path": "libraries/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
-      }
-    },
-    {
-      "name": "com.google.code.findbugs:jsr305:3.0.2",
-      "artifact": {
-        "sha1": "25ea2e8b0c338a877313bd4672d3fe056ea78f0d",
-        "size": 19936,
-        "path": "libraries/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar"
-      }
-    },
-    {
-      "name": "org.checkerframework:checker-qual:3.33.0",
-      "artifact": {
-        "sha1": "de2b60b62da487644fc11f734e73c8b0b431238f",
-        "size": 223979,
-        "path": "libraries/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar"
-      }
-    },
-    {
-      "name": "com.google.errorprone:error_prone_annotations:2.18.0",
-      "artifact": {
-        "sha1": "89b684257096f548fa39a7df9fdaa409d4d4df91",
-        "size": 16017,
-        "path": "libraries/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar"
-      }
-    },
-    {
-      "name": "com.google.j2objc:j2objc-annotations:2.8",
-      "artifact": {
-        "sha1": "c85270e307e7b822f1086b93689124b89768e273",
-        "size": 9301,
-        "path": "libraries/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar"
-      }
-    },
-    {
-      "name": "com.google.code.gson:gson:2.10.1",
-      "artifact": {
-        "sha1": "b3add478d4382b78ea20b1671390a858002feb6c",
-        "size": 283367,
-        "path": "libraries/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar"
-      }
-    },
-    {
-      "name": "org.codehaus.plexus:plexus-utils:3.3.0",
-      "artifact": {
-        "sha1": "cf43b5391de623b36fe066a21127baef82c64022",
-        "size": 263253,
-        "path": "libraries/org/codehaus/plexus/plexus-utils/3.3.0/plexus-utils-3.3.0.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/org/codehaus/plexus/plexus-utils/3.3.0/plexus-utils-3.3.0.jar"
-      }
-    },
-    {
-      "name": "com.machinezoo.noexception:noexception:1.7.1",
-      "artifact": {
-        "sha1": "b65330c98e38a1f915fa54a6e5eca496505e3f0a",
-        "size": 250861,
-        "path": "libraries/com/machinezoo/noexception/noexception/1.7.1/noexception-1.7.1.jar",
-        "url": "http://res.tlauncher.org/unb/libraries/com/machinezoo/noexception/noexception/1.7.1/noexception-1.7.1.jar"
-      }
-    },
-    {
-      "name": "ca.weblite:java-objc-bridge:1.1",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "1227f9e0666314f9de41477e3ec277e542ed7f7b",
-        "size": 1330045,
-        "path": "ca/weblite/java-objc-bridge/1.1/java-objc-bridge-1.1.jar",
-        "url": "https://libraries.minecraft.net/ca/weblite/java-objc-bridge/1.1/java-objc-bridge-1.1.jar"
-      }
-    },
-    {
-      "name": "com.github.oshi:oshi-core:6.4.10",
-      "artifact": {
-        "sha1": "b1d8ab82d11d92fd639b56d639f8f46f739dd5fa",
-        "size": 979212,
-        "path": "com/github/oshi/oshi-core/6.4.10/oshi-core-6.4.10.jar",
-        "url": "https://libraries.minecraft.net/com/github/oshi/oshi-core/6.4.10/oshi-core-6.4.10.jar"
-      }
-    },
-    {
-      "name": "com.ibm.icu:icu4j:73.2",
-      "artifact": {
-        "sha1": "61ad4ef7f9131fcf6d25c34b817f90d6da06c9e9",
-        "size": 14567819,
-        "path": "com/ibm/icu/icu4j/73.2/icu4j-73.2.jar",
-        "url": "https://libraries.minecraft.net/com/ibm/icu/icu4j/73.2/icu4j-73.2.jar"
-      }
-    },
-    {
-      "name": "com.mojang:authlib:6.0.54",
-      "artifact": {
-        "sha1": "de8bc95660e1b2fe8793fd427a7a10dcec5b3ea7",
-        "size": 115242,
-        "path": "com/mojang/authlib/6.0.54/authlib-6.0.54.jar",
-        "url": "https://libraries.minecraft.net/com/mojang/authlib/6.0.54/authlib-6.0.54.jar"
-      }
-    },
-    {
-      "name": "com.mojang:blocklist:1.0.10",
-      "artifact": {
-        "sha1": "5c685c5ffa94c4cd39496c7184c1d122e515ecef",
-        "size": 964,
-        "path": "com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar",
-        "url": "https://libraries.minecraft.net/com/mojang/blocklist/1.0.10/blocklist-1.0.10.jar"
-      }
-    },
-    {
-      "name": "com.mojang:brigadier:1.3.10",
-      "artifact": {
-        "sha1": "d15b53a14cf20fdcaa98f731af5dda654452c010",
-        "size": 80082,
-        "path": "com/mojang/brigadier/1.3.10/brigadier-1.3.10.jar",
-        "url": "https://libraries.minecraft.net/com/mojang/brigadier/1.3.10/brigadier-1.3.10.jar"
-      }
-    },
-    {
-      "name": "com.mojang:datafixerupper:8.0.16",
-      "artifact": {
-        "sha1": "67d4de6d7f95d89bcf5862995fb854ebaec02a34",
-        "size": 724313,
-        "path": "com/mojang/datafixerupper/8.0.16/datafixerupper-8.0.16.jar",
-        "url": "https://libraries.minecraft.net/com/mojang/datafixerupper/8.0.16/datafixerupper-8.0.16.jar"
-      }
-    },
-    {
-      "name": "com.mojang:patchy:2.2.10",
-      "artifact": {
-        "sha1": "da05971b07cbb379d002cf7eaec6a2048211fefc",
-        "size": 4439,
-        "path": "com/mojang/patchy/2.2.10/patchy-2.2.10.jar",
-        "url": "https://libraries.minecraft.net/com/mojang/patchy/2.2.10/patchy-2.2.10.jar"
-      }
-    },
-    {
-      "name": "com.mojang:text2speech:1.17.9",
-      "artifact": {
-        "sha1": "3cad216e3a7f0c19b4b394388bc9ffc446f13b14",
-        "size": 12243,
-        "path": "com/mojang/text2speech/1.17.9/text2speech-1.17.9.jar",
-        "url": "https://libraries.minecraft.net/com/mojang/text2speech/1.17.9/text2speech-1.17.9.jar"
-      }
-    },
-    {
-      "name": "commons-codec:commons-codec:1.16.0",
-      "artifact": {
-        "sha1": "4e3eb3d79888d76b54e28b350915b5dc3919c9de",
-        "size": 360738,
-        "path": "commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.jar",
-        "url": "https://libraries.minecraft.net/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.jar"
-      }
-    },
-    {
-      "name": "commons-logging:commons-logging:1.2",
-      "artifact": {
-        "sha1": "4bfc12adfe4842bf07b657f0369c4cb522955686",
-        "size": 61829,
-        "path": "commons-logging/commons-logging/1.2/commons-logging-1.2.jar",
-        "url": "https://libraries.minecraft.net/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-buffer:4.1.97.Final",
-      "artifact": {
-        "sha1": "f8f3d8644afa5e6e1a40a3a6aeb9d9aa970ecb4f",
-        "size": 306590,
-        "path": "io/netty/netty-buffer/4.1.97.Final/netty-buffer-4.1.97.Final.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-buffer/4.1.97.Final/netty-buffer-4.1.97.Final.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-codec:4.1.97.Final",
-      "artifact": {
-        "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
-        "size": 345274,
-        "path": "io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-common:4.1.97.Final",
-      "artifact": {
-        "sha1": "7cceacaf11df8dc63f23d0fb58e9d4640fc88404",
-        "size": 659930,
-        "path": "io/netty/netty-common/4.1.97.Final/netty-common-4.1.97.Final.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-common/4.1.97.Final/netty-common-4.1.97.Final.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-handler:4.1.97.Final",
-      "artifact": {
-        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
-        "size": 560040,
-        "path": "io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-resolver:4.1.97.Final",
-      "artifact": {
-        "sha1": "cec8348108dc76c47cf87c669d514be52c922144",
-        "size": 37792,
-        "path": "io/netty/netty-resolver/4.1.97.Final/netty-resolver-4.1.97.Final.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-resolver/4.1.97.Final/netty-resolver-4.1.97.Final.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-transport-classes-epoll:4.1.97.Final",
-      "artifact": {
-        "sha1": "795da37ded759e862457a82d9d92c4d39ce8ecee",
-        "size": 147139,
-        "path": "io/netty/netty-transport-classes-epoll/4.1.97.Final/netty-transport-classes-epoll-4.1.97.Final.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-transport-classes-epoll/4.1.97.Final/netty-transport-classes-epoll-4.1.97.Final.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-transport-native-epoll:4.1.97.Final:linux-aarch_64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "5514744c588190ffda076b35a9b8c9f24946a960",
-        "size": 40427,
-        "path": "io/netty/netty-transport-native-epoll/4.1.97.Final/netty-transport-native-epoll-4.1.97.Final-linux-aarch_64.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-epoll/4.1.97.Final/netty-transport-native-epoll-4.1.97.Final-linux-aarch_64.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-transport-native-epoll:4.1.97.Final:linux-x86_64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "54188f271e388e7f313aea995e82f58ce2cdb809",
-        "size": 38954,
-        "path": "io/netty/netty-transport-native-epoll/4.1.97.Final/netty-transport-native-epoll-4.1.97.Final-linux-x86_64.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-epoll/4.1.97.Final/netty-transport-native-epoll-4.1.97.Final-linux-x86_64.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-transport-native-unix-common:4.1.97.Final",
-      "artifact": {
-        "sha1": "d469d84265ab70095b01b40886cabdd433b6e664",
-        "size": 43897,
-        "path": "io/netty/netty-transport-native-unix-common/4.1.97.Final/netty-transport-native-unix-common-4.1.97.Final.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-transport-native-unix-common/4.1.97.Final/netty-transport-native-unix-common-4.1.97.Final.jar"
-      }
-    },
-    {
-      "name": "io.netty:netty-transport:4.1.97.Final",
-      "artifact": {
-        "sha1": "f37380d23c9bb079bc702910833b2fd532c9abd0",
-        "size": 489624,
-        "path": "io/netty/netty-transport/4.1.97.Final/netty-transport-4.1.97.Final.jar",
-        "url": "https://libraries.minecraft.net/io/netty/netty-transport/4.1.97.Final/netty-transport-4.1.97.Final.jar"
-      }
-    },
-    {
-      "name": "it.unimi.dsi:fastutil:8.5.12",
-      "artifact": {
-        "sha1": "c24946d46824bd528054bface3231d2ecb7e95e8",
-        "size": 23326598,
-        "path": "it/unimi/dsi/fastutil/8.5.12/fastutil-8.5.12.jar",
-        "url": "https://libraries.minecraft.net/it/unimi/dsi/fastutil/8.5.12/fastutil-8.5.12.jar"
-      }
-    },
-    {
-      "name": "net.java.dev.jna:jna-platform:5.14.0",
-      "artifact": {
-        "sha1": "28934d48aed814f11e4c584da55c49fa7032b31b",
-        "size": 1369287,
-        "path": "net/java/dev/jna/jna-platform/5.14.0/jna-platform-5.14.0.jar",
-        "url": "https://libraries.minecraft.net/net/java/dev/jna/jna-platform/5.14.0/jna-platform-5.14.0.jar"
-      }
-    },
-    {
-      "name": "net.java.dev.jna:jna:5.14.0",
-      "artifact": {
-        "sha1": "67bf3eaea4f0718cb376a181a629e5f88fa1c9dd",
-        "size": 1878533,
-        "path": "net/java/dev/jna/jna/5.14.0/jna-5.14.0.jar",
-        "url": "https://libraries.minecraft.net/net/java/dev/jna/jna/5.14.0/jna-5.14.0.jar"
-      }
-    },
-    {
-      "name": "org.apache.commons:commons-compress:1.26.0",
-      "artifact": {
-        "sha1": "659feffdd12280201c8aacb8f7be94f9a883c824",
-        "size": 1078328,
-        "path": "org/apache/commons/commons-compress/1.26.0/commons-compress-1.26.0.jar",
-        "url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.26.0/commons-compress-1.26.0.jar"
-      }
-    },
-    {
-      "name": "org.apache.httpcomponents:httpclient:4.5.13",
-      "artifact": {
-        "sha1": "e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada",
-        "size": 780321,
-        "path": "org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar",
-        "url": "https://libraries.minecraft.net/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar"
-      }
-    },
-    {
-      "name": "org.apache.httpcomponents:httpcore:4.4.16",
-      "artifact": {
-        "sha1": "51cf043c87253c9f58b539c9f7e44c8894223850",
-        "size": 327891,
-        "path": "org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar",
-        "url": "https://libraries.minecraft.net/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar"
-      }
-    },
-    {
-      "name": "org.jcraft:jorbis:0.0.17",
-      "artifact": {
-        "sha1": "8872d22b293e8f5d7d56ff92be966e6dc28ebdc6",
-        "size": 99701,
-        "path": "org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar",
-        "url": "https://libraries.minecraft.net/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar"
-      }
-    },
-    {
-      "name": "org.joml:joml:1.10.5",
-      "artifact": {
-        "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
-        "size": 712082,
-        "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
-        "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-freetype:3.3.3",
-      "artifact": {
-        "sha1": "a0db6c84a8becc8ca05f9dbfa985edc348a824c7",
-        "size": 450896,
-        "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-freetype:3.3.3:natives-linux",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "149070a5480900347071b7074779531f25a6e3dc",
-        "size": 1245129,
-        "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-linux.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-linux.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-freetype:3.3.3:natives-macos-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "b0a8c9baa9d1f54ac61e1ab9640c7659e7fa700c",
-        "size": 1040981,
-        "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-macos-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-macos-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-freetype:3.3.3:natives-macos-patch",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "806d869f37ce0df388a24e17aaaf5ca0894d851b",
-        "size": 1071983,
-        "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-macos-patch.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-macos-patch.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-freetype:3.3.3:natives-windows",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "81091b006dbb43fab04c8c638e9ac87c51b4096d",
-        "size": 1035586,
-        "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-windows.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-windows.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-freetype:3.3.3:natives-windows-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "82028265a0a2ff33523ca75137ada7dc176e5210",
-        "size": 886068,
-        "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-windows-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-windows-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-freetype:3.3.3:natives-windows-x86",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "15a8c1de7f51d07a92eae7ce1222557073a0c0c3",
-        "size": 877480,
-        "path": "org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-windows-x86.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.3/lwjgl-freetype-3.3.3-natives-windows-x86.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-glfw:3.3.3",
-      "artifact": {
-        "sha1": "efa1eb78c5ccd840e9f329717109b5e892d72f8e",
-        "size": 135546,
-        "path": "org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-glfw:3.3.3:natives-linux",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "a03684c5e4b1b1dbbe0d29dbbdc27b985b6840f2",
-        "size": 118478,
-        "path": "org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-linux.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-linux.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-glfw:3.3.3:natives-macos",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "a1bf400f6bc64e6195596cb1430dafda46090751",
-        "size": 140884,
-        "path": "org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-macos.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-macos.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-glfw:3.3.3:natives-macos-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "ee8cc78d0a4a5b3b4600fade6d927c9fc320c858",
-        "size": 138288,
-        "path": "org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-macos-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-macos-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-glfw:3.3.3:natives-windows",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "e449e28b4891fc423c54c85fbc5bb0b9efece67a",
-        "size": 166368,
-        "path": "org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-windows.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-windows.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-glfw:3.3.3:natives-windows-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "f27018dc74f6289574502b46cce55d52817554e2",
-        "size": 141970,
-        "path": "org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-windows-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-windows-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-glfw:3.3.3:natives-windows-x86",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "32334f3fd5270a59bad9939a93115acb6de36dcf",
-        "size": 157123,
-        "path": "org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-windows-x86.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-glfw/3.3.3/lwjgl-glfw-3.3.3-natives-windows-x86.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-jemalloc:3.3.3",
-      "artifact": {
-        "sha1": "b543467b7ff3c6920539a88ee602d34098628be5",
-        "size": 43896,
-        "path": "org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-jemalloc:3.3.3:natives-linux",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "4f86728bf449b1dd61251c4e0ac01df1389cb51e",
-        "size": 206779,
-        "path": "org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-linux.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-linux.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-jemalloc:3.3.3:natives-macos",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "2906637657a57579847238c9c72d2c4bde7083f8",
-        "size": 153131,
-        "path": "org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-macos.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-macos.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-jemalloc:3.3.3:natives-macos-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "e9412c3ff8cb3a3bad1d3f52909ad74d8a5bdad1",
-        "size": 141418,
-        "path": "org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-macos-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-macos-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "426222fc027602a5f21b9c0fe79cde6a4c7a011f",
-        "size": 180344,
-        "path": "org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-windows.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-windows.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "ba1f3fed0ee4be0217eaa41c5bbfb4b9b1383c33",
-        "size": 154415,
-        "path": "org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-windows-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-windows-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows-x86",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "f6063b6e0f23be483c5c88d84ce51b39dc69126c",
-        "size": 148612,
-        "path": "org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-windows-x86.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-jemalloc/3.3.3/lwjgl-jemalloc-3.3.3-natives-windows-x86.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-openal:3.3.3",
-      "artifact": {
-        "sha1": "daada81ceb5fc0c291fbfdd4433cb8d9423577f2",
-        "size": 110586,
-        "path": "org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-openal:3.3.3:natives-linux",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "3037360cc4595079bea240af250b6d1a527e0905",
-        "size": 573224,
-        "path": "org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-linux.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-linux.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-openal:3.3.3:natives-macos",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "8df8338bfa77f2ebabef4e58964bd04d24805cbf",
-        "size": 519824,
-        "path": "org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-macos.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-macos.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-openal:3.3.3:natives-macos-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "0c78b078de2fb52f45aa55d04db889a560f3544f",
-        "size": 471012,
-        "path": "org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-macos-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-macos-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-openal:3.3.3:natives-windows",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "cf83862ae95d98496b26915024c7e666d8ab1c8f",
-        "size": 698720,
-        "path": "org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-windows.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-windows.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-openal:3.3.3:natives-windows-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "8e0615235116b9e4160dfe87bec90f5f6378bf72",
-        "size": 630410,
-        "path": "org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-windows-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-windows-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-openal:3.3.3:natives-windows-x86",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "87b8d5050e3adb46bb58fe1cb2669a4a48fce10d",
-        "size": 638424,
-        "path": "org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-windows-x86.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-openal/3.3.3/lwjgl-openal-3.3.3-natives-windows-x86.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-opengl:3.3.3",
-      "artifact": {
-        "sha1": "02f6b0147078396a58979125a4c947664e98293a",
-        "size": 929192,
-        "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-opengl:3.3.3:natives-linux",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "62c70a4b00ca5391882b0f4b787c1588d24f1c86",
-        "size": 80463,
-        "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-linux.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-linux.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-opengl:3.3.3:natives-macos",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "1bd45997551ae8a28469f3a2b678f4b7289e12c0",
-        "size": 41484,
-        "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-macos.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-macos.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-opengl:3.3.3:natives-macos-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "d213ddef27637b1af87961ffa94d6b27036becc8",
-        "size": 42487,
-        "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-macos-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-macos-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-opengl:3.3.3:natives-windows",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "e6c1eec8be8a71951b830a4d69efc01c6531900c",
-        "size": 101535,
-        "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-windows.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-windows.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-opengl:3.3.3:natives-windows-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "65e956d3735a1abdc82eff4baec1b61174697d4b",
-        "size": 83095,
-        "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-windows-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-windows-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-opengl:3.3.3:natives-windows-x86",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "0d32d833dcaa2f355a886eaf21f0408b5f03241d",
-        "size": 88612,
-        "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-windows-x86.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3-natives-windows-x86.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-stb:3.3.3",
-      "artifact": {
-        "sha1": "25dd6161988d7e65f71d5065c99902402ee32746",
-        "size": 120283,
-        "path": "org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-stb:3.3.3:natives-linux",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "fd1271ccd9d85eff2fa31f3fd543e02ccfaf5041",
-        "size": 231820,
-        "path": "org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-linux.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-linux.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-stb:3.3.3:natives-macos",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "472792c98fb2c1557c060cb9da5fca6a9773621f",
-        "size": 216456,
-        "path": "org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-macos.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-macos.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-stb:3.3.3:natives-macos-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "51c6955571fbcdb7bb538c6aa589b953b584c6af",
-        "size": 183628,
-        "path": "org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-macos-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-macos-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-stb:3.3.3:natives-windows",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "1d9facdf6541de114b0f963be33505b7679c78cb",
-        "size": 261297,
-        "path": "org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-windows.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-windows.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-stb:3.3.3:natives-windows-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "a584ab44de569708871f0a79561f4d8c37487f2c",
-        "size": 219511,
-        "path": "org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-windows-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-windows-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-stb:3.3.3:natives-windows-x86",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "b5c874687b9aac1a936501d4ed2c49567fd1b575",
-        "size": 227800,
-        "path": "org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-windows-x86.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-stb/3.3.3/lwjgl-stb-3.3.3-natives-windows-x86.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-tinyfd:3.3.3",
-      "artifact": {
-        "sha1": "82d755ca94b102e9ca77283b9e2dc46d1b15fbe5",
-        "size": 13400,
-        "path": "org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-tinyfd:3.3.3:natives-linux",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "d8d58daa0c3e5fd906fee96f5fddbcbc07cc308b",
-        "size": 44192,
-        "path": "org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-linux.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-linux.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-tinyfd:3.3.3:natives-macos",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "6598081e346a03038a8be68eb2de614a1c2eac68",
-        "size": 45865,
-        "path": "org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-macos.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-macos.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-tinyfd:3.3.3:natives-macos-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "406feedb977372085a61eb0fee358183f4f4c67a",
-        "size": 42498,
-        "path": "org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-macos-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-macos-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "a6697981b0449a5087c1d546fc08b4f73e8f98c9",
-        "size": 130253,
-        "path": "org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-windows.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-windows.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "a88c494f3006eb91a7433b12a3a55a9a6c20788b",
-        "size": 110867,
-        "path": "org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-windows-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-windows-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows-x86",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "c336c84ee88cccb495c6ffa112395509e7378e8a",
-        "size": 111797,
-        "path": "org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-windows-x86.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-tinyfd/3.3.3/lwjgl-tinyfd-3.3.3-natives-windows-x86.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl:3.3.3",
-      "artifact": {
-        "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
-        "size": 785029,
-        "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl:3.3.3:natives-linux",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "linux"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "1713758e3660ba66e1e954396fd18126038b33c0",
-        "size": 114627,
-        "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-linux.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-linux.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl:3.3.3:natives-macos",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "33a6efa288390490ce6eb6c3df47ac21ecf648cf",
-        "size": 60543,
-        "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-macos.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-macos.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl:3.3.3:natives-macos-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "osx"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "226246e75f6bd8d4e1895bdce8638ef87808d114",
-        "size": 48620,
-        "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-macos-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-macos-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl:3.3.3:natives-windows",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "a5ed18a2b82fc91b81f40d717cb1f64c9dcb0540",
-        "size": 165442,
-        "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-windows.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-windows.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl:3.3.3:natives-windows-arm64",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "e9aca8c5479b520a2a7f0d542a118140e812c5e8",
-        "size": 133378,
-        "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-windows-arm64.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-windows-arm64.jar"
-      }
-    },
-    {
-      "name": "org.lwjgl:lwjgl:3.3.3:natives-windows-x86",
-      "rules": [
-        {
-          "action": "allow",
-          "os": {
-            "name": "windows"
-          }
-        }
-      ],
-      "artifact": {
-        "sha1": "9e670718e050aeaeea0c2d5b907cffb142f2e58f",
-        "size": 139653,
-        "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-windows-x86.jar",
-        "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3-natives-windows-x86.jar"
-      }
-    },
-    {
-      "name": "org.lz4:lz4-java:1.8.0",
-      "artifact": {
-        "sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
-        "size": 682804,
-        "path": "org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
-        "url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar"
-      }
+      "name": "Сладкий молочный суп с макаронами-звездочками",
+      "ingredients": "Молоко — 500 мл, вода — 100 мл, макароны-звёздочки — 3-4 ст.л., сливочное масло — 10 г, сахар — 1-2 ст.л., щепотка соли.",
+      "steps": "1. В небольшой кастрюле смешайте воду и молоко, доведите до кипения.\n2. Как только молоко закипит, убавьте огонь до минимума и всыпьте макароны-звёздочки.\n3. Добавьте сахар и маленькую щепотку соли.\n4. Варите суп, постоянно помешивая ложкой, в течение 5-7 минут.\n5. Выключите огонь, положите кусочек сливочногоского масла, накройте крышкой и дайте супу постоять 3 минуты."
     }
   ],
-  "assetIndex": {
-    "id": "17",
-    "totalSize": 815720591,
-    "size": 449161,
-    "url": "https://piston-meta.mojang.com/v1/packages/8681a7ae5e3ff6bd4cd7f6413dc4573515a344f0/17.json"
-  },
-  "downloads": {
-    "client": {
-      "sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
-      "size": 26836906,
-      "url": "https://piston-data.mojang.com/v1/objects/30c73b1c5da787909b2f73340419fdf13b9def88/client.jar"
+  "potatoes": [
+    {
+      "name": "Ароматная картошка по-деревенски с чесночным маслом",
+      "ingredients": "Картофель — 5-6 шт, чеснок — 3 зубчика, паприка сладкая молотая — 1 ч.л., куркума — 0.5 ч.л., растительное масло — 3 ст.л., крупная соль, смесь перцев.",
+      "steps": "1. Тщательно вымойте картофель щеткой и разрежьте вдоль на 4 или 6 крупных долек.\n2. В большой чаше смешайте растительное масло, выдавленный чеснок, паприку, куркуму, соль и перец.\n3. Переложите картофель в чашу и тщательно перемешайте руками, чтобы смесь покрыла каждый кусочек.\n4. Выложите картофель на противень с пергаментом в один слой кожурой вниз.\n5. Запекайте в духовке при 200°C в течение 30-35 минут до хрустящей корочки."
     },
-    "client_mappings": {
-      "sha1": "2244b6f072256667bcd9a73df124d6c58de77992",
-      "size": 9598610,
-      "url": "https://piston-data.mojang.com/v1/objects/2244b6f072256667bcd9a73df124d6c58de77992/client.txt"
+    {
+      "name": "Традиционные хрустящие белорусские драники",
+      "ingredients": "Картофель крупный — 4 шт, лук репчатый — 1 шт, яйцо куриное — 1 шт, мука — 2 ст.л., соль, черный перец, растительное масло.",
+      "steps": "1. Натрите очищенные картофель и лук на самой мелкой терке в глубокую емкость.\n2. Через марлю или сито отожмите массу руками, удалив примерно половину выделившегося сока.\n3. Разбейте в массу яйцо, добавьте муку, соль и черный перец. Тщательно вымешайте ложкой.\n4. Столовой ложкой выкладывайте массу на раскаленную сковороду с маслом.\n5. Жарьте на среднем огне по 3-4 минуты с каждой стороны до плотной золотистой корочки. Подавайте со сметаной."
     },
-    "server": {
-      "sha1": "59353fb40c36d304f2035d51e7d6e6baa98dc05c",
-      "size": 51627615,
-      "url": "https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar"
+    {
+      "name": "Нежная картошка, запеченная в сырном соусе",
+      "ingredients": "Картофель — 6 шт, твердый сыр — 150 г, майонез или сметана — 4 ст.л., чеснок — 2 зубчика, сухая зелень (укроп/петрушка), соль.",
+      "steps": "1. Очистите картофель и нарежьте его круглыми тонкими кружочками.\n2. В отдельной чашке приготовьте заливку: смешайте майонез/сметану, выдавленный чеснок, сухую зелень и соль.\n3. Добавьте картофель к заливке и хорошо перемешайте, чтобы каждый кружок был в соусе.\n4. Выложите картофель в форму для запекания, разровняйте и засыпьте сверху толстым слоем тертого сыра.\n5. Поставьте в духовку при 180°C на 40 минут. Картошка станет мягкой, а сыр превратится в золотистую корочку."
     },
-    "server_mappings": {
-      "sha1": "03f8985492bda0afc0898465341eb0acef35f570",
-      "size": 7456063,
-      "url": "https://piston-data.mojang.com/v1/objects/03f8985492bda0afc0898465341eb0acef35f570/server.txt"
+    {
+      "name": "Быстрое пюре с жареным луком и сливочным маслом",
+      "ingredients": "Картофель — 1 кг, сливочное масло — 50 г, молоко — 150 мл, лук репчатый — 1 шт, растительное масло — 1 ст.л., соль.",
+      "steps": "1. Очищенный картофель разрежьте на части, залейте горячей водой, посолите и варите до полной мягкости (20-25 минут).\n2. Пока картофель варится, мелко нарежьте лук и обжарьте его на растительном масле до темно-золотистого цвета.\n3. Слейте воду из готового картофеля. Добавьте кусочек сливочного масла и начните толочь толкушкой.\n4. Постепенно подливайте теплое молоко, продолжая взбивать пюре до пышности без комочков.\n5. Перед подачей выложите сверху горячий обжаренный лук вместе с маслом из сковороды."
+    },
+    {
+      "name": "Золотистый картофель фри как в ресторане",
+      "ingredients": "Картофель — 4 шт, растительное масло для фритюра — 300 мл, соль, паприка.",
+      "steps": "1. Нарежьте очищенный картофель ровными длинными брусочками.\n2. Замочите их в холодной воде на 10 минут, чтобы смыть лишний крахмал, затем насухо вытрите бумажным полотенцем.\n3. Разогрейте растительное масло в глубоком сотейнике.\n4. Порциями опускайте картофель в горячее масло и жарьте 5-7 минут до золотистой корочки.\n5. Достаньте шумовкой, выложите на салфетку, чтобы убрать лишнее масло, и посыпайте солью с паприкой."
+    },
+    {
+      "name": "Картофельные зразы с сочной мясной начинкой",
+      "ingredients": "Картофельное пюре — 500 г, мясной фарш — 200 г, лук — 1 шт, яйцо — 1 шт, мука — 3 ст.л., соль, перец.",
+      "steps": "1. Мелко нарежьте лук и обжарьте его на сковороде вместе с фаршем до полной готовности, посолите и поперчите.\n2. В остывшее картофельное пюре добавьте яйцо, муку и замесите мягкое картофельное тесто.\n3. Сформируйте из теста небольшие лепешки, в центр каждой положите по ложке мясного фарша.\n4. Защипните края, придавая форму овальных котлет, и обваляйте в муке.\n5. Обжаривайте на сковороде с маслом по 4 минуты с каждой стороны до румяности."
+    },
+    {
+      "name": "Испанский картофельный омлет Тортилья",
+      "ingredients": "Картофель — 3 шт, куриные яйца — 4 шт, лук репчатый — 1 шт, оливковое масло — 3 ст.л., соль.",
+      "steps": "1. Нарежьте картофель тонкими четвертинками круга, а лук — мелкими кубиками.\n2. Томите картофель и лук в большом количестве оливкового масла на медленном огне 15 минут, чтобы они стали мягкими, но не зажарились.\n3. В отдельной миске взбейте яйца с солью. Переложите туда теплый картофель с луком (без масла) и оставьте на 5 минут.\n4. Вылейте массу обратно на сковороду и жарьте омлет под крышкой на медленном огне 5-7 минут.\n5. Аккуратно переверните тортилью с помощью плоской тарелки и обжаривайте еще 3 минуты с другой стороны."
+    },
+    {
+      "name": "Нежная картофельная запеканка с грибами",
+      "ingredients": "Картофель — 5 шт, шампиньоны — 200 г, лук — 1 шт, сметана — 3 ст.л., твердый сыр — 80 г, соль.",
+      "steps": "1. Картофель отварите в мундире, очистите и нарежьте круглыми ломтиками.\n2. Грибы и лук мелко нарежьте и обжарьте на сковороде до золотистого цвета, посолите.\n3. В форму для запекания выложите половину картофеля, смажьте сметаной.\n4. Сверху ровным слоем распределите обжаренные грибы с луком.\n5. Накройте оставшимся картофелем, смажьте сметаной, засыпьте тертым сыром и запекайте при 180°C в течение 20 минут."
+    },
+    {
+      "name": "Картофельные дольки, фаршированные сыром и беконом",
+      "ingredients": "Крупный картофель — 3 шт, бекон — 50 г, сыр — 60 г, сметана — 1 ст.л., зелень.",
+      "steps": "1. Вымойте картофель и запеките его целиком в духовке или микроволновке до мягкости.\n2. Разрежьте каждую картофелину вдоль пополам и ложкой аккуратно выньте немного мякоти из центра, делая «лодочки».\n3. Смешайте вынутую мякоть с мелко нарезанным беконом, тертым сыром, сметаной и зеленью.\n4. Наполните получившейся начинкой картофельные лодочки.\n5. Посыпьте сверху остатками сыра и запекайте в духовке при 200°C всего 10 минут, пока сыр не расплавится."
+    },
+    {
+      "name": "Хрустящие картофельные шарики во фритюре",
+      "ingredients": "Густое картофельное пюре — 400 г, сыр твердый — 50 г, яйцо — 1 шт, панировочные сухари — 4 ст.л., масло для жарки.",
+      "steps": "1. Нарежьте сыр маленькими кубиками.\n2. Из холодного густого пюре скатайте небольшие шарики, спрятав внутрь каждого по кубику сыра.\n3. Обмакните каждый шарик во взбитое яйцо, а затем обильно обваляйте в панировочных сухарях.\n4. Опускайте шарики в хорошо разогретое растительное масло.\n5. Жарьте примерно 2-3 минуты до образования плотной хрустящей корочки. Подавайте горячими!"
+    },
+    {
+      "name": "Ароматный картофель, запеченный в фольге",
+      "ingredients": "Картофель крупный — 4 шт, сливочное масло — 40 г, чеснок — 2 зубчика, укроп свежий, соль.",
+      "steps": "1. Сделайте в чистом неочищенном картофеле несколько глубоких поперечных надрезов, но не прорезайте до конца (эффект гармошки).\n2. Смешайте размягченное сливочное масло с измельченным чесноком, укропом и солью.\n3. Тщательно промажьте чесночным маслом каждый надрез внутри картофелины.\n4. Плотно заверните каждую картофелину в отдельный кусочек фольги.\n5. Запекайте в духовке при 200°C в течение 45 минут. Картошка получится невероятно рассыпчатой и ароматной."
+    },
+    {
+      "name": "Быстрый картофельный салат с огурчиком",
+      "ingredients": "Отварной картофель — 3 шт, маринованные огурцы — 2 шт, красный лук — 0.5 шт, растительное масло — 2 ст.л., горчица французская — 1 ч.л., зелень.",
+      "steps": "1. Нарежьте остывший отварной картофель и маринованные огурцы крупными кубиками.\n2. Красный лук нашинкуйте тонкими полукольцами, зелень мелко порубите.\n3. В небольшой чашке смешайте растительное масло, зернистую французскую горчицу и щепоткой соли.\n4. Соедините все овощи в глубоком салатнике.\n5. Полейте приготовленной горчичной заправкой и аккуратно перемешайте ложкой перед подачей."
+    },
+    {
+      "name": "Картофельные ньокки (итальянские клецки)",
+      "ingredients": "Картофель — 400 г, мука пшеничная — 1 стакан, яйцо куриное — 1 шт, соль, сливочное масло для подачи.",
+      "steps": "1. Сварите картофель, разомните его в сухое пюре без комочков и дайте полностью остыть.\n2. Добавьте к пюре яйцо, соль, постепенно всыпьте муку и быстро замесите мягкое тесто.\n3. Разделите тесто на части, скатайте из них длинные колбаски толщиной с палец и нарежьте кусочками по 2 см.\n4. По желанию сделайте на каждом кусочке узор, прижав его зубчиками обычной вилки.\n5. Опускайте ньокки в кипящую соленую воду и варите ровно 2 минуты после того, как они всплывут на поверхность. Подавайте со сливочным маслом."
+    },
+    {
+      "name": "Немецкий картофельный суп-пюре с колбасками",
+      "ingredients": "Картофель — 4 шт, охотничьи колбаски — 150 г, морковь — 1 шт, лук — 1 шт, бульон или вода — 1 л, соль, зелень.",
+      "steps": "1. Очищенный картофель, лук и морковь нарежьте кубиками, залейте бульоном и варите до полной мягкости овощей (20 минут).\n2. Охотничьи колбаски нарежьте кружочками и обжарьте на сковороде до хрустящей корочки.\n3. Снимите кастрюлю с овощами с огня и измельчите всё погружным блендером до состояния нежного однородного пюре, посолите.\n4. Верните кастрюлю на плиту, переложите туда обжаренные колбаски вместе с выделившимся жиром.\n5. Проварите суп еще 2 минуты на медленном огне и украсьте свежей зеленью при подаче."
     }
-  },
-  "complianceLevel": 1.0,
-  "javaVersion": {
-    "component": "java-runtime-delta",
-    "majorVersion": 21.0
-  },
-  "logging": {
-    "client": {
-      "argument": "-Dlog4j.configurationFile=${path}",
-      "file": {
-        "id": "client-1.12.xml",
-        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
-        "size": 888,
-        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
-      },
-      "type": "log4j2-xml"
+  ],
+  "pizzas": [
+    {
+      "name": "Экспресс-пицца на сковороде за 10 минут",
+      "ingredients": "Мука пшеничная — 9 ст.л., сметана — 4 ст.л., майонез — 4 ст.л., яйца — 2 шт, полукопченая колбаса — 80 г, помидор — 1 шт, сыр — 150 г.",
+      "steps": "1. Соедините яйца, сметану, майонез и муку. Размешайте венчиком до состояния жидкой сметаны.\n2. Подготовьте начинку: колбасу и помидор нарежьте тонкими кружочками, сыр натрите на терке.\n3. Холодную сковороду смажьте маслом и аккуратно вылейте туда всё тесто, разровняв ложкой.\n4. Разложите кружочки колбасы, помидоры и полностью засыпьте всё плотным слоем тертого сыра.\n5. Накройте сковороду крышкой, включите самый медленный огонь и готовьте 10-12 минут."
+    },
+    {
+      "name": "Хрустящая пицца на тонком лаваше в духовке",
+      "ingredients": "Тонкий армянский лаваш — 2 листа, полутвердый сыр — 120 г, томатный кетчуп — 2 ст.л., докторская колбаса — 2 шт, маринованный огурчик — 1 шт.",
+      "steps": "1. Включите духовку на 180°C. Натрите сыр на мелкой терке, колбасу и огурец нарежьте тонкими слайсами.\n2. Разложите первый лист лаваша на противень, посыпьте четвертью сыра и накройте вторым листом, прижав руками.\n3. Смажьте верхний лаваш кетчупом, используя кисточку или тыльную сторону ложки.\n4. Равномерно распределите по поверхности начинку из сосисок и огурцов и обильно засыпьте оставшимся сыром.\n5. Отправьте в духовку на 7-9 минут, пока сыр полностью не расплавится."
+    },
+    {
+      "name": "Мини-пиццы на батоне (горячие бутерброды)",
+      "ingredients": "Нарезанный батон — 1 шт, вареная колбаса — 150 г, помидор — 1 шт, сыр твердый — 100 г, кетчуп — 2 ст.л., майонез — 2 ст.л.",
+      "steps": "1. Нарежьте колбасу и помидор мелкими кубиками. Сыр натрите на терке.\n2. В отдельной миске смешайте кетчуп с майонезом в однородный соус.\n3. Разложите ломтики батона на противень и смажьте каждый кусок получившимся соусом.\n4. Сверху выложите кубики колбасы и помидоров, затем плотно засыпьте тертым сыром.\n5. Запекайте в духовке при 200°C около 8-10 минут, пока сыр не покроется красивой пузырящейся корочкой."
+    },
+    {
+      "name": "Белая пицца с курицей и чесночным соусом",
+      "ingredients": "Готовая основа для пиццы или тонкий лаваш, отварное куриное филе — 150 г, майонез — 3 ст.л., чеснок — 1 зубчик, сыр — 120 г, зелень.",
+      "steps": "1. Сделайте белый соус: смешайте майонез со свежим выдавленным чесноком и щепоткой рубленой зелени.\n2. Нарежьте готовое куриное филе тонкими кусочками или разберите на волокна.\n3. Щедро смажьте основу для пиццы белым чесночным соусом.\n4. Равномерно разложите кусочки курицы по всей поверхности основы.\n5. Засыпьте пиццу тертым сыром и запекайте в духовке при 190°C в течение 10 минут до расплавления сыра."
+    },
+    {
+      "name": "Итальянская Маргарита с сочными томатами",
+      "ingredients": "Готовая основа для пиццы — 1 шт, томатная паста или густой соус — 3 ст.л., сыр Моцарелла — 150 г, свежий крупный помидор — 1 шт, сушеный базилик — 1 ч.л., оливковое масло.",
+      "steps": "1. Разогрейте духовку до 200°C. Нарежьте помидор тонкими кружочками, а Моцареллу — слайсами или натрите.\n2. Смажьте основу для пиццы томатным соусом и слегка сбрызните оливковое маслом.\n3. Равномерно разложите кружочки спелого помидора по всей поверхности.\n4. Покройте помидоры слоем Моцареллы и посыпьте сушеным базиликом для итальянского аромата.\n5. Выпекайте в духовке 10-12 минут, пока сыр не начнется аппетитно пузыриться."
+    },
+    {
+      "name": "Школьная mini-пицца из слоеного теста",
+      "ingredients": "Слоеное бездрожжевое тесто — 1 пласт (250 г), сосиски — 2 шт, соленый огурец — 1 шт, кетчуп — 2 ст.л., твердый сыр — 100 г.",
+      "steps": "1. Разморозьте пласт теста и слегка раскатайте его скалкой. Разрежьте на 4 одинаковых квадрата.\n2. Нарежьте сосиски и соленый огурец мелкими кружочками, сыр натрите на терке.\n3. Выложите квадраты теста на противень с пергаментом и смажьте центр каждого кусочка кетчупом.\n4. Выложите начинку из сосисок и огурцов, оставляя края теста чистыми.\n5. Обильно посыпьте сыром и выпекайте при 200°C примерно 15 минут, пока бортики теста не станут пышными и золотистыми."
+    },
+    {
+      "name": "Сытная пицца Пепперони с огоньком",
+      "ingredients": "Основа для пиццы — 1 шт, колбаса пепперони или острая салями — 70 г, томатный соус — 3 ст.л., сыр Моцарелла — 130 г, щепотка острого перца чили.",
+      "steps": "1. Нарежьте колбасу пепперони тонкими кружочками. Сыр натрите на крупной терке.\n2. Намажьте основу для пиццы ярким томатным соусом.\n3. Густо засыпьте всю поверхность тертой Моцареллой.\n4. Сверху на сыр красиво разложите кружочки колбасы.\n5. Отправьте в разогретую до 210°C духовку на 8-10 минут до хрустящей корочки на бортиках."
+    },
+    {
+      "name": "Грибная пицца Поло с шампиньонами",
+      "ingredients": "Основа для пиццы — 1 шт, свежие шампиньоны — 3 шт, вареное куриное филе — 100 г, лук репчатый — 0.5 шт, сметана — 2 ст.л., сыр — 120 г.",
+      "steps": "1. Грибы и лук нарежьте тонкими пластинками. Курицу измельчите кубиками. Сыр натрите.\n2. Слегка обжарьте грибы с луком на сковороде в течение 3-5 минут, чтобы ушла лишняя влага.\n3. Смажьте основу для пиццы сметаной вместо привычного томатного соуса.\n4. Выложите кусочки куриного филе, а сверху распределите обжаренные шампиньоны с луком.\n5. Покройте пиццу ровным слоем сыра и запекайте в духовке при 200°C около 10-12 минут."
+    },
+    {
+      "name": "Сладкая гавайская пицца с ананасами",
+      "ingredients": "Готовое тесто или основа — 1 шт, ветчина куриная или свиная — 120 г, консервированные ананасы — 3-4 ст.л., томатный соус — 2 ст.л., сыр — 130 г.",
+      "steps": "1. Ветчину нарежьте тонкими квадратными пластинками. С кусочков ананаса слейте лишний сироп.\n2. Основу для пиццы аккуратно покройте томатным соусом.\n3. Равномерно разложите кусочки ветчины, а между ними распределите сладкий ананас.\n4. Засыпьте начинку большим количеством натертого сыра.\n5. Поставьте противень в духовку при температуре 190°C на 12 минут. Сочетание сладкого ананаса и соленой ветчины — это очень вкусно!"
+    },
+    {
+      "name": "Древенская пицца со свежей картошкой",
+      "ingredients": "Тесто для пиццы — 1 шт, отварной картофель — 1 шт, бекон или грудинка — 80 г, маринованный лук — 0.5 шт, томатный соус — 2 ст.л., сыр твердый — 100 г.",
+      "steps": "1. Остывший картофель и бекон нарежьте тонкими слайсами. Лук нашинкуйте полукольцами.\n2. Нанесите томатный соус на тесто, распределяя его от центра к краям.\n3. Первым слоем выложите тонкие кружочки картофеля, слегка посолите их.\n4. Сверху разложите полоски бекона и лук.\n5. Засыпьте всё сыром и выпекайте в духовке при 200°C примерно 12-15 минут, пока бекон не станет хрустящим."
+    },
+    {
+      "name": "Мясная пицца Ассорти для большой компании",
+      "ingredients": "Большая основа для пиццы — 1 шт, сосиски — 1 шт, вареная колбаса — 50 г, копченый балык — 50 г, томатный кетчуп — 3 ст.л., сыр — 150 г, зелень.",
+      "steps": "1. Нарежьте все мясные продукты небольшими кубиками или соломкой.\n2. Щедро покройте большую основу для пиццы томатным кетчупом.\n3. Смешайте все виды мясной начинки в одной миске и равномерно распределите по тесту.\n4. Посыпьте пиццу сверху плотным слоем тертого полутвердого сыра.\n5. Запекайте в духовке при 180°C около 12-15 минут. Перед подачей украсьте веточками свежей зелени."
+    },
+    {
+      "name": "Быстая пицца из кабачков (без теста)",
+      "ingredients": "Молодой кабачок — 1 шт, яйцо — 1 шт, мука — 3 ст.л., помидор — 1 шт, колбаса — 50 г, сыр — 80 г, соль.",
+      "steps": "1. Натрите кабачок на крупной терке, отожмите руками лишний сок. Добавьте яйцо, муку и щепотку соли. Перемешайте.\n2. Выложите кабачковую массу на разогретую сковороду с маслом, разровняйте как большой блин. Жарьте под крышкой 5 минут.\n3. Аккуратно переверните кабачковый блин на другую сторону.\n4. Быстро выложите сверху нарезанную колбасу, кружочки помидора и засыпьте тертым сыром.\n5. Накройте крышкой и готовьте на медленном огне еще 5-7 минут, пока сыр полностью не расплавится."
+    },
+    {
+      "name": "Сырная пицца Четыре сыра (упрощенная)",
+      "ingredients": "Основа для пиццы — 1 шт, сыр Моцарелла — 50 г, сыр Российский — 50 г, плавленый сырок — 50 г, сыр Сулугуни — 40 г, белый соус или майонез — 2 ст.л.",
+      "steps": "1. Нарите все четыре вида сыра на терке.\n2. Тонким слоем нанесите белый соус на готовую основу для пиццы.\n3. Смешайте все натертые сыры между собой в глубокой чашке.\n4. Равномерно распределите сырную смесь по всей поверхности основы.\n5. Запекайте в духовке при 200°C всего 7-9 минут. Пицца должна превратиться в сплошное тянущееся сырное море."
+    },
+    {
+      "name": "Закрытая пицца Кальцоне с сочной начинкой",
+      "ingredients": "Готовое дрожжевое тесто — 200 г, фарш мясной обжаренный — 100 г, томатная паста — 2 ст.л., помидор — 0.5 шт, сыр — 80 г, яйцо для смазки — 1 шт.",
+      "steps": "1. Раскатайте тесто в ровный круг. Нарежьте помидор кубиками, сыр натрите на терке.\n2. Смажьте томатной пастой только одну половину круга теста.\n3. Выложите на эту половину обжаренный фарш, кубики помидора и засыпьте сыром.\n4. Накройте начинку второй половиной теста, чтобы получился большой полумесяц. Плотно защипните края косичкой.\n5. Сделайте сверху 2-3 надреза ножом для выхода пара, смажьте взбитым яйцом и выпекайте при 200°C в течение 15 минут."
     }
-  }
+  ],
+  "burgers": [
+    {
+      "name": "Классический домашний чизбургер с соусом Чеддер",
+      "ingredients": "Булочки для бургеров — 2 шт, свежий говяжий фарш — 300 г, плавленый сыр Чеддер — 2 шт, соленый огурец — 1 шт, красный лук — 0.5 шт, кетчуп, горчица, соль, перец.",
+      "steps": "1. Сформируйте из фарша две плоские котлеты чуть больше булочек. Посолите и поперчите их с обеих сторон.\n2. Обжарьте котлеты на сильно разогретой сковороде по 3 минуты с каждой стороны.\n3. За 1 минуту до окончания жарки выложите на каждую горячую котлету по ломтику сыра Чеддер и накройте крышкой.\n4. Разрежьте булочки пополам и слегка подрумяньте их на сухой сковороде срезом вниз.\n5. Смажьте нижнюю булочку кетчупом и горчицей, выложите котлету с сыром, огурец и лук. Накройте верхней булочкой."
+    },
+    {
+      "name": "Сочный бургер с хрустящей куриной грудкой",
+      "ingredients": "Булочки с кунжутом — 2 шт, куриное филе — 1 шт, листья салата — 2 шт, помидор — 1 шт, майонез — 2 ст.л., чеснок — 1 зубчик, панировочные сухари — 3 ст.л., яйцо — 1 шт.",
+      "steps": "1. Куриное филе разрежьте вдоль на два плоских куска, слегка отбейте и посолите.\n2. Окуните курицу во взбитое яйцо, затем обваляйте в сухарях и обжаривайте на сковороде по 4-5 минут с каждой стороны.\n3. Сделайте чесночный соус: смешайте майонез с чесноком, пропущенным через мелкую терку.\n4. Нанесите чесночный соус на обе половинки подсушенных булочек.\n5. Выложите на нижнюю булочку лист салата, куриную грудку в панировке и свежий помидор. Закройте бургер."
+    },
+    {
+      "name": "Многоэтажный бургер 'Всё включено' с яйцом и беконом",
+      "ingredients": "Крупные булочки — 2 шт, мясные котлеты — 2 шт, ломтики сыра — 4 шт, полоски копченого бекона — 4 шт, куриные яйца — 2 шт, соус Барбекю, листья салата.",
+      "steps": "1. Обжарьте мясные котлеты на сковороде. За минуту до готовности выложите на каждую по два ломтика сыра.\n2. На этой же сковороде обжарьте полоски бекона до хрустящего состояния.\n3. Поджарьте яичницу-глазунью так, чтобы желток остался жидким, но белок полностью схватился.\n4. Смажьте нижние части булочек дымным соусом Барбекю.\n5. На соус положите салатный лист, котлету с сыром, две полоски бекона и аккуратно увенчайте жареным яйцом. Накройте булочкой."
+    },
+    {
+      "name": "Острый ИИ-Мексиканец с халапеньо",
+      "ingredients": "Булочки для бургеров — 2 шт, мясные котлеты — 2 шт, маринованный перец халапеньо — 6 кружочков, сыр Чеддер — 2 ломтика, соус Чили или Барбекю, томат — 1 шт.",
+      "steps": "1. Сформируйте котлеты, приправьте солью с перцем и обжарьте на сильном огне до готовности.\n2. За минуту до снятия котлет со сковороды положите сверху сыр Чеддер.\n3. Смажьте нижнюю половину булочки острым соусом чили или барбекю.\n4. Выложите котлету с расплавленным сыром, кружочки свежего помидора и кольца халапеньо.\n5. Накройте верхней булочкой и слегка прижмите бургер рукой."
+    },
+    {
+      "name": "Рыбный Фишбургер с нежным соусом Тартар",
+      "ingredients": "Булочки для бургеров — 2 шт, готовое филе минтая или трески в панировке — 2 шт, плавленый сыр (квадратики) — 2 шт, майонез — 2 ст.л., маринованный огурец — 0.5 шт, свежая зелень.",
+      "steps": "1. Обжарьте рыбное филе в панировке на сковороде с маслом до хрустящей золотистой корочки (примерно по 3-4 минуты с каждой стороны).\n2. Сделайте соус Тартар: мелко-мелко нарежьте маринованный огурец и зелень, смешайте их с майонезом.\n3. Слегка подсушите половинки булочек на сухой сковороде.\n4. Смажьте нижнюю булочку приготовленным соусом Тартар, положите квадратный ломтик сыра и горячую рыбную котлету.\n5. Добавьте ещё немного соуса сверху и накройте бургер второй половинкой булочки."
+    },
+    {
+      "name": "Грибной бургер Жульен со сливочным соусом",
+      "ingredients": "Булочки для бургеров — 2 шт, мясные котлеты — 2 шт, шампиньоны свежие — 3 шт, лук репчатый — 0.5 шт, сливки 20% — 50 мл, твердый сыр — 50 г, сливочное масло.",
+      "steps": "1. Мелко нарежьте лук и шампиньоны. Обжарьте их на сливочном масле до мягкости, затем влейте сливки и тушите 3 минуты, пока соус не загустеет.\n2. Параллельно обжарьте на другой сковороде мясные котлеты до полной готовности.\n3. Натрите твердый сыр на мелкой треке.\n4. На нижнюю поджаренную булочку выложите сочную котлету, сверху щедро полейте грибным соусом Жульен и посыпьте тертым сыром.\n5. Закройте бургер верхней булочкой. Сыр моментально расплавится от горячего соуса!"
+    },
+    {
+      "name": "Гавайский бургер с сочным ананасом",
+      "ingredients": "Булочки для бургеров — 2 шт, куриный фарш — 300 г, консервированные ананасы (кольца) — 2 шт, сыр Чеддер — 2 ломтика, листья салата, соус Терияки или майонез.",
+      "steps": "1. Из куриного фарша сделайте две круглые котлеты и обжарьте их на сковороде до готовности.\n2. На этой же сковороде обжарьте два колечка ананаса по 1 минуте с каждой стороны, чтобы они слегка карамелизовались.\n3. Смажьте нижнюю булочку соусом Терияки или обычным майонезом.\n4. Положите хрустящий лист салата, затем горячую куриную котлету и ломтик сыра.\n5. Сверху уложите теплое кольцо ананаса и накройте бургер кунжутной булочкой."
+    },
+    {
+      "name": "Фитнес-бургер в листьях салата (без булки)",
+      "ingredients": "Большие плотные листья салата Айсберг — 4 шт, говяжий фарш — 300 г, помидор — 1 шт, свежий огурец — 1 шт, белый йогурт без сахара — 2 ст.л., укроп, соль.",
+      "steps": "1. Сформируйте из фарша две аккуратные котлеты, посолите их и пожарьте на сковороде (лучше на гриле) без лишнего масла.\n2. Сделайте полезный соус: смешайте натуральный йогурт с мелко порубленным укропом и щепоткой соли.\n3. Промойте и обсушите большие листы салата Айсберг — они заменят нам булочки.\n4. Выложите на один лист салата немного йогуртового соуса, затем готовую котлету, кружочки помидора и свежего огурца.\n5. Полейте соусом еще раз и накройте вторым большим листом салата, аккуратно прижав."
+    },
+    {
+      "name": "Итальянский бургер Капрезе с соусом Песто",
+      "ingredients": "Булочки для бургеров — 2 шт, мясные котлеты — 2 шт, сыр Моцарелла (в брусочке) — 60 г, спелый помидор — 1 шт, готовый соус Песто — 2 ч.л., свежий базилик.",
+      "steps": "1. Пожарьте на сковороде мясные котлеты. Помидор и Моцареллу нарежьте аккуратными кружочками.\n2. Подрумяньте булочки срезом вниз на сухой сковороде.\n3. Смажьте нижнюю булочку сочной зеленой ложкой соуса Песто.\n4. Выложите мясную котлету, на неё сразу же положите кружок Моцареллы (чтобы она начала таять) и помидор.\n5. Украсьте парой листочков свежего базилика и закройте бургер верхней частью булочки."
+    },
+    {
+      "name": "Сырный взрыв (Double Cheese Burger)",
+      "ingredients": "Булочки для бургеров — 2 шт, мясные котлеты — 2 шт, сыр Чеддер — 4 ломтика (по 2 на каждый бургер), плавленый сыр в баночке — 2 ст.л., маринованный огурец — 1 шт.",
+      "steps": "1. Обжарьте котлеты. За минуту до готовности положите на каждую котлету сначала один ломтик сыра Чеддер, а сверху — второй, и накройте крышкой.\n2. Нарежьте маринованный огурец тонкими кружочками.\n3. Нижнюю часть булочки щедро намажьте жидким плавленым сыром из баночки.\n4. Разложите кружочки огурцов, а сверху выложите мега-сырную котлету.\n5. Накройте верхней булочкой. Этот бургер — настоящая мечта любителей потянущегося сыра!"
+    },
+    {
+      "name": "Бургер Охотничий с горчичным соусом",
+      "ingredients": "Булочки ржаные или темные — 2 шт, мясные котлеты — 2 шт, маринованный лук — 0.5 шт, майонез — 2 ст.л., острая горчица — 1 ч.л., соленый огурец — 1 шт.",
+      "steps": "1. Сделайте охотничий соус: тщательно смешайте майонез и острую горчицу до однородного цвета.\n2. Нарежьте соленый огурец длинными тонкими полосками.\n3. Обжарьте мясные котлеты на сильном огне до красивой корочки.\n4. Смажьте нижнюю ржаную булочку горчичным соусом, выложите маринованный лук и полоски огурца.\n5. Положите сочную горячую котлету и закройте бургер верхней половинкой булочки."
+    },
+    {
+      "name": "Мини-бургеры на вечеринку",
+      "ingredients": "Маленькие круглые булочки (фуршетные) — 6 шт, фарш — 300 г, маленькие ломтики сыра — 6 шт, черри-помидоры — 3 шт, кетчуп, салат.",
+      "steps": "1. Сформируйте из фарша 6 совсем маленьких котлеток (размером с мини-булочки) и быстро обжарьте их с двух сторон.\n2. Черри-помидоры разрежьте пополам.\n3. Каждую мини-булочку разрежьте и смажьте капелькой кетчупа.\n4. Соберите бургеры: кусочек салата, мини-котлетка, маленький ломтик сыра и половинка черри.\n5. Закрепите каждый мини-бургер красивой шпажкой или зубочисткой, чтобы они не распадались."
+    },
+    {
+      "name": "Барбекю-бургер с хрустящим луком фри",
+      "ingredients": "Булочки для бургеров — 2 шт, мясные котлеты — 2 шт, лук репчатый — 1 шт, мука — 1 ст.л., соус Барбекю — 2 ст.л., сыр Чеддер — 2 ломтика, растительное масло для фритюра.",
+      "steps": "1. Нарежьте лук тонкими кольцами, обваляйте в муке и обжарьте в большом количестве горячего масла до хрустящей корочки. Выложите на салфетку.\n2. Пожарьте котлеты на сковороде и растопите на них по ломтику сыра.\n3. Нижнюю булочку густо смажьте соусом Барбекю с дымным ароматом.\n4. Выложите котлету с сыром, а сверху насыпьте гору хрустящего жареного лука.\n5. Закройте бургер верхней булочкой. Лук будет очень приятно хрустеть при укусе!"
+    },
+    {
+      "name": "Завтрак-бургер с нежным омлетом и ветчиной",
+      "ingredients": "Булочки для бургеров — 2 шт, яйца куриные — 2 шт, молоко — 2 ст.л., ветчина — 2 круглых ломтика, свежий огурец — 0.5 шт, майонез.",
+      "steps": "1. Взбейте яйца с молоком и щепоткой соли. Пожарьте на сковороде пышный омлет, сверните его в форме круга под размер булочки.\n2. Ломтики ветчины слегка обжарьте на сковороде по 30 секунд, чтобы они стали теплыми и ароматными.\n3. Смажьте булочки тонким слоем майонеза.\n4. На нижнюю булочку выложите кружочки свежего огурца, затем теплую ветчину.\n5. Сверху аккуратно положите круглый омлет и накройте второй половинкой булочки. Идеальный сытный завтрак готов!"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Шоколадный кекс в кружке за 3 минуты в микроволновке",
+      "ingredients": "Мука пшеничная — 4 ст.л., сахар — 2 ст.л., какао-порошок — 2 ст.л., яйцо — 1 шт, молоко — 3 ст.л., растительное масло — 1 ст.л.",
+      "steps": "1. В керамической кружке объемом от 300 мл смешайте вилкой муку, сахар и какао-порошок.\n2. Разбейте в эту же кружку яйцо, влейте молоко и растительное масло.\n3. Энергично взбивайте массу вилкой в течение одной минуты до однородного жидкого теста.\n4. Поставьте кружку в микроволновую печь на максимальную мощность ровно на 2 минуты.\n5. Дайте десерту постоять внутри еще 1 минуту, достаньте и ешьте ложкой прямо из кружки."
+    },
+    {
+      "name": "Нежный банановый чизкейк в стакане без выпечки",
+      "ingredients": "Песочное печенье — 150 г, творог мягкий — 200 г, спелые бананы — 2 шт, мед или сахарная пудра — 1 ст.л., сливочное масло — 50 г.",
+      "steps": "1. Измельчите печенье в мелкую крошку. Сливочное масло растопите, влейте в крошку и перемешайте ложкой.\n2. Разложите получившуюся крошку по дну двух стаканов, слегка утрамбовав её чайной ложкой.\n3. В блендере взбейте очищенные бананы, мягкий творог и мед до состояния воздушного крем-пюре.\n4. Осторожно переложите бананово-творожный крем в стаканы поверх слоя печенья.\n5. Отправьте десерт в холодильник минимум на 20 минут. Перед подачей украсьте кружочками банана."
+    },
+    {
+      "name": "Хрустящий яблочный крамбл с овсяными хлопьями",
+      "ingredients": "Свежие яблоки — 2 шт, овсяные хлопья — 4 ст.л., мука — 2 ст.л., сахар — 2 ст.л., сливочное масло — 40 г, молотая корица — 0.5 ч.л.",
+      "steps": "1. Нарежьте яблоки небольшими кубиками, выложите на дно формы для запекания, посыпьте корицей и ложкой сахара.\n2. В отдельной миске руками быстро перетрите овсяные хлопья, муку, ложку сахара и холодное сливочное масло в крупную крошку.\n3. Равномерно засыпьте получившейся овсяной крошкой слой яблок в форме.\n4. Поставьте форму в разогретую до 180°C духовку на 20-25 минут, пока хлопья сверху не станут золотистыми."
+    },
+    {
+      "name": "Быстрый клубничный трайфл в стакане",
+      "ingredients": "Бисквитное печенье или готовый кекс — 100 г, взбитые сливки или густой сладкий йогурт — 150 г, свежая клубника — 100 г, сахарная пудра — 1 ч.л.",
+      "steps": "1. Разломайте бисквитное печенье или кекс на небольшие кусочки руками.\n2. Свежую клубнику промойте, обсушите и нарежьте тонкими слайсами.\n3. На дно прозрачных стаканов выложите кусочки бисквита, сделайте слой крем-сливок или йогурта.\n4. Чередуйте слои в стакане: бисквитная крошка, крем, ягоды клубники.\n5. Самый верхний слой крема украсьте целой ягодкой клубники и уберите в холодильник на 15 минут для пропитки."
+    },
+    {
+      "name": "Домашнее ягодное мороженое за 5 минут",
+      "ingredients": "Замороженная ягода — 200 г, сливки 20-33% — 80 мл, сахарная пудра — 2 ст.л.",
+      "steps": "1. Достаньте замороженные ягоды из морозилки и дайте им полежать при комнатной температуре всего 3 минуты.\n2. Пересыпьте ягоды в чашу блендера, добавьте холодные сливки и сахарную пудру.\n3. Включите блендер на полную мощность и измельчайте массу в течение 1-2 минут.\n4. Ягоды охладят сливки, и масса прямо на глазах превратится в густое, нежное ягодное мороженое.\n5. Разложите по креманкам и ешьте сразу, пока оно не растаяло."
+    },
+    {
+      "name": "Шоколадная колбаса из детства",
+      "ingredients": "Песочное печенье — 200 г, сливочное масло — 100 г, сахар — 3 ст.л., какао-порошок — 2 ст.л., молоко — 3 ст.л.",
+      "steps": "1. Положите печенье в плотный пакет и побейте скалкой или скатайте руками.\n2. В сотейнике смешайте молоко, сахар и какао. Поставьте на огонь, добавьте сливочное масло и помешивайте до полного растворения сахара.\n3. Снимите шоколадную массу с плиты и всыпьте в неё всё измельченное печенье. Хорошо перемешайте ложкой.\n4. Выложите получившуюся массу на пищевую пленку или пакет и заверните, придав форму плотной колбаски.\n5. Уберите в морозильную камеру на 1.5–2 часа. Перед подачей нарежьте на круглые ломтики."
+    },
+    {
+      "name": "Воздушный банановый сплит",
+      "ingredients": "Спелый банан — 1 шт, шарики мороженого — 2-3 шт, взбитые сливки из баллончика, тертый шоколад — 1 ч.л.",
+      "steps": "1. Очистите банан от кожуры и разрежьте его вдоль на две длинные половинки.\n2. Уложите половинки банана на красивое вытянутое блюдце по краям.\n3. В центр между бананами выложите шарики вашего любимого мороженого.\n4. Сверху сделайте красивые пышные шапки из взбитых сливок.\n5. Посыпьте десерт тертым шоколадом. Получается настоящий ресторанный десерт за пару минут!"
+    },
+    {
+            "name": "Французские гренки с корицей и медом",
+      "ingredients": "Белый батон или тостовый хлеб — 4 ломтика, яйцо — 1 шт, молоко — 50 мл, сахар — 1 ч.л., молотая корица — щепотка, сливочное масло, мед.",
+      "steps": "1. В глубокой тарелке взбейте вилкой яйцо с молоком, сахаром и ароматной корицей.\n2. Обмакните каждый ломтик хлеба в яичную смесь с двух сторон, чтобы он хорошо пропитался.\n3. Разогрейте сковороду со сливочным маслом и выложите туда хлеб.\n4. Обжаривайте гренки на среднем огне по 2-3 минуты с каждой стороны до красивой румяной корочки.\n5. Переложите на тарелку и перед подачей полейте сверху тонкой струйкой жидкого меда."
+    },
+    {
+      "name": "Ленивые кокосовые конфеты Раффаэлло",
+      "ingredients": "Сгущенное молоко — 100 г, кокосовая стружка — 120 г, цельный миндаль или фундук — 10 шт.",
+      "steps": "1. В глубокой миске смешайте сгущенное молоко и 80 грамм кокосовой стружки.\n2. Тщательно перемешайте массу ложкой и уберите в холодильник на 15 минут, чтобы она стала плотнее.\n3. Берите чайной ложкой немного кокосовой массы, делайте из неё лепешечку, кладите в центр орешек и скатывайте в круглый шарик.\n4. Обваляйте каждый получившийся шарик со всех сторон в оставшейся сухой кокосовой стружке.\n5. Выложите конфеты на тарелку и охладите в холодильнике ещё 10 минут перед дегустацией."
+    },
+    {
+      "name": "Быстрый творожный мусс с какао",
+      "ingredients": "Творог (в пачке или мягкий) — 200 г, сметана или густой йогурт — 2 ст.л., сахарная пудра — 2 ст.л., какао-порошок — 1 ст.л.",
+      "steps": "1. Сложите в глубокую чашу или чашу блендера творог, сметану, сахарную пудру и какао.\n2. Если творог обычный из пачки, обязательно пробейте массу погружным блендером в течение 1 минуты, чтобы исчезли все крупинки.\n3. Если творог изначально мягкий, можно просто очень энергично взбить всё вместе обычной вилкой или венчиком.\n4. Масса должна стать абсолютно однородной, глянцевой и похожей на нежный шоколадный крем.\n5. Разложите мусс по пиалам. Можно посыпать сверху орешками или крошкой печенья."
+    },
+    {
+      "name": "Запеченное яблоко с медом и орехами",
+      "ingredients": "Большое сладкое яблоко — 1 шт, мед — 1 ч.л., грецкие орехи — 2-3 шт, изюм — 1 ч.л.",
+      "steps": "1. Вымойте яблоко. Острым ножом или маленькой ложкой аккуратно вырежьте сердцевину с семечками, делая глубокую ямку (но не прорезайте яблоко насквозь!).\n2. Измельчите грецкие орехи пальцами или ножом и смешайте их в чашечке с изюмом.\n3. Плотно наполните ямку в яблоке смесью орехов и изюма.\n4. Сверху на начинку залейте чайную ложку жидкого меда.\n5. Поставьте яблоко на небольшое блюдце и отправьте в микроволновку на 3-4 минуты на средней мощности. Яблоко станет мягким, а внутри образуется вкуснейший сироп."
+    },
+    {
+      "name": "Мини-круассаны из готового теста с мармеладом",
+      "ingredients": "Готовое слоеное тесто — 1 пласт, жевательный или обычный мармелад — 100 г, сахарная пудра для украшения.",
+      "steps": "1. Слегка раскатайте размороженный пласт слоеного теста и разрежьте его на длинные вытянутые треугольники.\n2. На широкую часть каждого треугольника положите по одной мармеладке (или кусочку мармелада).\n3. Начиная с широкого края, аккуратно сверните треугольник в плотный рулетик-круассан.\n4. Выложите мини-круассаны на противень с пергаментом, сгибая их края в форме полумесяца.\n5. Выпекайте в разогретой до 180°C духовке примерно 15 минут до пышности. Остывшие круассаны посыпьте сахарной пудрой."
+    },
+    {
+      "name": "Хрустящие банановые чипсы в духовке",
+      "ingredients": "Спелые, но плотные бананы — 2 шт, лимонный сок — 1 ст.л.",
+      "steps": "1. Очистите бананы и нарежьте их ножом на очень-очень тонкие кружочки одинаковой толщины.\n2. Застелите противень бумагой для запекания и разложите на ней кружочки бананов в один слой.\n3. С помощью кулинарной кисточки слегка смажьте каждый кружочек лимонным соком — это нужно, чтобы бананы не потемнели.\n4. Отправьте противень в духовку, разогретую всего до 90-100°C, примерно на 1-1.5 часа.\n5. Бананы должны подсушиться. Достаньте их, дайте полностью остыть, и они станут суперхрустящими и сладкими."
+    },
+    {
+      "name": "Праздничный фруктовый салат 'Радуга'",
+      "ingredients": "Киви — 1 шт, мандарин — 1 шт, банан — 0.5 шт, яблоко — 0.5 шт, сладкий питьевой йогурт — 3 ст.л.",
+      "steps": "1. Очистите от кожуры киви, мандарин и банан. Яблоко вымойте и удалите семечки.\n2. Нарежьте киви, банан и яблоко небольшими красивыми кубиками.\n3. Дольки мандарина очистите от белых пленочек и разрежьте каждую дольку пополам.\n4. Сложите все разноцветные фрукты в глубокий красивый салатник и аккуратно перемешайте ложкой.\n5. Перед самой подачей заправьте салат сладким йогуртом. Этот десерт не только безумно вкусный, но и полон витаминов!"
+    }
+  ],
+  "drinks": [
+    {
+      "name": "Домашний цитрусовый лимонад с мятой",
+      "ingredients": "Лимон — 1 шт, апельсин — 1 шт, свежая мята — 3-4 веточки, сахар — 4 ст.л., газированная или обычная вода — 1 л, лед.",
+      "steps": "1. Выжмите сок из лимона и апельсина в большой кувшин.\n2. Добавьте сахар и хорошо перемешайте до его полного растворения.\n3. Положите в кувшин кружочки оставшейся цедры и листики мяты, слегка размяв их ложкой.\n4. Залейте всё холодной водой и добавьте кубики льда для супер-прохлады."
+    },
+    {
+      "name": "Пышный клубнично-банановый смузи",
+      "ingredients": "Спелый банан — 1 шт, свежая или замороженная клубника — 100 г, молоко или йогурт — 200 мл, мед — 1 ч.л.",
+      "steps": "1. Очистите банан и нарежьте его кусочками.\n2. Сложите банан и промытую клубнику в чашу блендера.\n3. Залейте фрукты холодным молоком или натуральным йогуртом, добавьте ложку меда.\n4. Взбивайте всё на максимальной мощности в течение 1 минуты до получения нежной розовой пены."
+    },
+    {
+      "name": "Ароматный детский глинтвейн на вишневом соке",
+      "ingredients": "Вишневый сок — 1 л, апельсин — 0.5 шт, яблоко — 0.5 шт, палочка корицы (или щепотка молотой), гвоздика — 2-3 шт.",
+      "steps": "1. Вылейте вишневый сок в небольшую кастрюлю и поставьте на слабый огонь.\n2. Нарежьте яблоко и апельсин крупными дольками прямо с кожурой и отправьте в сок.\n3. Добавьте палочку корицы и звездочки гвоздики для зимнего аромата.\n4. Прогрейте сок почти до кипения, но не кипятите. Выключите огонь, накройте крышкой и дайте настояться 10 минут."
+    },
+    {
+      "name": "Шоколадный молочный коктейль как в кино",
+      "ingredients": "Молоко холодное — 250 мл, шоколадное мороженое — 2 больших шарика, шоколадный сироп или растопленный шоколад — 2 ст.л.",
+      "steps": "1. Налейте в блендер холодное молоко.\n2. Добавьте шарики шоколадного пломбира и столовую ложку шоколадного сиропа.\n3. Взбивайте на высокой скорости 30-40 секунд, чтобы сверху образовалась густая шапка из пузырьков.\n4. Перед тем как налить коктейль, украсьте стенки стакана сиропом, перелейте напиток и вставьте трубочку."
+    },
+    {
+      "name": "Пряный согревающий чай с имбирем и лимоном",
+      "ingredients": "Черный или зеленый чай — 2 ч.л., свежий корень имбиря — 1 см, лимон — 2 дольки, мед — 2 ч.л., кипяток — 500 мл.",
+      "steps": "1. Очистите имбирь от кожицы и натрите на мелкой терке или нарежьте тонкими слайсами.\n2. В заварочный чайник насыпьте чай, положите имбирь и дольки лимона.\n3. Залейте крутым кипятком, закройте крышкой и укутайте полотенцем на 7-10 минут.\n4. Наливайте в чашки и добавляйте мед по вкусу, когда чай слегка остынет (чтобы мед сохранил пользу)."
+    },
+    {
+      "name": "Освежающий кубинский Мохито (безалкогольный)",
+      "ingredients": "Лайм или лимон — 0.5 шт, свежая мята — 1 маленький пучок, тростниковый (или обычный) сахар — 2 ч.л., спрайт или газировка — 250 мл, колотый лед.",
+      "steps": "1. Нарежьте половинку лайма на 3-4 части и положите на дно высокого стакана.\n2. Добавьте к лайму листики мяты и сахар.\n3. Возьмите ложку или специальную толкушку и хорошо разомните лайм с мятой, чтобы пошел сок и аромат.\n4. Насыпьте полный стакан колотого льда и залейте доверху газировкой Спрайт."
+    },
+    {
+      "name": "Густой бананово-овсяный завтрак в стакане",
+      "ingredients": "Банан спелый — 1 шт, овсяные хлопья быстрого приготовления — 2 ст.л., молоко — 200 мл, щепотка корицы.",
+      "steps": "1. Насыпьте овсяные хлопья в блендер и измельчите их в муку за 10 секунд.\n2. Положите туда же нарезанный банан и налейте теплое или холодное молоко.\n3. Добавьте крошечную щепотку корицы для приятного кондитерского вкуса.\n4. Взбивайте всё вместе полминуты. Этот питательный напиток отлично заменяет кашу по утрам!"
+    },
+    {
+      "name": "Изумрудный коктейль Тархун из свежей зелени",
+      "ingredients": "Свежий эстрагон (тархун) — 1 пучок, лимон — 0.5 шт, сахар — 3 ст.л., газированная вода — 1 л.",
+      "steps": "1. Оборвите листики тархуна с жестких стеблей и положите в чашу блендера.\n2. Добавьте туда сахар и выжмите сок из половинки лимона.\n3. Налейте в блендер 100 мл обычной воды и пробейте зелень в ярко-зеленую кашицу.\n4. Процедите получившийся сок через ситечко в кувшин, чтобы убрать кусочки травы, и залейте холодной газировкой."
+    },
+    {
+      "name": "Полезный ягодный морс из брусники или клюквы",
+      "ingredients": "Замороженная клюква или брусника — 1 стакан, вода — 1 л, сахар или мед — 3 ст.л.",
+      "steps": "1. Разморозьте ягоды и деревянной толкушкой выжмите из них весь сок через марлю или сито в чашку. Сок пока уберите.\n2. Оставшийся ягодный жмых переложите в кастрюлю, залейте водой и доведите до кипения.\n3. Поварите 5 минут, снимите с огня и процедите горячий отвар через сито, растворив в нем сахар.\n4. Когда отвар остынет до теплого состояния, влейте в него сохраненный свежий ягодный сок. Так сохранятся все витамины!"
+    },
+    {
+      "name": "Кофейный ИИ-Глясе с ванильным пломбиром",
+      "ingredients": "Готовый сваренный кофе (или какао для детей) — 150 мл, ванильное мороженое — 1 шарик, тертый шоколад — 0.5 ч.л.",
+      "steps": "1. Сварите чашку ароматного кофе (или приготовите вкусное сладкое какао) и дайте ему полностью остыть до комнатной температуры.\n2. Налейте остывший напиток в красивый прозрачный бокал.\n3. Аккуратно опустите сверху один круглый шарик ванильного пломбира — он должен плавать на поверхности.\n4. Посыпьте верхушку мороженого тертым шоколадом и подавайте с соломинкой и маленькой ложкой."
+    },
+    {
+      "name": "Тропический коктейль Пина Колада (детский)",
+      "ingredients": "Ананасовый сок — 200 мл, кокосовое молоко или жидкие сливки 10% — 100 мл, спелый банан — 0.5 шт, кубики льда.",
+      "steps": "1. Очистите половинку банана и нарежьте кусочками.\n2. Сложите банан в блендер, залейте спелым ананасовым соком и кокосовым молоком.\n3. Взбивайте всё вместе на высокой скорости примерно 40 секунд, чтобы банан полностью растворился.\n4. Перелейте в высокий бокал, добавьте лед и украсьте кусочком ананаса."
+    },
+    {
+      "name": "Витаминный яблочно-морковный сок от ИИ",
+      "ingredients": "Свежая морковь — 1 шт, крупное яблоко — 1 шт, капля растительного или сливочного масла.",
+      "steps": "1. Тщательно вымойте, очистите морковь и яблоко, удалите из яблока сердцевину.\n2. Пропустите фрукты через соковыжималку (или натрите на самой мелкой терке и отожмите сок через чистую марлю).\n3. Перелейте сок в стакан и добавьте крошечную каплю масла — ИИ знает, что так витамин А из моркови усвоится организмом на все 100%.\n4. Перемешайте ложкой и пейте сразу, пока сок свежий и полон витаминов."
+    },
+    {
+      "name": "Пряный яблочный чай 'Уютный вечер'",
+      "ingredients": "Яблоко — 0.5 шт, черный чай — 2 ч.л., апельсиновая цедра — 1 ч.л., гвоздика — 1 шт, кипяток — 500 мл.",
+      "steps": "1. Нарежьте половинку яблока очень мелкими кубиками.\n2. Сложите яблоки, заварку чая, апельсиновую цедру и гвоздику в заварочный чайник.\n3. Залейте крутым кипятком до самого верха и накройте крышкой.\n4. Дайте чаю настояться под полотенцем 10 минут. Яблоки отдадут свой сок, и чай получится невероятно ароматным."
+    },
+    {
+      "name": "Экспресс-какао с воздушным маршмеллоу",
+      "ingredients": "Молоко — 250 мл, какао-порошок — 2 ч.л., сахар — 1.5 ч.л., мини-маршмеллоу — 1 горсть.",
+      "steps": "1. В небольшой ковшик налейте молоко и поставьте его разогреваться на плиту.\n2. В чашке смешайте сухой какао-порошок и сахар. Влейте туда 2 столовые ложки теплого молока из ковшика и размешайте ложкой в однородную шоколадную пасту без комочков.\n3. Вылейте эту пасту обратно в ковшик к остальному молоку, постоянно помешивая венчиком.\n4. Доведите какао до кипения, перелейте в любимую кружку и сразу же засыпьте сверху гору маленьких маршмеллоу. Они начнут таять и превратятся в нежную пенку."
+    }
+  ],
+    "salats": [
+    {
+      "name": "🥗 Салат Цезарь с хрустящей курочкой",
+      "ingredients": "Куриное филе, салат Романо, сухарики, пармезан, черри, соус Цезарь.",
+      "steps": "1. Обжарьте куриное филе кусочками до корочки.\n2. Нарвите салат руками, выложите на тарелку.\n3. Сверху разложите теплую курочку и половинки черри.\n4. Полейте соусом, посыпьте сухариками и натертым пармезаном."
+    },
+    {
+      "name": "🥗 Освежающий Греческий салат",
+      "ingredients": "Помидоры, огурцы, болгарский перец, сыр Фета, маслины, оливковое масло, орегано.",
+      "steps": "1. Нарежьте помидоры, огурцы и перец крупными кубиками.\n2. Выложите овощи в салатник и добавьте маслины.\n3. Сбрызните оливковым маслом.\n4. Сверху выложите сыр Фета кубиками и посыпьте орегано."
+    },
+    {
+      "name": "🥗 Классический Оливье с докторской колбасой",
+      "ingredients": "Картофель, морковь, докторская колбаса, яйца, соленые огурцы, зеленый горошек, майонез.",
+      "steps": "1. Отварите картофель, морковь и яйца.\n2. Нарежьте все ингредиенты мелкими одинаковыми кубиками.\n3. Добавьте зеленый горошек, слив воду из банки.\n4. Заправьте майонезом, посолите по вкусу и перемешайте."
+    },
+    {
+      "name": "🥗 Нежная Сельдь под шубой",
+      "ingredients": "Филе сельди, свекла, морковь, картофель, яйца, лук, майонез.",
+      "steps": "1. Отварите свеклу, морковь, картофель и яйца.\n2. Мелко нашинкуйте филе сельди и лук, выложите первым слоем.\n3. Натирайте остальные овощи и яйца слоями на терке.\n4. Промазывайте каждый слой тонкой сеточкой из майонеза. Свекла должна быть сверху."
+    },
+    {
+      "name": "🥗 Крабовый салат с кукурузой",
+      "ingredients": "Крабовые палочки, сладкая кукуруза, яйца, свежий огурец, рис отварной, майонез.",
+      "steps": "1. Нарежьте крабовые палочки, яйца и свежий огурец мелкими кубиками.\n2. Смешайте нарезанные продукты в глубокой миске.\n3. Добавьте немного остывшего отварного риса и банку кукурузы.\n4. Заправьте майонезом перед самой подачей."
+    },
+    {
+      "name": "🥗 Винегрет с ароматным маслом",
+      "ingredients": "Свекла, картофель, морковь, квашеная капуста, соленые огурцы, лук, подсолнечное масло.",
+      "steps": "1. Сварите свеклу, морковь и картофель в мундире, затем остудите и очистите.\n2. Нарежьте овощи и огурцы кубиками, лук мелко нашинкуйте.\n3. Смешайте все в миске, добавьте квашеную капусту.\n4. Заправьте пахучим подсолнечным маслом и посолите."
+    },
+    {
+      "name": "🥗 Витаминный салат из капусты",
+      "ingredients": "Свежая капуста, морковь, укроп, сахар, уксус, растительное масло.",
+      "steps": "1. Мелко нашинкуйте свежую белокочанную капусту.\n2. Посыпьте солью и хорошенько помните руками, чтобы она дала сок.\n3. Натрите морковь на крупной терке, мелко нарежьте укроп.\n4. Добавьте щепотку сахара, каплю уксуса и заправьте маслом."
+    },
+    {
+      "name": "🥗 Итальянская Капрезе с соусом песто",
+      "ingredients": "Помидоры, сыр Моцарелла, свежий базилик, соус Песто, оливковое масло.",
+      "steps": "1. Нарежьте помидоры и моцареллу круглыми ровными ломтиками.\n2. Выложите их на плоскую тарелку поочередно, немного внахлест.\n3. Сверху украсьте листиками свежего зеленого базилика.\n4. Сбрызните оливковым маслом и нанесите капли соуса песто."
+    },
+    {
+      "name": "🥗 Мимоза с нежной горбушей",
+      "ingredients": "Рыбные консервы, картофель, морковь, яйца, сыр, майонез.",
+      "steps": "1. Разминайте рыбу вилкой прямо в тарелке — это первый слой.\n2. Выкладывайте слоями: натертый картофель, морковь, белки яиц, сыр.\n3. Каждый слой аккуратно смазывайте майонезом.\n4. Сверху украсьте салат мелко натертыми яичными желтками."
+    },
+    {
+      "name": "🥗 Салат с тунцом и перепелиным яйцом",
+      "ingredients": "Консервированный тунец, листья салата, перепелиные яйца, помидоры черри, оливковое масло.",
+      "steps": "1. Нарвите салатный микс на тарелку.\n2. Выложите кусочки консервированного тунца из банки.\n3. Добавьте отваренные перепелиные яйца, разрезанные пополам, и черри.\n4. Заправьте ложкой оливкового масла со специями."
+    },
+    {
+      "name": "🥗 Хрустящий салат с сухариками и фасолью",
+      "ingredients": "Красная фасоль консервированная, кириешки, сыр, чеснок, майонез.",
+      "steps": "1. Слейте сок из банки с красной фасолью и высыпьте её в салатник.\n2. Натрите твердый сыр на крупной терке.\n3. Выдавите один зубчик чеснока для пикантного аромата.\n4. Смешайте всё с майонезом, а сухарики всыпьте перед едой, чтобы они не размякли."
+    },
+    {
+      "name": "🥗 Изысканный салат с ананасами и курицей",
+      "ingredients": "Отварная куриная грудка, консервированные ананасы кубиками, твердый сыр, майонез.",
+      "steps": "1. Нарежьте отварную куриную грудку небольшими кусочками.\n2. Слейте сироп из ананасов, добавьте кубики фруктов к курице.\n3. Натрите сыр на средней терке и отправьте в салатник.\n4. Заправьте легким майонезом и охладите в холодильнике 15 минут."
+    },
+    {
+      "name": "🥗 Салат Грибная поляна",
+      "ingredients": "Маринованные шампиньоны (целые), отварная курица, картофель, корейская морковь, зелень, майонез.",
+      "steps": "1. Возьмите глубокую миску. На дно шляпками вниз выложите целые грибы.\n2. Засыпьте их большим количеством мелко нарезанной зелени.\n3. Дальше выкладывайте слоями: курица, корейская морковь, картофель, смазывая майонезом.\n4. Перед подачей переверните миску на плоское блюдо — грибочки окажутся сверху!"
+    },
+    {
+      "name": "🥗 Свежий салат с редиской и огурцом",
+      "ingredients": "Редис, свежий огурец, зеленый лук, сметана, соль.",
+      "steps": "1. Нарежьте редиску и огурцы тонкими полукружочками.\n2. Нашинкуйте пучок зеленого лука.\n3. Соедините все ингредиенты в салатнике, посолите.\n4. Заправьте густой прохладной сметаной."
+    }
+  ],
+  "sushi": [
+    {
+      "name": "🍣 Легендарные роллы Филадельфия(огурец по желанию)",
+      "ingredients": "Рис для суши, листы нори, слабосоленый лосось, сливочный сыр, свежий огурец.",
+      "steps": "1. Выложите рис на нори и переверните рисом вниз.\n2. По центру выложите полоской сливочный сыр и соломку из огурца.\n3. Сверните ролл плотно с помощью коврика.\n4. Накройте ролл тонкими ломтиками лосося, прижмите и разрежьте на 8 частей."
+    },
+    {
+      "name": "🍣 Горячие запеченные роллы с крабом",
+      "ingredients": "Рис для суши, листы нори, крабовые палочки, майонез, твердый сыр.",
+      "steps": "1. Нарежьте крабовые палочки, смешайте их с майонезом и натертым сыром.\n2. Сделайте обычный ролл с крабовой палочкой рисом наружу и нарежьте на части.\n3. Выложите на противень и положите сверху сырно-крабовую шапочку.\n4. Запекайте в духовке при 200 градусах 5-7 минут."
+    },
+    {
+      "name": "🍣 Классическая Калифорния в икре тобико",
+      "ingredients": "Рис для суши, нори, крабовое мясо, авокадо, икра Тобико, майонез.",
+      "steps": "1. На лист нори выложите рис, а сверху распределите икру тобико.\n2. Переверните нори икрой вниз.\n3. Положите внутрь начинку: майонез, кусочки краба и полоски спелого авокадо.\n4. Скрутите ролл, подровняйте края ковриком и разрежьте острым мокрым ножом."
+    },
+    {
+      "name": "🍣 Простые маки-роллы со свежим огурцом(огурчик по желанию)",
+      "ingredients": "Рис для суши, листы нори, свежий огурец, кунжут.",
+      "steps": "1. Положите лист нори глянцевой стороной вниз на бамбуковый коврик.\n2. Распределите рис по нори, оставив верхний край пустым на 1 см.\n3. По центру выложите длинную соломку из огурца и посыпьте кунжутом.\n4. Смочите пустой край нори водой и плотно заверните тонкий ролл."
+    },
+    {
+      "name": "🍣 Темпура-ролл с хрустящей креветкой",
+      "ingredients": "Рис, нори, тигровые креветки, сливочный сыр, яйцо, мука, панировочные сухари.",
+      "steps": "1. Соберите ролл со сливочным сыром и отварной креветкой внутри.\n2. Обваляйте получившийся целый ролл в жидком кляре из яйца и муки.\n3. Обсыпьте панировочными сухарями Панко.\n4. Быстро обжарьте ролл во фритюре или на сковороде с большим количеством масла до хруста."
+    },
+    {
+      "name": "🍣 Острые суши Гунканы со спайси-лососем",
+      "ingredients": "Рис для суши, листы нори, лосось, майонез, острый соус Шрирача.",
+      "steps": "1. Сделайте соус спайси: смешайте майонез и несколько капель острого соуса.\n2. Нарежьте лосось очень мелкими кубиками и смешайте с острым соусом.\n3. Из теплого риса слепите небольшие овальные колобки руками.\n4. Оберните каждый колобок полоской нори шириной 3 см, закрепив край рисинкой.\n5. Сверху в получившуюся лодочку выложите острую рыбную начинку."
+    },
+    {
+      "name": "🍣 Ролл Канада с подкопченным угрем",
+      "ingredients": "Рис, нори, копченый угорь, сливочный сыр, авокадо, соус Унаги, кунжут.",
+      "steps": "1. Закрутите ролл со сливочным сыром и авокадо рисом наружу.\n2. Поверх риса выложите аккуратные полоски копченого угря.\n3. Оберните ковриком, чтобы угорь плотно прилип к рису, разрежьте.\n4. Поливайте фирменным сладким соусом Унаги и украшайте жареным кунжутом."
+    },
+    {
+      "name": "🍣 Нежный ролл с запеченной мидией",
+      "ingredients": "Рис, нори, мидии, твердый сыр, майонез, чеснок. (чеснок в суши? мда уж.. не думал что ии такое сделает)",
+      "steps": "1. Измельчите мидии и смешайте их с тертым сыром и каплей чесночного майонеза.\n2. Закрутите ролл со сливочным сыром внутри.\n3. Нарежьте его на кусочки и разложите их на противне.\n4. Сверху на каждый ролл сделайте красивую шапочку из мидий и сыра.\n5. Запекайте в духовке 5 минут до расплавления сыра."
+    },
+    {
+      "name": "🍣 Вегетарианский ролл с чукой",
+      "ingredients": "Рис для суши, нори, салат Чука, болгарский перец, ореховый соус.",
+      "steps": "1. Выложите рис на нори, переверните заготовку.\n2. Внутрь положите соломку из сладкого перца и немного салата чука.\n3. Свернуте ролл, придайте ему квадратную форму ковриком.\n4. Нарежьте, полейте сверху ароматным ореховым соусом."
+    },
+    {
+      "name": "🍣 Сладкий десертный ролл в блинчике",
+      "ingredients": "Тонкие сладкие блинчики, творожный сыр, банан, киви, клубника.",
+      "steps": "1. Вместо нори возьмите готовый тонкий сладкий блинчик.\n2. Смажьте его сладкой творожной массой или сливочным сыром с пудрой.\n3. Положите внутрь целые брусочки банана, киви и клубники.\n4. Плотно заверните ролл, охладите в холодильнике и нарежьте кусочками."
+    },
+    {
+      "name": "🍣 Ролл Дракон с авокадо сверху",
+      "ingredients": "Рис, нори, копченый угорь, сливочный сыр, спелое авокадо, икра тобико.",
+      "steps": "1. Внутрь ролла положите сливочный сыр, икру тобико и кусочки угря.\n2. Нарежьте авокадо на очень тонкие слайсы.\n3. Выложите чешуйки авокадо на ролл сверху внахлест, чтобы он стал похож на зеленого дракона.\n4. Зажмите ковриком через пленку и аккуратно разрежьте."
+    },
+    {
+      "name": "🍣 Сливочный ролл с подкопченной курицей",
+      "ingredients": "Рис, нори, копченое куриное филе, сливочный сыр, плавленый сыр в пластинках.",
+      "steps": "1. Выложите начинку: сливочный сыр и соломку из копченой курицы.\n2. Закрутите ролл рисом наружу.\n3. Накройте ролл сверху пластинками плавленого сыра Чеддер.\n4. По желанию слегка обожгите сыр сверху кулинарной горелкой, чтобы он подплавился."
+    },
+    {
+      "name": "🍣 Снежный ролл с креветкой в стружке тунца",
+      "ingredients": "Рис, нори, отварные креветки, сливочный сыр, стружка тунца.",
+      "steps": "1. Распределите рис по нори, а затем обваляйте весь слой риса в стружке тунца.\n2. Переверните нори стружкой вниз.\n3. Выложите начинку из нежного сыра и хрустящих креветок.\n4. Скрутите ролл, подровняйте форму бамбуковым матом и порежьте."
+    },
+    {
+      "name": "🍣 Запеченный ролл Чикен-Спайси",
+      "ingredients": "Рис, нори, курица, острый соус, сыр, кунжут.",
+      "steps": "1. Закрутите обычный ролл с отварной или копченой курицей внутри.\n2. Нарежьте на 8 частей и поставьте на форму для запекания.\n3. Смешайте тертый сыр с острым соусом и каплей майонеза.\n4. Положите шапочки на роллы, посыпьте кунжутом и запекайте 6 минут."
+    }
+  ],
+
+    "noodles": [
+    {
+      "name": "Доширак с говядиной (Острый оригинал)",
+      "ingredients": "Доширак с говядиной — 1 пачка, кипяток.",
+      "steps": "1. Аккуратно откройте лоток и достаньте пакетики со специями.\n2. Высыпьте сушеные овощи и острую приправу прямо на сухую лапшу.\n3. Залейте крутым кипятком строго до внутренней черты на лотке.\n4. Плотно закройте крышкой и подождите ровно 5 минут.\n5. Тщательно перемешайте бульон. По желанию добавьте ложку майонеза для мягкости вкуса."
+    },
+    {
+      "name": "Роллтон с курицей (Нежная классика)",
+      "ingredients": "Роллтон (в лотке или пакете) — 1 шт, сливочное масло — 10 г, кипяток.",
+      "steps": "1. Раскрошите лапшу руками, если любите есть ложкой, или оставьте целой.\n2. Высыпьте родной суповой бульон и сушеную зелень из пакетиков.\n3. Залейте горячей водой, чтобы она полностью покрыла сухую лапшу.\n4. Накройте тарелкой или крышкой на 3-5 минут до разбухания.\n5. Бросьте в горячую лапшу кусочек сливочного масла для нежного домашнего аромата."
+    },
+    {
+      "name": "Студенческий Дошик «По-королевски»",
+      "ingredients": "Доширак (любой вкус) — 1 пачка, сосиска — 1 шт, плавленый сыр (ломтик) — 1 шт, майонез — 1 ст. ложка.",
+      "steps": "1. Нарежьте сосиску тонкими кружочками.\n2. Распакуйте лапшу, высыпьте специи и выложите сверху мясную нарезку.\n3. Положите на сосиски ломтик плавленого сыра.\n4. Залейте кипятком до краев, закройте крышку и подождите 5 минут.\n5. Добавьте ложку майонеза и энергично перемешайте, чтобы сыр полностью расплавился."
+    },
+    {
+      "name": "Роллтон с беконом (Дымный вкус)",
+      "ingredients": "Роллтон (с говядиной) — 1 пачка, сырокопченый бекон — 3 полоски, паприка — 1 щепотка.",
+      "steps": "1. Выложите полоски бекона на сухую горячую сковороду.\n2. Обжаривайте на среднем огне до хрустящей корочки, затем мелко наломайте.\n3. Заварите Роллтон в глубокой тарелке вместе с его специями.\n4. Через 4 минуты откройте лапшу и посыпьте сверху копченой паприкой.\n5. Украсьте блюдо кусочками хрустящего жареного бекона перед самой подачей."
+    },
+    {
+         
+      "name": "Доширак с курицей (Сытная классика)",
+      "ingredients": "Доширак с курицей — 1 пачка, кусочек сливочного масла, кипяток.",
+      "steps": "1. Откройте лоток, высыпьте суповую основу и сушеные овощи.\n2. Залейте крутым кипятком строго до внутренней черты лотка.\n3. Сверху положите небольшой кусочек сливочного масла для нежного бульона.\n4. Плотно закройте крышкой и подождите ровно 5 минут.\n5. Тщательно перемешайте лапшу перед подачей."
+    },
+    {
+      "name": "Сырный Роллтон «Четыре сыра»",
+      "ingredients": "Роллтон — 1 пачка, сыр Чеддер (ломтик) — 1 шт, твердый сыр — 20 г, пармезан — 1 ч. ложка, кипяток.",
+      "steps": "1. Натрите твердый сыр на мелкой терке.\n2. Выложите лапшу в небольшой ковшик, залейте водой и варите на плите 2 минуты.\n3. Слейте почти всю воду, оставив на дне буквально 2-3 столовые ложки.\n4. Добавьте специи, положите Чеддер, тертый сыр и пармезан.\n5. Подержите на медленном огне еще 1 минуту, постоянно помешивая до густоты."
+    },
+    {
+      "name": "Доширак с морепродуктами (Морской бриз)",
+      "ingredients": "Доширак с морепродуктами — 1 пачка, крабовые палочки — 3 шт, сушеная зелень.",
+      "steps": "1. Очистите крабовые палочки от пленки и нарежьте длинной соломкой.\n2. Вскройте пачку лапши, добавьте крабовое мясо к сухим макаронам.\n3. Засыпьте комплектные приправы для рыбного бульона.\n4. Залейте все ингредиенты крутым кипятком.\n5. Закройте крышку лотка на 5 минут, затем перемешайте."
+    },
+    {
+      "name": "Томатный Роллтон «Пицца-стайл»",
+      "ingredients": "Роллтон — 1 пачка, кетчуп или томатная паста — 2 ст. ложки, колбаса салями — 4 кружочка.",
+      "steps": "1. Нарежьте кружочки салями тонкими полосками.\n2. В глубокую тарелку положите брикет лапши, добавьте томатную пасту и колбасу.\n3. Засыпьте суповую приправу из маленького пакетика.\n4. Залейте смесь кипятком и плотно накройте плоской тарелкой.\n5. Через 5 минут откройте и перемешайте, чтобы получился густой томатный соус."
+    },
+    {
+      "name": "Острый Кимчи Доширак",
+      "ingredients": "Доширак (острый) — 1 пачка, готовая капуста кимчи — 50 г, соевый соус — 1 ч. ложка.",
+      "steps": "1. Откройте лапшу, добавьте соевый соус прямо на сухой брикет.\n2. Высыпьте самую острую приправу из комплекта.\n3. Залейте кипящей водой и оставьте запариваться под крышкой на 5 минут.\n4. Снимите крышку и аккуратно перемешайте длинную лапшу.\n5. Выложите сверху холодную хрустящую капусту кимчи для сочности."
+    },
+    {
+      "name": "Грибной Роллтон с секретом",
+      "ingredients": "Роллтон с грибами — 1 пачка, свежие шампиньоны — 2 шт, растительное масло — 1 ч. ложка.",
+      "steps": "1. Нарежьте шампиньоны тонкими красивыми слайсами.\n2. Разогрейте сковороду с маслом и обжаривайте грибы 3 минуты до румяности.\n3. Параллельно заварите грибной Роллтон со специями обычным способом.\n4. Подождите 4 минуты, пока лапша полностью приготовится.\n5. Переложите горячие жареные грибы из сковороды прямо в тарелку."
+    },
+    {
+      "name": "Доширак «Карбонара» (Хит соцсетей)",
+      "ingredients": "Доширак — 1 пачка, яичный желток — 1 шт, тертый сыр — 30 г, сливки — 50 мл.",
+      "steps": "1. Положите лапшу в кипяток БЕЗ приправ и варите ровно 3 минуты.\n2. Полностью слейте всю воду из кастрюли.\n3. В горячую сухую лапшу влейте холодные сливки и добавьте сырой желток.\n4. Высыпьте половину пакетика родных специй и добавьте тертый сыр.\n5. Быстро мешайте вилкой в течение 1 минуты, пока сыр не растает в нежный крем."
+    },
+    {
+      "name": "Кисло-сладкий Роллтон по-азиатски",
+      "ingredients": "Роллтон — 1 пачка, кисло-сладкий соус — 1.5 ст. ложки, семена кунжута — 1 щепотка.",
+      "steps": "1. Заварите сухую лапшу в тарелке вместе с овощами и специями.\n2. Через 4 минуты аккуратно слейте половину получившегося бульона в раковину.\n3. Добавьте в оставшуюся лапшу готовый кисло-сладкий соус.\n4. Хорошо перемешайте макароны, чтобы соус распределился равномерно.\n5. Посыпьте блюдо сверху белым кунжутом для красивой подачи."
+    },
+    {
+      "name": "Доширак «Чесночный взрыв»",
+      "ingredients": "Доширак с говядиной — 1 пачка, чеснок — 1 зубчик, майонез — 1 ч. ложка.",
+      "steps": "1. Очистите зубчик чеснока и пропустите его через специальный пресс.\n2. Выложите измельченный чеснок прямо на сухую лапшу в лотке.\n3. Добавьте острые специи и залейте все ингредиенты крутым кипятком.\n4. Накройте лоток фирменной крышкой на 5 минут.\n5. Добавьте чайную ложку майонеза и перемешайте до однородного состояния."
+    },
+    {
+      "name": "🤖 Кибер-Дошик от ИИ (Фирменный рецепт)",
+      "ingredients": "Доширак (острый) — 1 пачка, куриное яйцо — 1 шт, плавленый сыр для бургеров — 1 пластинка, лист нори — 1 шт.",
+      "steps": "1. Отварите яйцо всмятку, чтобы желток внутри оставался жидким.\n2. Заварите острый Доширак со всеми специями под крышкой в течение 3 минут.\n3. Откройте крышку и положите сверху квадратный ломтик сыра Чеддер.\n4. Рядом аккуратно выложите очищенное и разрезанное пополам яйцо.\n5. На край лотка прикрепите кусочек хрустящей водоросли нори. ИИ гарантирует — это шедевр!"
+    }
+  ]
+
 }
