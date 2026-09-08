@@ -23,23 +23,30 @@
         body { font-family: 'Segoe UI', sans-serif; background-color: var(--color-bg-main); color: var(--color-text-main); margin: 0; padding-bottom: 50px; transition: 0.3s; }
         
         /* Шапка */
-        .fixed-top { background: linear-gradient(135deg, #ffaf40, #ff6348); padding: 20px; text-align: center; position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .fixed-top { background: linear-gradient(135deg, #ffaf40, #ff6348); padding: 20px; text-align: center; position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; }
+        header { position: relative; display: flex; justify-content: center; align-items: center; }
         header h1 { margin: 0; color: white; font-size: 28px; }
+        
+        /* Кнопка темы (сдвинута левее) */
+        #theme-toggle { 
+            position: absolute; 
+            right: 40px; /* Сдвинули левее, чтобы не уезжала за край */
+            top: 50%;
+            transform: translateY(-50%);
+            background: none; 
+            border: none; 
+            font-size: 24px; 
+            cursor: pointer; 
+            color: white;
+            z-index: 101;
+        }
+
         #search-input { width: 90%; max-width: 500px; padding: 12px 20px; border-radius: 25px; border: none; outline: none; font-size: 16px; margin-top: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         
-        /* Навигация с кнопкой магазина */
+        /* Навигация */
         #navigation { display: flex; justify-content: center; gap: 10px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px; align-items: center; }
         .nav-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.2s; white-space: nowrap; text-decoration: none; display: inline-block; }
         .nav-btn:hover, .nav-btn.active { background: white; color: #ff6348; }
-        
-        /* Кнопка МАГНИТ (Фирменный красный стиль) */
-        .magnit-link { 
-            background: #e31e24 !important;
-            color: white !important;
-            box-shadow: 0 2px 8px rgba(227, 30, 36, 0.4);
-            font-weight: 900 !important;
-        }
-        .magnit-link:hover { transform: scale(1.05); background: #c4181d !important; }
 
         /* Контент */
         #recipes-container { max-width: 800px; margin: 0 auto; padding: 20px; }
@@ -48,7 +55,7 @@
         .ingredients { color: var(--color-text-muted); margin: 10px 0; }
         .steps { line-height: 1.6; }
         
-        /* ЧАТ (Компактный) */
+        /* ЧАТ */
         .chat-message { margin-bottom: 10px; display: flex; animation: chatFadeIn 0.3s ease-out; }
         .chat-message.user { justify-content: flex-end; }
         .chat-message.bot { justify-content: flex-start; }
@@ -56,12 +63,11 @@
         .chat-message.user .message-bubble { background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border-bottom-right-radius: 5px; }
         .chat-message.bot .message-bubble { background: var(--color-bg-card); color: var(--color-text-main); border: 1px solid #e0e0e0; border-bottom-left-radius: 5px; }
         #chat-messages { scrollbar-width: thin; }
-        #chat-messages::-webkit-scrollbar { width: 6px; }
-        #chat-messages::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
         @keyframes chatFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 480px) {
-            #chat-window { width: calc(100vw - 20px) !important; right: 10px !important; bottom: 60px !important; height: 400px !important; }
+            #chat-window { width: calc(100vw - 20px) !important; right: 10px !important; bottom: 80px !important; height: 400px !important; }
+            #theme-toggle { right: 20px; }
         }
     </style>
 </head>
@@ -71,14 +77,14 @@
     <div class="fixed-top">
         <header>
             <h1>🍕 eda.vkusno</h1>
-            <button id="theme-toggle" onclick="toggleTheme()" style="position: absolute; right: 15px; top: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: white;">🌓</button>
+            <button id="theme-toggle" onclick="toggleTheme()">🌓</button>
         </header>
         <div style="margin-top: 15px; position: relative; display: inline-block;">
             <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Поиск рецептов...">
             <button id="clear-search" onclick="clearSearchField()" style="display: none; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 20px; color: #333; cursor: pointer;">✕</button>
         </div>
         
-        <!-- НАВИГАЦИЯ С КНОПКОЙ МАГНИТ -->
+        <!-- НАВИГАЦИЯ (БЕЗ МАГНИТА) -->
         <div id="navigation">
             <button class="nav-btn active" onclick="showHome(this)"> Главная</button>
             <button class="nav-btn" onclick="showCategory('soups', this)"> Супы</button>
@@ -90,21 +96,21 @@
             <button class="nav-btn" onclick="showCategory('salats', this)"> Салаты</button> 
             <button class="nav-btn" onclick="showCategory('sushi', this)"> Суши</button>   
             <button class="nav-btn" onclick="showCategory('noodles', this)"> Лапша</button>
-            
-            <!-- КНОПКА МАГНИТ -->
-            <a href="https://magnit.ru" target="_blank" class="nav-btn magnit-link"> МАГНИТ</a>
         </div>
     </div>
 
     <div id="recipes-container"></div>
 
-    <!-- КОМПАКТНЫЙ ЧАТ -->
-    <button id="chat-toggle-btn" onclick="toggleChat()" style="position: fixed; bottom: 15px; right: 15px; background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border: none; padding: 12px 16px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 175, 64, 0.4); z-index: 1000; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></button>
+    <!-- КНОПКА ЧАТА (БОЛЬШАЯ, С МОЗГОМ И САМОЛЁТИКОМ) -->
+    <button id="chat-toggle-btn" onclick="toggleChat()" style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border: none; padding: 18px 24px; border-radius: 50px; font-size: 28px; cursor: pointer; box-shadow: 0 6px 20px rgba(255, 175, 64, 0.5); z-index: 1000; transition: transform 0.2s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <span>🧠</span>
+        <span style="font-size: 20px;">✈️</span>
+    </button>
 
-    <div id="chat-window" style="display: none; position: fixed; bottom: 70px; right: 15px; width: 320px; height: 450px; background: var(--color-bg-card); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 999; flex-direction: column; overflow: hidden;">
+    <div id="chat-window" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 320px; height: 450px; background: var(--color-bg-card); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 999; flex-direction: column; overflow: hidden;">
         <div style="background: linear-gradient(135deg, #ffaf40, #ff6348); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <span style="color: white; font-weight: bold; font-size: 16px;">🤖 ИИ-Шеф</span>
+                <span style="color: white; font-weight: bold; font-size: 16px;">🧠 ИИ-Шеф ✈️</span>
                 <div style="color: rgba(255,255,255,0.9); font-size: 11px; margin-top: 2px;">Онлайн • Готов помочь</div>
             </div>
             <button onclick="toggleChat()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 16px; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">✕</button>
@@ -116,7 +122,7 @@
         </div>
         <div style="padding: 10px 12px; border-top: 1px solid #e0e0e0; background: var(--color-bg-card); display: flex; gap: 8px;">
             <input type="text" id="chat-input" placeholder="Спроси ИИ-шефа..." style="flex: 1; padding: 10px 14px; border: 2px solid #e0e0e0; border-radius: 25px; outline: none; font-size: 13px; background: var(--color-bg-card); color: var(--color-text-main);" onkeypress="if(event.key==='Enter')sendChatMessage()">
-            <button onclick="sendChatMessage()" style="background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border: none; padding: 10px 16px; border-radius: 25px; cursor: pointer; font-size: 14px;"></button>
+            <button onclick="sendChatMessage()" style="background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border: none; padding: 10px 16px; border-radius: 25px; cursor: pointer; font-size: 14px;">🧠</button>
         </div>
     </div>
 
@@ -135,17 +141,15 @@
             }
         }
 
+        // УБРАЛИ КНОПКУ МАГНИТА ИЗ КАРТОЧЕК
         function createRecipeCard(recipe) {
             const card = document.createElement("div");
             card.className = "recipe-card";
-            const searchQuery = encodeURIComponent(`купить ${recipe.name} ингредиенты`);
-            const link = `https://yandex.ru/search/?text=${searchQuery}`;
             
             card.innerHTML = `
                 <h2>${recipe.name}</h2>
                 <div class="ingredients"><strong>Что понадобится:</strong> ${recipe.ingredients}</div>
                 <div class="steps"><strong>Как готовить:</strong><br>${recipe.steps.replace(/\n/g, '<br>')}</div>
-                <a href="${link}" target="_blank" style="display:inline-block; margin-top:15px; background:#e31e24; color:white; text-decoration:none; padding:8px 16px; border-radius:15px; font-size:13px; font-weight:900;"> Найти в МАГНИТЕ</a>
             `;
             return card;
         }
@@ -164,7 +168,7 @@
                     <br>
                     <button onclick="getRandomRecipe()" style="background-color: #ffaf40; color: white; border: none; padding: 15px 35px; font-size: 18px; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 20px rgba(255, 175, 64, 0.4);">🎲 Найти случайное блюдо!</button>
                 </div>
-                <div id="feed-loading" style="text-align: center; color: var(--color-text-muted); margin-top: 20px;"><h3> ИИ загружает ленту...</h3></div>
+                <div id="feed-loading" style="text-align: center; color: var(--color-text-muted); margin-top: 20px;"><h3>🧠 ИИ загружает ленту... ✈️</h3></div>
             `;
             container.style.marginTop = (headerBlock.offsetHeight + 20) + "px";
 
@@ -172,7 +176,7 @@
             document.getElementById("feed-loading")?.remove();
             if (!data) return;
 
-            const cats = {'soups': ' Супы', 'potatoes': ' Картошка', 'pizzas': ' Пицца', 'burgers': ' Бургеры', 'desserts': ' Десерты', 'drinks': ' Напитки', 'salats': ' Салаты', 'sushi': ' Суши', 'noodles': ' Лапша'};
+            const cats = {'soups': '🍲 Супы', 'potatoes': '🥔 Картошка', 'pizzas': '🍕 Пицца', 'burgers': '🍔 Бургеры', 'desserts': '🍦 Десерты', 'drinks': '🍹 Напитки', 'salats': '🥗 Салаты', 'sushi': '🍣 Суши', 'noodles': '🍜 Лапша'};
             ['soups', 'potatoes', 'pizzas', 'burgers', 'desserts', 'drinks', 'salats', 'sushi', 'noodles'].forEach(key => {
                 if (data[key]) {
                     const h2 = document.createElement("h2"); h2.innerText = cats[key]; container.appendChild(h2);
@@ -188,10 +192,9 @@
             const w = document.querySelector('.recipe-card');
             if (w) {
                 w.style.borderLeftColor = "#ffaf40"; w.style.textAlign = "left";
-                w.innerHTML = `<div style="text-align:center;margin-bottom:10px;"><span style="background:#ffaf40;color:#fff;padding:4px 10px;border-radius:10px;font-size:12px;font-weight:bold;"> СЛУЧАЙНОЕ БЛЮДО</span></div>
+                w.innerHTML = `<div style="text-align:center;margin-bottom:10px;"><span style="background:#ffaf40;color:#fff;padding:4px 10px;border-radius:10px;font-size:12px;font-weight:bold;">🎲 СЛУЧАЙНОЕ БЛЮДО</span></div>
                 <h2>${r.name}</h2><div class="ingredients"><b>Ингредиенты:</b> ${r.ingredients}</div><div class="steps"><b>Как готовить:</b><br>${r.steps.replace(/\n/g,'<br>')}</div>
-                <a href="https://yandex.ru/search/?text=${encodeURIComponent('купить '+r.name)}" target="_blank" style="display:inline-block;margin-top:15px;background:#e31e24;color:white;text-decoration:none;padding:8px 16px;border-radius:15px;font-weight:900;"> Купить в МАГНИТЕ</a>
-                <br><br><div style="text-align:center"><button onclick="getRandomRecipe()" style="background:#2ed573;color:white;border:none;padding:10px 25px;border-radius:25px;cursor:pointer;font-weight:bold;"> Ещё раз</button></div>`;
+                <br><div style="text-align:center"><button onclick="getRandomRecipe()" style="background:#2ed573;color:white;border:none;padding:10px 25px;border-radius:25px;cursor:pointer;font-weight:bold;">🔄 Ещё раз</button></div>`;
             }
         }
 
@@ -222,35 +225,33 @@
                     found = true; con.appendChild(createRecipeCard(r));
                 }
             });
-            if(!found) con.innerHTML = "<h3 style='text-align:center'>Ничего не найдено </h3>";
+            if(!found) con.innerHTML = "<h3 style='text-align:center'>Ничего не найдено 😔</h3>";
         }
         function clearSearchField() { document.getElementById("search-input").value=""; document.getElementById("clear-search").style.display="none"; document.querySelector('.nav-btn.active')?.click(); }
         function toggleTheme() { document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode')?'dark':'light'); }
 
-        // ========== ЧАТ БОТ (БЕЗ ПРИВЕТСТВИЙ) ==========
+        // ========== ЧАТ БОТ ==========
         function toggleChat() { const w=document.getElementById('chat-window'); w.style.display=(w.style.display==='none'||w.style.display==='')?'flex':'none'; if(w.style.display==='flex') setTimeout(()=>document.getElementById('chat-input').focus(),100); }
         async function sendChatMessage() { const i=document.getElementById('chat-input'); const m=i.value.trim(); if(!m)return; addChatMessage(m,'user'); i.value=''; await processChatQuery(m); }
         function addChatMessage(t,s) { const c=document.getElementById('chat-messages'); const d=document.createElement('div'); d.className=`chat-message ${s}`; const b=document.createElement('div'); b.className='message-bubble'; b.innerHTML=t; d.appendChild(b); c.appendChild(d); c.scrollTop=c.scrollHeight; }
         
         async function processChatQuery(q) {
             const l = q.toLowerCase().trim();
-            
-            // ТОЛЬКО ЕДА. НИКАКИХ "ПРИВЕТ", "КАК ДЕЛА"
             const foodKeywords = ['приготовить','рецепт','ужин','обед','завтрак','блюдо','суп','пицца','борщ','лапша','картошка','бургер','суши','салат','десерт','напиток','мясо','рыба','курица'];
             
             if(!foodKeywords.some(w => l.includes(w))) { 
-                addChatMessage('Я понимаю только запросы о еде.<br>Пример: "Рецепт борща" или "Что на ужин?"','bot'); 
+                addChatMessage('Я понимаю только запросы о еде 🍽️<br>Пример: "Рецепт борща" или "Что на ужин?"','bot'); 
                 return; 
             }
             
             const lid = 'load-'+Date.now(); 
-            addChatMessage(`<div id="${lid}"> Думаю...</div>`,'bot');
+            addChatMessage(`<div id="${lid}">🧠 Думаю... ✈️</div>`,'bot');
             
             const data = await loadData(); 
             if(!data){
                 const el = document.getElementById(lid);
                 if(el) el.parentElement.remove();
-                addChatMessage('Ошибка базы данных.','bot');
+                addChatMessage('Ошибка базы данных 😞','bot');
                 return;
             }
             
@@ -273,8 +274,8 @@
             const el = document.getElementById(lid);
             if(el) el.parentElement.remove();
             
-            const cats={'soups':'Супы','potatoes':'Картошка','pizzas':'Пицца','burgers':'Бургеры','desserts':'Десерты','drinks':'Напитки','salats':'Салаты','sushi':'Суши','noodles':'Лапша'};
-            addChatMessage(`<b>✅ Нашёл!</b><br><h3 style="margin:5px 0;color:var(--color-primary)">${best.name}</h3><small>${cats[best.c]||best.c}</small><br><br><b> Ингредиенты:</b><br>${best.ingredients}<br><br><b>‍🍳 Как готовить:</b><br>${best.steps.replace(/\n/g,'<br>')}`,'bot');
+            const cats={'soups':'🍲 Супы','potatoes':'🥔 Картошка','pizzas':'🍕 Пицца','burgers':'🍔 Бургеры','desserts':'🍦 Десерты','drinks':'🍹 Напитки','salats':'🥗 Салаты','sushi':'🍣 Суши','noodles':'🍜 Лапша'};
+            addChatMessage(`<b>✅ Нашёл!</b><br><h3 style="margin:5px 0;color:var(--color-primary)">${best.name}</h3><small>${cats[best.c]||best.c}</small><br><br><b>🛒 Ингредиенты:</b><br>${best.ingredients}<br><br><b>👨‍🍳 Как готовить:</b><br>${best.steps.replace(/\n/g,'<br>')}`,'bot');
         }
 
         window.onload = () => { 
