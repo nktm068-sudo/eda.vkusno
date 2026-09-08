@@ -27,7 +27,7 @@
         header { position: relative; display: flex; justify-content: center; align-items: center; }
         header h1 { margin: 0; color: white; font-size: 28px; }
         
-        /* Кнопка темы (сдвинута левее) */
+        /* Кнопка темы */
         #theme-toggle { 
             position: absolute; 
             right: 40px;
@@ -77,31 +77,31 @@
     <div class="fixed-top">
         <header>
             <h1>🍕 eda.vkusno</h1>
-            <button id="theme-toggle" onclick="toggleTheme()"></button>
+            <button id="theme-toggle" onclick="toggleTheme()">🌓</button>
         </header>
         <div style="margin-top: 15px; position: relative; display: inline-block;">
             <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Поиск рецептов...">
             <button id="clear-search" onclick="clearSearchField()" style="display: none; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 20px; color: #333; cursor: pointer;">✕</button>
         </div>
         
-        <!-- НАВИГАЦИЯ -->
+        <!-- НАВИГАЦИЯ СО СМАЙЛИКАМИ -->
         <div id="navigation">
-            <button class="nav-btn active" onclick="showHome(this)"> Главная</button>
-            <button class="nav-btn" onclick="showCategory('soups', this)"> Супы</button>
-            <button class="nav-btn" onclick="showCategory('potatoes', this)"> Картошка</button>
-            <button class="nav-btn" onclick="showCategory('pizzas', this)">🍕 Пицца</button>
-            <button class="nav-btn" onclick="showCategory('burgers', this)"> Бургеры</button>
-            <button class="nav-btn" onclick="showCategory('desserts', this)">🍦 Десерты</button>
-            <button class="nav-btn" onclick="showCategory('drinks', this)">🍹 Напитки</button>
-            <button class="nav-btn" onclick="showCategory('salats', this)"> Салаты</button> 
-            <button class="nav-btn" onclick="showCategory('sushi', this)"> Суши</button>   
-            <button class="nav-btn" onclick="showCategory('noodles', this)"> Лапша</button>
+            <button class="nav-btn active" onclick="showHome(this)"> 🏠 Главная</button>
+            <button class="nav-btn" onclick="showCategory('soups', this)"> 🍲 Супы</button>
+            <button class="nav-btn" onclick="showCategory('potatoes', this)"> 🥔 Картошка</button>
+            <button class="nav-btn" onclick="showCategory('pizzas', this)"> 🍕 Пицца</button>
+            <button class="nav-btn" onclick="showCategory('burgers', this)"> 🍔 Бургеры</button>
+            <button class="nav-btn" onclick="showCategory('desserts', this)"> 🍦 Десерты</button>
+            <button class="nav-btn" onclick="showCategory('drinks', this)"> 🍹 Напитки</button>
+            <button class="nav-btn" onclick="showCategory('salats', this)"> 🥗 Салаты</button> 
+            <button class="nav-btn" onclick="showCategory('sushi', this)"> 🍣 Суши</button>   
+            <button class="nav-btn" onclick="showCategory('noodles', this)"> 🍜 Лапша</button>
         </div>
     </div>
 
     <div id="recipes-container"></div>
 
-    <!-- КНОПКА ЧАТА (ТОЛЬКО МОЗГ, БЕЗ САМОЛЁТИКА) -->
+    <!-- КНОПКА ЧАТА -->
     <button id="chat-toggle-btn" onclick="toggleChat()" style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border: none; padding: 18px 24px; border-radius: 50px; font-size: 28px; cursor: pointer; box-shadow: 0 6px 20px rgba(255, 175, 64, 0.5); z-index: 1000; transition: transform 0.2s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
         <span>🧠</span>
     </button>
@@ -109,7 +109,6 @@
     <div id="chat-window" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 320px; height: 450px; background: var(--color-bg-card); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 999; flex-direction: column; overflow: hidden;">
         <div style="background: linear-gradient(135deg, #ffaf40, #ff6348); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <!-- ИМЯ ЧАТА ТОЛЬКО С МОЗГОМ -->
                 <span style="color: white; font-weight: bold; font-size: 16px;">🧠 ИИ-Шеф</span>
                 <div style="color: rgba(255,255,255,0.9); font-size: 11px; margin-top: 2px;">Онлайн • Готов помочь</div>
             </div>
@@ -122,7 +121,6 @@
         </div>
         <div style="padding: 10px 12px; border-top: 1px solid #e0e0e0; background: var(--color-bg-card); display: flex; gap: 8px;">
             <input type="text" id="chat-input" placeholder="Спроси ИИ-шефа..." style="flex: 1; padding: 10px 14px; border: 2px solid #e0e0e0; border-radius: 25px; outline: none; font-size: 13px; background: var(--color-bg-card); color: var(--color-text-main);" onkeypress="if(event.key==='Enter')sendChatMessage()">
-            <!-- КНОПКА ОТПРАВКИ С СИНИМ САМОЛЁТИКОМ (КАК В МЕССЕНДЖЕРАХ) -->
             <button onclick="sendChatMessage()" style="background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border: none; padding: 10px 16px; border-radius: 25px; cursor: pointer; font-size: 18px;">📨</button>
         </div>
     </div>
@@ -176,7 +174,7 @@
             document.getElementById("feed-loading")?.remove();
             if (!data) return;
 
-            const cats = {'soups': '🍲 Супы', 'potatoes': '🥔 Картошка', 'pizzas': '🍕 Пицца', 'burgers': '🍔 Бургеры', 'desserts': '🍦 Десерты', 'drinks': '🍹 Напитки', 'salats': '🥗 Салаты', 'sushi': '🍣 Суши', 'noodles': '🍜 Лапша'};
+            const cats = {'soups': '🍲 Супы', 'potatoes': '🥔 Картошка', 'pizzas': '🍕 Пицца', 'burgers': ' Бургеры', 'desserts': ' Десерты', 'drinks': '🍹 Напитки', 'salats': '🥗 Салаты', 'sushi': '🍣 Суши', 'noodles': ' Лапша'};
             ['soups', 'potatoes', 'pizzas', 'burgers', 'desserts', 'drinks', 'salats', 'sushi', 'noodles'].forEach(key => {
                 if (data[key]) {
                     const h2 = document.createElement("h2"); h2.innerText = cats[key]; container.appendChild(h2);
@@ -271,8 +269,8 @@
             const el = document.getElementById(lid);
             if(el) el.parentElement.remove();
             
-            const cats={'soups':'🍲 Супы','potatoes':'🥔 Картошка','pizzas':' Пицца','burgers':'🍔 Бургеры','desserts':'🍦 Десерты','drinks':'🍹 Напитки','salats':'🥗 Салаты','sushi':'🍣 Суши','noodles':' Лапша'};
-            addChatMessage(`<b>✅ Нашёл!</b><br><h3 style="margin:5px 0;color:var(--color-primary)">${best.name}</h3><small>${cats[best.c]||best.c}</small><br><br><b>🛒 Ингредиенты:</b><br>${best.ingredients}<br><br><b>👨‍🍳 Как готовить:</b><br>${best.steps.replace(/\n/g,'<br>')}`,'bot');
+            const cats={'soups':'🍲 Супы','potatoes':'🥔 Картошка','pizzas':'🍕 Пицца','burgers':'🍔 Бургеры','desserts':'🍦 Десерты','drinks':'🍹 Напитки','salats':' Салаты','sushi':'🍣 Суши','noodles':'🍜 Лапша'};
+            addChatMessage(`<b>✅ Нашёл!</b><br><h3 style="margin:5px 0;color:var(--color-primary)">${best.name}</h3><small>${cats[best.c]||best.c}</small><br><br><b>🛒 Ингредиенты:</b><br>${best.ingredients}<br><br><b>👨🍳 Как готовить:</b><br>${best.steps.replace(/\n/g,'<br>')}`,'bot');
         }
 
         window.onload = () => { 
