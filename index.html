@@ -29,7 +29,7 @@
             background-color: var(--color-bg-main); 
             color: var(--color-text-main); 
             margin: 0; 
-            padding-bottom: 80px; 
+            padding-bottom: 80px; /* Место под плавающую кнопку чата */
             transition: background-color 0.3s, color 0.3s; 
         }
         
@@ -147,6 +147,7 @@
             margin: 0 auto; 
             padding: 20px; 
             min-height: 50vh;
+            /* Отступ сверху будет задаваться через JS функцией adjustLayout() */
         }
         
         .recipe-card { 
@@ -445,10 +446,12 @@
             if(activeBtn) activeBtn.classList.add('active');
         }
 
+        // ФУНКЦИЯ ДЛЯ ФИКСАЦИИ ШАПКИ
         function adjustLayout() {
             const header = document.querySelector('.fixed-top');
             const container = document.getElementById("recipes-container");
             if(header && container) {
+                // Устанавливаем padding-top равным высоте шапки + небольшой запас
                 container.style.paddingTop = (header.offsetHeight + 20) + "px";
             }
         }
@@ -456,7 +459,7 @@
         // --- ГЛАВНАЯ СТРАНИЦА ---
         async function showHome(buttonElement, dataParam) {
             setActiveButton(buttonElement);
-            adjustLayout();
+            adjustLayout(); // Сразу корректируем отступ
             
             const container = document.getElementById("recipes-container");
             container.innerHTML = `
@@ -488,6 +491,9 @@
                     });
                 }
             });
+            
+            // Повторная коррекция отступа после рендера контента
+            setTimeout(adjustLayout, 100);
         }
 
         // --- ФИЛЬТР ПО КАТЕГОРИИ ---
@@ -511,6 +517,9 @@
                     container.appendChild(createRecipeCard(r, CATEGORY_LABELS[catKey]));
                 });
             }
+            
+            // Коррекция отступа после вывода списка
+            setTimeout(adjustLayout, 50);
         }
 
         // --- СЛУЧАЙНЫЙ РЕЦЕПТ ---
@@ -726,6 +735,7 @@
                 showHome(document.querySelector('.nav-btn'), data);
             }
             
+            // Слушатель изменения размера окна для пересчета отступа шапки
             window.addEventListener('resize', adjustLayout);
         };
     </script>
