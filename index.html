@@ -3,71 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eda.vkusno — Кулинарная Энциклопедия ИИ</title>
+    <title>eda.vkusno — Кулинарная Энциклопедия</title>
     <link rel="icon" type="image/png" href="varenik (1).png">
     
     <style>
         :root {
             --color-primary: #ffaf40;
+            --color-secondary: #ff6348;
             --color-bg-main: #f8f9fa;
             --color-bg-card: #ffffff;
             --color-text-main: #2f3542;
             --color-text-muted: #747d8c;
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
         }
         .dark-mode {
-            --color-bg-main: #2f3542;
-            --color-bg-card: #1e272e;
+            --color-bg-main: #1e272e;
+            --color-bg-card: #2f3542;
             --color-text-main: #f1f2f6;
             --color-text-muted: #a4b0be;
         }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--color-bg-main); color: var(--color-text-main); margin: 0; padding-bottom: 50px; transition: 0.3s; }
+        
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: var(--color-bg-main); 
+            color: var(--color-text-main); 
+            margin: 0; 
+            padding-bottom: 80px; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
         
         /* Шапка */
-        .fixed-top { background: linear-gradient(135deg, #ffaf40, #ff6348); padding: 20px; text-align: center; position: fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; }
-        header { position: relative; display: flex; justify-content: center; align-items: center; }
-        header h1 { margin: 0; color: white; font-size: 28px; }
+        .fixed-top { 
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
+            padding: 15px 20px; 
+            text-align: center; 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 100; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            box-sizing: border-box; 
+        }
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        header h1 { 
+            margin: 0; 
+            color: white; 
+            font-size: 22px; 
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
         
         /* Кнопка темы */
         #theme-toggle { 
-            position: absolute; 
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none; 
+            background: rgba(255,255,255,0.2); 
             border: none; 
-            font-size: 24px; 
+            font-size: 20px; 
             cursor: pointer; 
             color: white;
-            z-index: 101;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        #theme-toggle:hover { background: rgba(255,255,255,0.3); }
+
+        /* Поиск */
+        #search-wrapper { 
+            width: 100%; 
+            max-width: 500px; 
+            margin: 10px auto 0; 
+            position: relative; 
+        }
+        #search-input { 
+            width: 100%; 
+            padding: 12px 40px 12px 20px; 
+            border-radius: 25px; 
+            border: none; 
+            outline: none; 
+            font-size: 15px; 
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            background: white;
+            color: #333;
+        }
+        #clear-search { 
+            position: absolute; 
+            right: 12px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background: none; 
+            border: none; 
+            font-size: 18px; 
+            color: #999; 
+            cursor: pointer; 
+            display: none; 
         }
 
-        #search-input { width: 90%; max-width: 500px; padding: 12px 20px; border-radius: 25px; border: none; outline: none; font-size: 16px; margin-top: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        
         /* Навигация */
-        #navigation { display: flex; justify-content: center; gap: 10px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px; align-items: center; }
-        .nav-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.2s; white-space: nowrap; text-decoration: none; display: inline-block; }
-        .nav-btn:hover, .nav-btn.active { background: white; color: #ff6348; }
+        #navigation { 
+            display: flex; 
+            justify-content: flex-start; 
+            gap: 8px; 
+            margin-top: 12px; 
+            overflow-x: auto; 
+            padding-bottom: 5px; 
+            scrollbar-width: none; 
+            -ms-overflow-style: none;  
+        }
+        #navigation::-webkit-scrollbar { display: none; } 
+        
+        .nav-btn { 
+            background: rgba(255,255,255,0.2); 
+            border: none; 
+            color: white; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            font-size: 13px;
+            transition: 0.2s; 
+            white-space: nowrap; 
+            flex-shrink: 0;
+        }
+        .nav-btn:hover { background: rgba(255,255,255,0.3); }
+        .nav-btn.active { 
+            background: white; 
+            color: var(--color-secondary); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
         /* Контент */
-        #recipes-container { max-width: 800px; margin: 0 auto; padding: 20px; }
-        .recipe-card { background: var(--color-bg-card); border-radius: 15px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid var(--color-primary); }
-        .recipe-card h2 { margin-top: 0; color: var(--color-text-main); }
-        .ingredients { color: var(--color-text-muted); margin: 10px 0; }
-        .steps { line-height: 1.6; }
+        #recipes-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            min-height: 50vh;
+        }
         
+        .recipe-card { 
+            background: var(--color-bg-card); 
+            border-radius: 12px; 
+            padding: 18px; 
+            margin-bottom: 15px; 
+            box-shadow: var(--shadow-sm); 
+            border-left: 4px solid var(--color-primary); 
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .recipe-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .recipe-card h2 { 
+            margin: 0 0 10px 0; 
+            font-size: 18px; 
+            color: var(--color-text-main); 
+        }
+        .ingredients { 
+            color: var(--color-text-muted); 
+            font-size: 14px; 
+            line-height: 1.5;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        .steps { 
+            font-size: 14px; 
+            line-height: 1.6; 
+            color: var(--color-text-main);
+            white-space: pre-line; 
+        }
+        .category-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
         /* ЧАТ */
-        .chat-message { margin-bottom: 10px; display: flex; animation: chatFadeIn 0.3s ease-out; }
-        .chat-message.user { justify-content: flex-end; }
-        .chat-message.bot { justify-content: flex-start; }
-        .message-bubble { max-width: 85%; padding: 10px 14px; border-radius: 18px; font-size: 13px; line-height: 1.4; word-wrap: break-word; }
-        .chat-message.user .message-bubble { background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border-bottom-right-radius: 5px; }
-        .chat-message.bot .message-bubble { background: var(--color-bg-card); color: var(--color-text-main); border: 1px solid #e0e0e0; border-bottom-left-radius: 5px; }
-        #chat-messages { scrollbar-width: thin; }
-        @keyframes chatFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        #chat-toggle-btn {
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
+            color: white; 
+            border: none; 
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
+            font-size: 24px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(255, 99, 72, 0.4); 
+            z-index: 1000; 
+            transition: transform 0.2s; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        #chat-toggle-btn:hover { transform: scale(1.1); }
+
+        #chat-window { 
+            display: none; 
+            position: fixed; 
+            bottom: 90px; 
+            right: 20px; 
+            width: 320px; 
+            height: 450px; 
+            background: var(--color-bg-card); 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            z-index: 999; 
+            flex-direction: column; 
+            overflow: hidden; 
+            border: 1px solid #eee;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
+            padding: 12px 16px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            color: white;
+        }
+        .chat-title { font-weight: bold; font-size: 15px; }
+        .chat-status { font-size: 11px; opacity: 0.9; }
+        .close-chat { background: rgba(255,255,255,0.2); border: none; color: white; font-size: 18px; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        #chat-messages { 
+            flex: 1; 
+            overflow-y: auto; 
+            padding: 15px; 
+            background: var(--color-bg-main); 
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .msg-row { display: flex; width: 100%; }
+        .msg-row.user { justify-content: flex-end; }
+        .msg-row.bot { justify-content: flex-start; }
+        
+        .bubble { 
+            max-width: 85%; 
+            padding: 10px 14px; 
+            border-radius: 18px; 
+            font-size: 13px; 
+            line-height: 1.4; 
+            word-wrap: break-word; 
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .msg-row.user .bubble { 
+            background: var(--color-secondary); 
+            color: white; 
+            border-bottom-right-radius: 4px;
+        }
+        .msg-row.bot .bubble { 
+            background: var(--color-bg-card); 
+            color: var(--color-text-main); 
+            border: 1px solid #eee;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .chat-input-area {
+            padding: 10px;
+            background: var(--color-bg-card);
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 8px;
+        }
+        #chat-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 13px;
+            background: var(--color-bg-main);
+            color: var(--color-text-main);
+        }
+        #chat-send {
+            background: var(--color-secondary);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
 
         @media (max-width: 480px) {
-            #chat-window { width: calc(100vw - 20px) !important; right: 10px !important; bottom: 80px !important; height: 400px !important; }
-            #theme-toggle { right: 20px; }
+            #chat-window { 
+                width: calc(100vw - 30px); 
+                right: 15px; 
+                left: 15px;
+                bottom: 85px; 
+                height: 50vh; 
+            }
+            #chat-toggle-btn { bottom: 15px; right: 15px; width: 50px; height: 50px; font-size: 20px;}
         }
     </style>
 </head>
@@ -77,205 +324,409 @@
     <div class="fixed-top">
         <header>
             <h1>🍕 eda.vkusno</h1>
-            <button id="theme-toggle" onclick="toggleTheme()">🌓</button>
+            <button id="theme-toggle" onclick="toggleTheme()" title="Переключить тему">🌓</button>
         </header>
-        <div style="margin-top: 15px; position: relative; display: inline-block;">
+        
+        <div id="search-wrapper">
             <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Поиск рецептов...">
-            <button id="clear-search" onclick="clearSearchField()" style="display: none; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 20px; color: #333; cursor: pointer;">✕</button>
+            <button id="clear-search" onclick="clearSearchField()">✕</button>
         </div>
         
-        <!-- НАВИГАЦИЯ СО СМАЙЛИКАМИ -->
-        <div id="navigation">
-            <button class="nav-btn active" onclick="showHome(this)"> 🏠 Главная</button>
-            <button class="nav-btn" onclick="showCategory('soups', this)"> 🍲 Супы</button>
-            <button class="nav-btn" onclick="showCategory('potatoes', this)"> 🥔 Картошка</button>
-            <button class="nav-btn" onclick="showCategory('pizzas', this)"> 🍕 Пицца</button>
-            <button class="nav-btn" onclick="showCategory('burgers', this)"> 🍔 Бургеры</button>
-            <button class="nav-btn" onclick="showCategory('desserts', this)"> 🍦 Десерты</button>
-            <button class="nav-btn" onclick="showCategory('drinks', this)"> 🍹 Напитки</button>
-            <button class="nav-btn" onclick="showCategory('salats', this)"> 🥗 Салаты</button> 
-            <button class="nav-btn" onclick="showCategory('sushi', this)"> 🍣 Суши</button>   
-            <button class="nav-btn" onclick="showCategory('noodles', this)"> 🍜 Лапша</button>
-        </div>
+        <!-- НАВИГАЦИЯ ГЕНЕРИРУЕТСЯ JS ИЗ JSON -->
+        <div id="navigation"></div>
     </div>
 
     <div id="recipes-container"></div>
 
     <!-- КНОПКА ЧАТА -->
-    <button id="chat-toggle-btn" onclick="toggleChat()" style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border: none; padding: 18px 24px; border-radius: 50px; font-size: 28px; cursor: pointer; box-shadow: 0 6px 20px rgba(255, 175, 64, 0.5); z-index: 1000; transition: transform 0.2s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        <span>🧠</span>
-    </button>
+    <button id="chat-toggle-btn" onclick="toggleChat()" title="Открыть ИИ-Шефа">🧠</button>
 
-    <div id="chat-window" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 320px; height: 450px; background: var(--color-bg-card); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 999; flex-direction: column; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #ffaf40, #ff6348); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;">
+    <!-- ОКНО ЧАТА -->
+    <div id="chat-window">
+        <div class="chat-header">
             <div>
-                <span style="color: white; font-weight: bold; font-size: 16px;">🧠 ИИ-Шеф</span>
-                <div style="color: rgba(255,255,255,0.9); font-size: 11px; margin-top: 2px;">Онлайн • Готов помочь</div>
+                <div class="chat-title">🧠 ИИ-Шеф</div>
+                <div class="chat-status">Онлайн • Готов помочь</div>
             </div>
-            <button onclick="toggleChat()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 16px; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">✕</button>
+            <button class="close-chat" onclick="toggleChat()">✕</button>
         </div>
-        <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 14px; background: var(--color-bg-main);">
-            <div class="chat-message bot">
-                <div class="message-bubble">Введите запрос:<br>• "Что на ужин?"<br>• "Рецепт пиццы"<br>• "Борщ"</div>
+        <div id="chat-messages">
+            <div class="msg-row bot">
+                <div class="bubble">
+                    Привет! Я помогу найти рецепт.<br>
+                    Напишите:<br>
+                    • "Борщ"<br>
+                    • "Что на ужин?"<br>
+                    • "Пицца"
+                </div>
             </div>
         </div>
-        <div style="padding: 10px 12px; border-top: 1px solid #e0e0e0; background: var(--color-bg-card); display: flex; gap: 8px;">
-            <input type="text" id="chat-input" placeholder="Спроси ИИ-шефа..." style="flex: 1; padding: 10px 14px; border: 2px solid #e0e0e0; border-radius: 25px; outline: none; font-size: 13px; background: var(--color-bg-card); color: var(--color-text-main);" onkeypress="if(event.key==='Enter')sendChatMessage()">
-            <button onclick="sendChatMessage()" style="background: linear-gradient(135deg, #ffaf40, #ff6348); color: white; border: none; padding: 10px 16px; border-radius: 25px; cursor: pointer; font-size: 18px;">📨</button>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Спроси шефа..." onkeypress="if(event.key==='Enter')sendChatMessage()">
+            <button id="chat-send" onclick="sendChatMessage()">➤</button>
         </div>
     </div>
 
     <script>
+        // --- КОНФИГУРАЦИЯ КАТЕГОРИЙ (Названия для кнопок) ---
+        // Эти ключи ДОЛЖНЫ совпадать с именами массивов в recipes.json
+        const CATEGORY_LABELS = {
+            soups: '🍲 Супы',
+            potatoes: '🥔 Картошка',
+            pizzas: '🍕 Пицца',
+            burgers: '🍔 Бургеры',
+            desserts: '🍦 Десерты',
+            drinks: '🍹 Напитки',
+            salats: '🥗 Салаты',
+            sushi: '🍣 Суши',
+            noodles: '🍜 Лапша'
+        };
+
         let cachedData = null;
 
+        // --- ЗАГРУЗКА ДАННЫХ ИЗ JSON ---
         async function loadData() {
             if (cachedData) return cachedData;
             try {
                 const response = await fetch('recipes.json');
+                if (!response.ok) throw new Error("Network response was not ok");
                 cachedData = await response.json();
                 return cachedData;
             } catch (error) {
-                document.getElementById("recipes-container").innerHTML = "<h3>Ошибка загрузки книги рецептов.</h3>";
+                console.error("Error loading recipes:", error);
+                document.getElementById("recipes-container").innerHTML = "<h3 style='text-align:center;color:red'>Ошибка загрузки базы рецептов.</h3>";
                 return null;
             }
         }
 
-        function createRecipeCard(recipe) {
+        // --- ОТРИСОВКА РЕЦЕПТА ---
+        function createRecipeCard(recipe, categoryName) {
             const card = document.createElement("div");
             card.className = "recipe-card";
             
+            const formattedSteps = recipe.steps.replace(/\n/g, '<br>');
+            
             card.innerHTML = `
+                <span class="category-label">${categoryName}</span>
                 <h2>${recipe.name}</h2>
-                <div class="ingredients"><strong>Что понадобится:</strong> ${recipe.ingredients}</div>
-                <div class="steps"><strong>Как готовить:</strong><br>${recipe.steps.replace(/\n/g, '<br>')}</div>
+                <div class="ingredients"><strong>Ингредиенты:</strong><br>${recipe.ingredients}</div>
+                <div class="steps"><strong>Приготовление:</strong><br>${formattedSteps}</div>
             `;
             return card;
         }
 
-        async function showHome(buttonElement) {
-            const headerBlock = document.querySelector('.fixed-top');
-            headerBlock.style.position = "absolute";
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            if(buttonElement && buttonElement.tagName === 'BUTTON') buttonElement.classList.add('active');
+        // --- РЕНДЕР МЕНЮ (Автоматически из JSON) ---
+        function renderNavigation(data) {
+            const navContainer = document.getElementById('navigation');
+            navContainer.innerHTML = '';
+            
+            // Кнопка "Главная"
+            const homeBtn = document.createElement('button');
+            homeBtn.className = 'nav-btn active';
+            homeBtn.innerText = '🏠 Главная';
+            homeBtn.onclick = () => showHome(homeBtn, data);
+            navContainer.appendChild(homeBtn);
 
-            const container = document.getElementById("recipes-container");
-            container.innerHTML = `
-                <div class="recipe-card" style="border-left-color: #2ed573; text-align: center;">
-                    <h2 style="border: none; padding: 0;">Добро пожаловать в eda.vkusno!</h2>
-                    <p style="font-size: 18px; color: var(--color-text-muted);">Не знаете, что приготовить? ИИ сделает выбор за вас!</p>
-                    <br>
-                    <button onclick="getRandomRecipe()" style="background-color: #ffaf40; color: white; border: none; padding: 15px 35px; font-size: 18px; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 20px rgba(255, 175, 64, 0.4);">🎲 Найти случайное блюдо!</button>
-                </div>
-                <div id="feed-loading" style="text-align: center; color: var(--color-text-muted); margin-top: 20px;"><h3>🧠 ИИ загружает ленту...</h3></div>
-            `;
-            container.style.marginTop = (headerBlock.offsetHeight + 20) + "px";
-
-            const data = await loadData();
-            document.getElementById("feed-loading")?.remove();
-            if (!data) return;
-
-            const cats = {'soups': '🍲 Супы', 'potatoes': '🥔 Картошка', 'pizzas': '🍕 Пицца', 'burgers': ' Бургеры', 'desserts': ' Десерты', 'drinks': '🍹 Напитки', 'salats': '🥗 Салаты', 'sushi': '🍣 Суши', 'noodles': ' Лапша'};
-            ['soups', 'potatoes', 'pizzas', 'burgers', 'desserts', 'drinks', 'salats', 'sushi', 'noodles'].forEach(key => {
-                if (data[key]) {
-                    const h2 = document.createElement("h2"); h2.innerText = cats[key]; container.appendChild(h2);
-                    data[key].forEach(r => container.appendChild(createRecipeCard(r)));
+            // Создаем кнопки только для тех категорий, которые реально есть в JSON
+            Object.keys(CATEGORY_LABELS).forEach(key => {
+                if (data[key] && Array.isArray(data[key]) && data[key].length > 0) {
+                    const btn = document.createElement('button');
+                    btn.className = 'nav-btn';
+                    btn.innerText = CATEGORY_LABELS[key];
+                    btn.onclick = () => filterByCategory(key, btn, data);
+                    navContainer.appendChild(btn);
                 }
             });
         }
 
-        async function getRandomRecipe() {
-            const data = await loadData(); if (!data) return;
-            let all = []; for (let c in data) data[c].forEach(r => { r.cat = c; all.push(r); });
-            const r = all[Math.floor(Math.random() * all.length)];
-            const w = document.querySelector('.recipe-card');
-            if (w) {
-                w.style.borderLeftColor = "#ffaf40"; w.style.textAlign = "left";
-                w.innerHTML = `<div style="text-align:center;margin-bottom:10px;"><span style="background:#ffaf40;color:#fff;padding:4px 10px;border-radius:10px;font-size:12px;font-weight:bold;">🎲 СЛУЧАЙНОЕ БЛЮДО</span></div>
-                <h2>${r.name}</h2><div class="ingredients"><b>Ингредиенты:</b> ${r.ingredients}</div><div class="steps"><b>Как готовить:</b><br>${r.steps.replace(/\n/g,'<br>')}</div>
-                <br><div style="text-align:center"><button onclick="getRandomRecipe()" style="background:#2ed573;color:white;border:none;padding:10px 25px;border-radius:25px;cursor:pointer;font-weight:bold;">🔄 Ещё раз</button></div>`;
+        // --- ПОМОЩНИКИ UI ---
+        function setActiveButton(activeBtn) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            if(activeBtn) activeBtn.classList.add('active');
+        }
+
+        function adjustLayout() {
+            const header = document.querySelector('.fixed-top');
+            const container = document.getElementById("recipes-container");
+            if(header && container) {
+                container.style.paddingTop = (header.offsetHeight + 20) + "px";
             }
         }
 
-        async function showCategory(cat, btn) {
-            document.querySelector('.fixed-top').style.position = "fixed";
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            if(btn) btn.classList.add('active');
-            const con = document.getElementById("recipes-container");
-            con.innerHTML = "<h3>Загрузка...</h3>";
-            const data = await loadData(); if(!data) return;
-            con.innerHTML = "";
-            (data[cat]||[]).forEach(r => con.appendChild(createRecipeCard(r)));
-            con.style.marginTop = (document.querySelector('.fixed-top').offsetHeight + 20) + "px";
-        }
+        // --- ГЛАВНАЯ СТРАНИЦА ---
+        async function showHome(buttonElement, dataParam) {
+            setActiveButton(buttonElement);
+            adjustLayout();
+            
+            const container = document.getElementById("recipes-container");
+            container.innerHTML = `
+                <div style="text-align:center; margin-bottom:30px;">
+                    <h2 style="margin:0; color:var(--color-text-main)">Добро пожаловать!</h2>
+                    <p style="color:var(--color-text-muted); font-size:14px;">Выберите категорию или используйте поиск</p>
+                    <button onclick="getRandomRecipe()" style="margin-top:10px; background:var(--color-primary); color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; font-weight:bold;">🎲 Случайный рецепт</button>
+                </div>
+                <div id="loading-feed">Загрузка...</div>
+            `;
 
-        async function handleSearch(q) {
-            const cl = document.getElementById("clear-search"); cl.style.display = q.trim()?"block":"none";
-            const con = document.getElementById("recipes-container");
-            if(!q.trim()) { document.querySelector('.nav-btn.active')?.click(); return; }
-            const data = await loadData(); if(!data) return;
-            document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-            con.innerHTML = ""; let found = false;
-            for(let c in data) data[c].forEach(r => {
-                if(r.name.toLowerCase().includes(q.toLowerCase()) || r.ingredients.toLowerCase().includes(q.toLowerCase())) {
-                    found = true; con.appendChild(createRecipeCard(r));
+            const data = dataParam || await loadData();
+            document.getElementById("loading-feed")?.remove();
+            if (!data) return;
+
+            // Выводим превью рецептов из каждой категории
+            Object.keys(CATEGORY_LABELS).forEach(key => {
+                if (data[key] && Array.isArray(data[key]) && data[key].length > 0) {
+                    const sectionTitle = document.createElement('h3');
+                    sectionTitle.innerText = CATEGORY_LABELS[key];
+                    sectionTitle.style.marginTop = '25px';
+                    sectionTitle.style.color = 'var(--color-text-muted)';
+                    sectionTitle.style.fontSize = '16px';
+                    container.appendChild(sectionTitle);
+
+                    // Берем максимум 3 рецепта для главной
+                    data[key].slice(0, 3).forEach(r => {
+                        container.appendChild(createRecipeCard(r, CATEGORY_LABELS[key]));
+                    });
                 }
             });
-            if(!found) con.innerHTML = "<h3 style='text-align:center'>Ничего не найдено 😔</h3>";
         }
-        function clearSearchField() { document.getElementById("search-input").value=""; document.getElementById("clear-search").style.display="none"; document.querySelector('.nav-btn.active')?.click(); }
-        function toggleTheme() { document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode')?'dark':'light'); }
 
-        // ========== ЧАТ БОТ ==========
-        function toggleChat() { const w=document.getElementById('chat-window'); w.style.display=(w.style.display==='none'||w.style.display==='')?'flex':'none'; if(w.style.display==='flex') setTimeout(()=>document.getElementById('chat-input').focus(),100); }
-        async function sendChatMessage() { const i=document.getElementById('chat-input'); const m=i.value.trim(); if(!m)return; addChatMessage(m,'user'); i.value=''; await processChatQuery(m); }
-        function addChatMessage(t,s) { const c=document.getElementById('chat-messages'); const d=document.createElement('div'); d.className=`chat-message ${s}`; const b=document.createElement('div'); b.className='message-bubble'; b.innerHTML=t; d.appendChild(b); c.appendChild(d); c.scrollTop=c.scrollHeight; }
-        
-        async function processChatQuery(q) {
-            const l = q.toLowerCase().trim();
-            const foodKeywords = ['приготовить','рецепт','ужин','обед','завтрак','блюдо','суп','пицца','борщ','лапша','картошка','бургер','суши','салат','десерт','напиток','мясо','рыба','курица'];
+        // --- ФИЛЬТР ПО КАТЕГОРИИ ---
+        async function filterByCategory(catKey, buttonElement, dataParam) {
+            setActiveButton(buttonElement);
+            adjustLayout();
             
-            if(!foodKeywords.some(w => l.includes(w))) { 
-                addChatMessage('Я понимаю только запросы о еде 🍽️<br>Пример: "Рецепт борща" или "Что на ужин?"','bot'); 
+            const container = document.getElementById("recipes-container");
+            container.innerHTML = "<h3 style='text-align:center'>Загрузка...</h3>";
+            
+            const data = dataParam || await loadData(); 
+            if(!data) return;
+            
+            container.innerHTML = "";
+            const recipes = data[catKey] || [];
+            
+            if(recipes.length === 0) {
+                 container.innerHTML = `<h3 style='text-align:center'>В этой категории пока пусто.</h3>`;
+            } else {
+                recipes.forEach(r => {
+                    container.appendChild(createRecipeCard(r, CATEGORY_LABELS[catKey]));
+                });
+            }
+        }
+
+        // --- СЛУЧАЙНЫЙ РЕЦЕПТ ---
+        async function getRandomRecipe() {
+            const data = await loadData(); 
+            if (!data) return;
+            
+            let allRecipes = []; 
+            
+            for (let key in CATEGORY_LABELS) {
+                if(data[key] && Array.isArray(data[key])) {
+                    data[key].forEach(r => {
+                        allRecipes.push({ ...r, _catName: CATEGORY_LABELS[key] });
+                    });
+                }
+            }
+            
+            if(allRecipes.length === 0) return;
+
+            const randomIndex = Math.floor(Math.random() * allRecipes.length);
+            const r = allRecipes[randomIndex];
+            
+            const container = document.getElementById("recipes-container");
+            const card = createRecipeCard(r, r._catName);
+            card.style.borderLeftColor = "#2ed573"; 
+            
+            const welcomeDiv = container.firstElementChild;
+            if(welcomeDiv && welcomeDiv.tagName === 'DIV' && welcomeDiv.innerText.includes("Добро пожаловать")) {
+                welcomeDiv.remove();
+            }
+
+            container.prepend(card);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- ПОИСК ---
+        async function handleSearch(query) {
+            const clearBtn = document.getElementById("clear-search");
+            clearBtn.style.display = query.trim() ? "block" : "none";
+            
+            const container = document.getElementById("recipes-container");
+            
+            if(!query.trim()) { 
+                const activeBtn = document.querySelector('.nav-btn.active');
+                if(activeBtn) activeBtn.click(); 
+                else showHome(null);
                 return; 
             }
             
-            const lid = 'load-'+Date.now(); 
-            addChatMessage(`<div id="${lid}">🧠 Думаю...</div>`,'bot');
+            document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+            container.innerHTML = "<h3 style='text-align:center'>Поиск...</h3>";
             
             const data = await loadData(); 
-            if(!data){
-                const el = document.getElementById(lid);
-                if(el) el.parentElement.remove();
-                addChatMessage('Ошибка базы данных 😞','bot');
-                return;
+            if(!data) return;
+            
+            container.innerHTML = ""; 
+            let foundCount = 0;
+            const lowerQuery = query.toLowerCase();
+            
+            for(let key in CATEGORY_LABELS) {
+                if(!data[key] || !Array.isArray(data[key])) continue;
+                
+                data[key].forEach(r => {
+                    const matchName = r.name.toLowerCase().includes(lowerQuery);
+                    const matchIng = r.ingredients.toLowerCase().includes(lowerQuery);
+                    
+                    if(matchName || matchIng) {
+                        foundCount++;
+                        container.appendChild(createRecipeCard(r, CATEGORY_LABELS[key]));
+                    }
+                });
             }
             
-            let all=[], best=null, max=0;
-            for(let c in data) data[c].forEach(r=>{r.c=c;all.push(r);});
-            const words = l.split(/\s+/).filter(w=>w.length>2);
-            
-            all.forEach(r=>{
-                let s=0; 
-                const txt=(r.name+' '+r.ingredients).toLowerCase();
-                words.forEach(w=>{
-                    if(txt.includes(w)) s+=10; 
-                    if(r.name.toLowerCase().includes(w)) s+=50;
-                });
-                if(s>max){max=s;best=r;}
-            });
-            
-            if(!best) best=all[Math.floor(Math.random()*all.length)];
-            
-            const el = document.getElementById(lid);
-            if(el) el.parentElement.remove();
-            
-            const cats={'soups':'🍲 Супы','potatoes':'🥔 Картошка','pizzas':'🍕 Пицца','burgers':'🍔 Бургеры','desserts':'🍦 Десерты','drinks':'🍹 Напитки','salats':' Салаты','sushi':'🍣 Суши','noodles':'🍜 Лапша'};
-            addChatMessage(`<b>✅ Нашёл!</b><br><h3 style="margin:5px 0;color:var(--color-primary)">${best.name}</h3><small>${cats[best.c]||best.c}</small><br><br><b>🛒 Ингредиенты:</b><br>${best.ingredients}<br><br><b>👨🍳 Как готовить:</b><br>${best.steps.replace(/\n/g,'<br>')}`,'bot');
+            if(foundCount === 0) {
+                container.innerHTML = `<h3 style='text-align:center; color:var(--color-text-muted)'>Ничего не найдено по запросу "${query}" 😔</h3>`;
+            }
+            adjustLayout();
         }
 
-        window.onload = () => { 
+        function clearSearchField() { 
+            document.getElementById("search-input").value=""; 
+            handleSearch(""); 
+        }
+
+        // --- ТЕМА ---
+        function toggleTheme() { 
+            document.body.classList.toggle('dark-mode'); 
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode')?'dark':'light'); 
+        }
+
+        // --- ЧАТ БОТ ЛОГИКА ---
+        function toggleChat() { 
+            const w=document.getElementById('chat-window'); 
+            const isVisible = w.style.display === 'flex';
+            w.style.display = isVisible ? 'none' : 'flex'; 
+            if(!isVisible) setTimeout(()=>document.getElementById('chat-input').focus(),100); 
+        }
+        
+        async function sendChatMessage() { 
+            const input = document.getElementById('chat-input'); 
+            const msg = input.value.trim(); 
+            if(!msg) return; 
+            
+            addChatMessage(msg, 'user'); 
+            input.value = ''; 
+            
+            const typingId = 'typing-' + Date.now();
+            addChatMessage(`<i>🧠 Думаю...</i>`, 'bot', typingId);
+            
+            await processChatQuery(msg, typingId);
+        }
+        
+        function addChatMessage(text, sender, customId = null) { 
+            const c = document.getElementById('chat-messages'); 
+            const row = document.createElement('div'); 
+            row.className = `msg-row ${sender}`; 
+            if(customId) row.id = customId;
+            
+            const bubble = document.createElement('div'); 
+            bubble.className = 'bubble'; 
+            bubble.innerHTML = text; 
+            
+            row.appendChild(bubble); 
+            c.appendChild(row); 
+            c.scrollTop = c.scrollHeight; 
+        }
+        
+        async function processChatQuery(userText, typingMsgId) {
+            const data = await loadData();
+            const l = userText.toLowerCase();
+            
+            const typingEl = document.getElementById(typingMsgId);
+            if(typingEl) typingEl.parentElement.remove();
+
+            if(!data) {
+                addChatMessage("База данных недоступна.", 'bot');
+                return;
+            }
+
+            const words = l.split(/[\s,.!?]+/).filter(w => w.length > 2);
+            let matches = [];
+            
+            for(let key in CATEGORY_LABELS) {
+                if(!data[key]) continue;
+                
+                data[key].forEach(recipe => {
+                    let score = 0;
+                    const nameLower = recipe.name.toLowerCase();
+                    const ingLower = recipe.ingredients.toLowerCase();
+                    
+                    words.forEach(word => {
+                        if(nameLower.includes(word)) score += 10;
+                        if(ingLower.includes(word)) score += 5;
+                    });
+                    
+                    if(score > 0) {
+                        matches.push({ recipe, category: CATEGORY_LABELS[key], score });
+                    }
+                });
+            }
+            
+            // Логика для общих запросов ("ужин", "сладкое")
+            if(matches.length === 0) {
+                if(l.includes('ужин') || l.includes('обед')) {
+                    const dinnerCats = ['soups', 'potatoes', 'burgers', 'pizzas'];
+                    for(let cat of dinnerCats) {
+                        if(data[cat] && data[cat].length > 0) {
+                            const r = data[cat][Math.floor(Math.random() * data[cat].length)];
+                            matches.push({ recipe: r, category: CATEGORY_LABELS[cat], score: 1 });
+                        }
+                    }
+                } else if (l.includes('сладкое') || l.includes('десерт')) {
+                     if(data['desserts'] && data['desserts'].length > 0) {
+                         const r = data['desserts'][Math.floor(Math.random() * data['desserts'].length)];
+                         matches.push({ recipe: r, category: CATEGORY_LABELS['desserts'], score: 1 });
+                     }
+                }
+            }
+
+            if(matches.length === 0) {
+                addChatMessage(`Не удалось подобрать рецепт по запросу "${userText}".<br>Попробуйте назвать конкретное блюдо.`, 'bot');
+                return;
+            }
+
+            matches.sort((a, b) => b.score - a.score);
+            const bestMatch = matches[0];
+            const r = bestMatch.recipe;
+            
+            const stepsFormatted = r.steps.replace(/\n/g, '<br>');
+            
+            const reply = `
+                <b>✅ Нашёл!</b><br>
+                <span style="font-size:11px; color:#aaa;">${bestMatch.category}</span><br>
+                <h3 style="margin:5px 0; color:var(--color-primary); font-size:16px;">${r.name}</h3>
+                <div style="background:rgba(0,0,0,0.03); padding:8px; border-radius:8px; margin:8px 0;">
+                    <small><b>Ингредиенты:</b><br>${r.ingredients}</small>
+                </div>
+                <div style="font-size:13px;">
+                    <b>Шаги:</b><br>${stepsFormatted}
+                </div>
+            `;
+            
+            addChatMessage(reply, 'bot');
+        }
+
+        // --- ИНИЦИАЛИЗАЦИЯ ---
+        window.onload = async () => { 
             if(localStorage.getItem('theme')==='dark') document.body.classList.add('dark-mode'); 
-            showHome(document.querySelector('.nav-btn')); 
+            
+            const data = await loadData();
+            if (data) {
+                renderNavigation(data);
+                showHome(document.querySelector('.nav-btn'), data);
+            }
+            
+            window.addEventListener('resize', adjustLayout);
         };
     </script>
 </body>
